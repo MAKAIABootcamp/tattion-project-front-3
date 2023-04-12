@@ -1,4 +1,8 @@
 import { Lato, Montserrat } from "next/font/google";
+import Hero from "@/components/homepage/Hero";
+import Who from "@/components/homepage/Who";
+import Works from "@/components/homepage/Works";
+import Contact from "@/pages/components/homepage/Contact";
 
 const LatoFont = Lato({
   subsets: ["latin"],
@@ -14,6 +18,13 @@ const MontserratFont = Montserrat({
 
 export default function Home() {
   return (
-    <main className={`${LatoFont.variable} ${MontserratFont.variable}`}></main>
+    <main className={`${LatoFont.variable} ${MontserratFont.variable}`}>
+      <div className="homepage-container text-white">
+        <Hero />
+        <Who />
+        <Works />
+        <Contact />
+      </div>
+    </main>
   );
 }
