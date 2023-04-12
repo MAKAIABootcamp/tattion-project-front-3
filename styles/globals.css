@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Global Styles */
+input {
+  color: #434343;
+  outline: none;
+}
+
 /* Landing Page */
 
 .homepage-container {
@@ -41,4 +47,83 @@
   to {
     transform: translateY(20px);
   }
+}
+
+.leftWorks {
+  flex: 1;
+}
+
+.rightWorks {
+  flex: 1;
+}
+
+.text-stroke1 {
+  color: transparent;
+  -webkit-text-stroke: 1px #f2f2f2;
+  position: relative;
+}
+
+.text-stroke1::after {
+  content: "Illustrations";
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: #f2f2f2;
+  width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.text-stroke2 {
+  color: transparent;
+  -webkit-text-stroke: 1px #f2f2f2;
+  position: relative;
+}
+
+.text-stroke2::after {
+  content: "Social Media";
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: #f2f2f2;
+  width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.text-stroke3 {
+  color: transparent;
+  -webkit-text-stroke: 1px #f2f2f2;
+  position: relative;
+}
+
+.text-stroke3::after {
+  content: "Our game";
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: #f2f2f2;
+  width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.text-stroke1:is(:hover)::after,
+.text-stroke2:is(:hover)::after,
+.text-stroke3:is(:hover)::after {
+  animation: moveText 0.4s linear both;
+}
+
+@keyframes moveText {
+  to {
+    width: 100%;
+  }
+}
+
+.leftContact {
+  flex: 1;
+}
+
+.rightContact {
+  flex: 1;
 }
