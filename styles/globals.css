@@ -81,7 +81,7 @@ input {
 }
 
 .text-stroke2::after {
-  content: "Social Media";
+  content: "Development";
   position: absolute;
   top: 0;
   left: 0;
