@@ -11,7 +11,7 @@ const Development = () => {
         <ReactModel />
         <OrbitControls enableZoom={false} />
       </Canvas>
-      <p className="bg-white w-[200px] h-[80px] p-5 rounded-lg text-dark-gray font-light text-sm absolute bottom-48 -right-16">
+      <p className="bg-white w-[200px] h-[80px] p-5 rounded-lg text-dark-gray font-light text-sm absolute top-48 -right-16 max-md:m-auto max-md:-top-[10px] max-md:-left-52 ">
         Technologies we used to develop this project.
       </p>
     </>
