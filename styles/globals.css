@@ -127,3 +127,19 @@ input {
 .rightContact {
   flex: 1;
 }
+
+@media only screen and (max-width: 768px) {
+  .homepage-container {
+    overflow-x: hidden;
+  }
+
+  .left {
+    flex: 1;
+    align-items: center;
+  }
+
+  .right {
+    flex: 1;
+    width: 100%;
+  }
+}

@@ -20,27 +20,26 @@ const Works = () => {
     section: "h-screen snap-center",
   };
 
-  console.log("Hola");
-
   return (
     <div className={`${styles.section} flex justify-center`}>
-      <div className="w-[1000px] flex justify-between">
-        <div className="leftWorks flex items-center">
+      <div className="w-[1000px] flex justify-between max-md:w-full max-md:flex-col">
+        <div className="leftWorks flex items-center max-md:p-5 max-md:justify-center">
           <ul className="flex flex-col gap-5">
             {links.map((link) => (
               <li
-                className={`text-7xl font-lato uppercase cursor-pointer text-stroke${link.id}`}
+                key={link.id}
+                className={`text-7xl font-lato uppercase cursor-pointer text-stroke${link.id} max-md:text-5xl`}
                 onClick={() => setWork(link.name)}
               >
                 {link.name}
               </li>
             ))}
-            <li className="text-7xl font-lato uppercase cursor-pointer text-stroke3">
+            <li className="text-7xl font-lato uppercase cursor-pointer text-stroke3 max-md:text-5xl">
               Our Game
             </li>
           </ul>
         </div>
-        <div className="rightWorks relative">
+        <div className="rightWorks relative max-md:w-full">
           {work === "Illustrations" ? (
             <Illustrations />
           ) : work === "Development" ? (
