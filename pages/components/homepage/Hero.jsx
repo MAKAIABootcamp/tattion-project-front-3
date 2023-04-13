@@ -1,10 +1,14 @@
 import Image from "next/image";
 import React from "react";
 import Navbar from "./Navbar";
+import { OrbitControls } from "@react-three/drei";
+import { Canvas } from "@react-three/fiber";
 
 // Assets
 import line from "@/public/landingPage/line.png";
 import moon from "@/public/landingPage/moon.png";
+import { Sphere } from "@react-three/drei";
+import { MeshDistortMaterial } from "@react-three/drei";
 
 const Hero = () => {
   const styles = {
@@ -33,9 +37,21 @@ const Hero = () => {
           <button className="bg-red-500 w-28 p-2 rounded-xs">Learn More</button>
         </div>
         <div className="right relative w-full h-full">
-          {/* 3D MODEL */}
+          <Canvas>
+            <OrbitControls enableZoom={false} autoRotate />
+            <ambientLight intensity={0.8} />
+            <directionalLight position={[3, 2, 1]} />
+            <Sphere args={[1, 100, 200]} scale={2.2}>
+              <MeshDistortMaterial
+                color="#3d1c56"
+                attach="material"
+                distort={0.5}
+                speed={2}
+              />
+            </Sphere>
+          </Canvas>
           <Image
-            className="w-[800px] h-[600px] object-contain absolute bottom-0 right-0 left-0 top-16 heroImg"
+            className="w-[700px] h-[500px] object-contain absolute bottom-0 right-0 left-0 top-16 heroImg"
             src={moon}
           />
         </div>

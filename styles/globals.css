@@ -28,7 +28,7 @@ input {
 }
 
 .right {
-  flex: 3;
+  flex: 5;
 }
 
 .leftWho {
@@ -81,7 +81,7 @@ input {
 }
 
 .text-stroke2::after {
-  content: "Social Media";
+  content: "Development";
   position: absolute;
   top: 0;
   left: 0;
