@@ -3,12 +3,12 @@ import React from "react";
 import Navbar from "./Navbar";
 import { OrbitControls } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
+import { MeshDistortMaterial } from "@react-three/drei";
+import { Sphere } from "@react-three/drei";
 
 // Assets
 import line from "@/public/landingPage/line.png";
 import moon from "@/public/landingPage/moon.png";
-import { Sphere } from "@react-three/drei";
-import { MeshDistortMaterial } from "@react-three/drei";
 
 const Hero = () => {
   const styles = {

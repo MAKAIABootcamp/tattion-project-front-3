@@ -4,6 +4,8 @@ specifiers:
   '@emailjs/browser': ^3.11.0
   '@react-three/drei': ^9.56.28
   '@react-three/fiber': ^8.12.0
+  '@splinetool/loader': ^0.9.294
+  '@splinetool/r3f-spline': ^1.0.2
   autoprefixer: 10.4.14
   next: 13.3.0
   postcss: 8.4.21
@@ -18,6 +20,8 @@ dependencies:
   '@emailjs/browser': 3.11.0
   '@react-three/drei': 9.65.3_oil3xizkjwv4pznmde3ur3j7hi
   '@react-three/fiber': 8.12.0_42od2y7wbz57ukb7jorrhqe6ja
+  '@splinetool/loader': 0.9.294_three@0.151.3
+  '@splinetool/r3f-spline': 1.0.2_g4juh4ynhzgivtd4vurz5ryt4i
   autoprefixer: 10.4.14_postcss@8.4.21
   next: 13.3.0_biqbaboplfbrettd7655fr4n2y
   postcss: 8.4.21
@@ -333,6 +337,25 @@ packages:
       suspend-react: 0.0.8_react@18.2.0
       three: 0.151.3
       zustand: 3.7.2_react@18.2.0
+    dev: false
+
+  /@splinetool/loader/0.9.294_three@0.151.3:
+    resolution: {integrity: sha512-rNCGMGcK7w+kllALmue29te70gOh8C36KGTcsxnU0QEuhspjr3SCf+uLVumVHFLj02qjKcRxYmYurJXfAk/nyQ==}
+    peerDependencies:
+      three: '>=0.133.0'
+    dependencies:
+      semver-compare: 1.0.0
+      three: 0.151.3
+    dev: false
+
+  /@splinetool/r3f-spline/1.0.2_g4juh4ynhzgivtd4vurz5ryt4i:
+    resolution: {integrity: sha512-Fl1qboRpTE8yJm4BAe1l6j3Xgh3HwIzvtdX2LjCpBiSo21+j0b2rilJpLHfsXJndrq4Hegz6oEUKlPvVWumaHg==}
+    peerDependencies:
+      '@react-three/fiber': '>=7.0.0'
+      '@splinetool/loader': '>=0.9.19'
+    dependencies:
+      '@react-three/fiber': 8.12.0_42od2y7wbz57ukb7jorrhqe6ja
+      '@splinetool/loader': 0.9.294_three@0.151.3
     dev: false
 
   /@swc/helpers/0.4.14:
@@ -1218,6 +1241,10 @@ packages:
     resolution: {integrity: sha512-CtuThmgHNg7zIZWAXi3AsyIzA3n4xx7aNyjwC2VJldO2LMVDhFK+63xGqq6CsJH4rTAt6/M+N4GhZiDYPx9eUw==}
     dependencies:
       loose-envify: 1.4.0
+    dev: false
+
+  /semver-compare/1.0.0:
+    resolution: {integrity: sha512-YM3/ITh2MJ5MtzaM429anh+x2jiLVjqILF4m4oyQB18W7Ggea7BfqdH/wGMK7dDiMghv/6WG7znWMwUDzJiXow==}
     dev: false
 
   /source-map-js/1.0.2:
