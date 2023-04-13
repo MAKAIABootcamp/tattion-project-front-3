@@ -1,9 +1,11 @@
 import Image from "next/image";
 import React from "react";
+import { OrbitControls } from "@react-three/drei";
+import { Canvas } from "@react-three/fiber";
+import Cube from "./Cube";
 
 // Assets
 import line from "@/public/landingPage/line.png";
-import moon from "@/public/landingPage/moon.png";
 
 const Hero = () => {
   const styles = {
@@ -16,7 +18,12 @@ const Hero = () => {
     >
       <div className="flex gap-5 justify-between items-center w-[1000px] h-screen">
         <div className="rightWho relative flex justify-center w-full h-full">
-          {/* 3D MODEL */}
+          <Canvas camera={{ fov: 25, position: [5, 5, 5] }}>
+            <OrbitControls enableZoom={false} autoRotate />
+            <ambientLight intensity={0.5} />
+            <directionalLight position={[3, 2, 1]} />
+            <Cube />
+          </Canvas>
         </div>
         <div className="leftWho flex flex-col gap-5">
           <h1 className="text-7xl font-montserrat">
