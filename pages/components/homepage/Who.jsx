@@ -17,7 +17,7 @@ const Hero = () => {
       className={`${styles.section} flex flex-col items-center justify-between`}
     >
       <div className="flex gap-5 justify-between items-center w-[1000px] h-screen">
-        <div className="rightWho relative flex justify-center w-full h-full">
+        <div className="rightWho relative flex justify-center w-full h-full max-md:hidden">
           <Canvas camera={{ fov: 25, position: [5, 5, 5] }}>
             <OrbitControls enableZoom={false} autoRotate />
             <ambientLight intensity={0.5} />
@@ -25,17 +25,17 @@ const Hero = () => {
             <Cube />
           </Canvas>
         </div>
-        <div className="leftWho flex flex-col gap-5">
-          <h1 className="text-7xl font-montserrat">
+        <div className="leftWho flex flex-col gap-5 max-md:items-center max-md:text-center">
+          <h1 className="text-7xl font-montserrat max-md:text-6xl max-md:w-[400px]">
             Think outside the square space
           </h1>
           <div className="flex items-center gap-2">
-            <Image height={5} src={line} />
+            <Image height={5} src={line} alt="line" />
             <h2 className="text-red-500 font-montserrat font-bold text-lg">
               Who we Are
             </h2>
           </div>
-          <p className="text-xl text-light-gray font-montserrat">
+          <p className="text-xl text-light-gray font-montserrat max-md:w-[400px]">
             a creative group of designers with a passion for the arts.
           </p>
           <button className="bg-red-500 w-36 p-2 rounded-xs">

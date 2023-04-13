@@ -35,10 +35,10 @@ const Contact = () => {
   return (
     <div className={`${styles.section}`}>
       <div className=" h-screen flex gap-12">
-        <div className="leftContact flex items-center justify-end">
+        <div className="leftContact flex items-center justify-end max-md:justify-center">
           <form
             ref={ref}
-            className=" flex flex-col gap-6 w-3/5"
+            className="flex flex-col gap-6 w-3/5 max-md:w-4/5"
             onSubmit={handleSubmit}
           >
             <h1 className="text-4xl font-extralight tracking-wide">
@@ -73,7 +73,7 @@ const Contact = () => {
             ) : null}
           </form>
         </div>
-        <div className="rightContact">
+        <div className="rightContact max-md:hidden">
           <Map />
         </div>
       </div>

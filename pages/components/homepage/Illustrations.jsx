@@ -12,7 +12,7 @@ const Illustrations = () => {
         <Book />
         <OrbitControls enableZoom={false} />
       </Canvas>
-      <p className="bg-white w-[200px] h-[80px] p-3 rounded-lg text-dark-gray font-light text-sm absolute top-48 -right-16">
+      <p className="bg-white w-[200px] h-[80px] p-3 rounded-lg text-dark-gray font-light text-sm absolute top-48 -right-16 max-md:-top-72 max-md:-left-52 bottom-0 max-md:m-auto">
         We have a large galery of illustrations that you can use to create your
         tattoo.
       </p>
