@@ -30,4 +30,4 @@ export default function Model(props) {
   );
 }
 
-useGLTF.preload("/book-transformed.glb");
+useGLTF.preload("/landingPage/book-transformed.glb");

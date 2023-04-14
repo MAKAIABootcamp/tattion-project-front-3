@@ -3,15 +3,17 @@ import { Canvas } from "@react-three/fiber";
 import { MeshDistortMaterial } from "@react-three/drei";
 import { Sphere } from "@react-three/drei";
 import Image from "next/image";
+import Rocket from "@/pages/components/homepage/Rocket";
 
 // Assets
 import logo from "@/public/landingPage/logo.svg";
 import Link from "next/link";
+import Spline from "@splinetool/react-spline";
 
 const SignIn = () => {
   return (
-    <div className="homepage-container">
-      <div className="h-screen w-screen relative">
+    <div className="relative">
+      <div className="h-full w-full absolute">
         <Canvas>
           <OrbitControls enableZoom={false} autoRotate />
           <ambientLight intensity={1} />
@@ -53,6 +55,9 @@ const SignIn = () => {
             </div>
           </form>
         </div>
+      </div>
+      <div className="h-screen w-screen absolute">
+        <Spline scene="https://prod.spline.design/iDr-Fa8bUAlisSKp/scene.splinecode" />
       </div>
     </div>
   );

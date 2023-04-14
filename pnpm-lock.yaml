@@ -4,8 +4,10 @@ specifiers:
   '@emailjs/browser': ^3.11.0
   '@react-three/drei': ^9.56.28
   '@react-three/fiber': ^8.12.0
-  '@splinetool/loader': ^0.9.294
+  '@splinetool/loader': ^0.9.295
   '@splinetool/r3f-spline': ^1.0.2
+  '@splinetool/react-spline': ^2.2.6
+  '@splinetool/runtime': ^0.9.295
   autoprefixer: 10.4.14
   next: 13.3.0
   postcss: 8.4.21
@@ -20,8 +22,10 @@ dependencies:
   '@emailjs/browser': 3.11.0
   '@react-three/drei': 9.65.3_oil3xizkjwv4pznmde3ur3j7hi
   '@react-three/fiber': 8.12.0_42od2y7wbz57ukb7jorrhqe6ja
-  '@splinetool/loader': 0.9.294_three@0.151.3
-  '@splinetool/r3f-spline': 1.0.2_g4juh4ynhzgivtd4vurz5ryt4i
+  '@splinetool/loader': 0.9.295_three@0.151.3
+  '@splinetool/r3f-spline': 1.0.2_754hidrzns4ksrrsi7q34nkxri
+  '@splinetool/react-spline': 2.2.6_egfpg46wtfkmi62rz6vag2vs6i
+  '@splinetool/runtime': 0.9.295
   autoprefixer: 10.4.14_postcss@8.4.21
   next: 13.3.0_biqbaboplfbrettd7655fr4n2y
   postcss: 8.4.21
@@ -339,8 +343,8 @@ packages:
       zustand: 3.7.2_react@18.2.0
     dev: false
 
-  /@splinetool/loader/0.9.294_three@0.151.3:
-    resolution: {integrity: sha512-rNCGMGcK7w+kllALmue29te70gOh8C36KGTcsxnU0QEuhspjr3SCf+uLVumVHFLj02qjKcRxYmYurJXfAk/nyQ==}
+  /@splinetool/loader/0.9.295_three@0.151.3:
+    resolution: {integrity: sha512-NBGIqoRPCTqq2jPf+8RjG+4RPK13iI3uiXvgzlMglsZI95e9eEr/uM4Ht3J5ChumFI+AJczav330TU1bi9H9Iw==}
     peerDependencies:
       three: '>=0.133.0'
     dependencies:
@@ -348,14 +352,35 @@ packages:
       three: 0.151.3
     dev: false
 
-  /@splinetool/r3f-spline/1.0.2_g4juh4ynhzgivtd4vurz5ryt4i:
+  /@splinetool/r3f-spline/1.0.2_754hidrzns4ksrrsi7q34nkxri:
     resolution: {integrity: sha512-Fl1qboRpTE8yJm4BAe1l6j3Xgh3HwIzvtdX2LjCpBiSo21+j0b2rilJpLHfsXJndrq4Hegz6oEUKlPvVWumaHg==}
     peerDependencies:
       '@react-three/fiber': '>=7.0.0'
       '@splinetool/loader': '>=0.9.19'
     dependencies:
       '@react-three/fiber': 8.12.0_42od2y7wbz57ukb7jorrhqe6ja
-      '@splinetool/loader': 0.9.294_three@0.151.3
+      '@splinetool/loader': 0.9.295_three@0.151.3
+    dev: false
+
+  /@splinetool/react-spline/2.2.6_egfpg46wtfkmi62rz6vag2vs6i:
+    resolution: {integrity: sha512-y9L2VEbnC6FNZZu8XMmWM9YTTTWal6kJVfP05Amf0QqDNzCSumKsJxZyGUODvuCmiAvy0PfIfEsiVKnSxvhsDw==}
+    peerDependencies:
+      '@splinetool/runtime': '*'
+      react: '>=17.0.0'
+      react-dom: '>=17.0.0'
+    dependencies:
+      '@splinetool/runtime': 0.9.295
+      lodash.debounce: 4.0.8
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
+      react-merge-refs: 2.0.1
+    dev: false
+
+  /@splinetool/runtime/0.9.295:
+    resolution: {integrity: sha512-+Ltr6KZz+p+ftpQiKWPSjKyToDPMGJsZFhNYVAv5AOZ0WDCTSmUs73j9u418RxLvmkYWe719c1rjqo+ghPEI6Q==}
+    dependencies:
+      on-change: 4.0.2
+      semver-compare: 1.0.0
     dev: false
 
   /@swc/helpers/0.4.14:
@@ -829,6 +854,10 @@ packages:
     resolution: {integrity: sha512-HvzRFWjtcguTW7yd8NJBshuNaCa8aqNFtnswdT7f/cMd/1YKy5Zzoq4W/Oxvnx9l7aeY258uSdDfM793+eLsVg==}
     dev: false
 
+  /lodash.debounce/4.0.8:
+    resolution: {integrity: sha512-FT1yDzDYEoYWhnSGnpE/4Kj1fLZkDFyqRb7fNt6FdYOSxlUWAtp42Eh6Wb0rGIv/m9Bgo7x4GhQbm5Ys4SG5ow==}
+    dev: false
+
   /lodash.omit/4.5.0:
     resolution: {integrity: sha512-XeqSp49hNGmlkj2EJlfrQFIzQ6lXdNro9sddtQzcJY8QaoC2GO0DT7xaIokHeyM+mIT0mPMlPvkYzg2xCuHdZg==}
     dev: false
@@ -968,6 +997,11 @@ packages:
   /object-hash/3.0.0:
     resolution: {integrity: sha512-RSn9F68PjH9HqtltsSnqYC1XXoWe9Bju5+213R98cNGttag9q9yAOTzdbsqvIa7aNm5WffBZFpWYr2aWrklWAw==}
     engines: {node: '>= 6'}
+    dev: false
+
+  /on-change/4.0.2:
+    resolution: {integrity: sha512-cMtCyuJmTx/bg2HCpHo3ZLeF7FZnBOapLqZHr2AlLeJ5Ul0Zu2mUJJz051Fdwu/Et2YW04ZD+TtU+gVy0ACNCA==}
+    engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
     dev: false
 
   /once/1.4.0:
@@ -1138,6 +1172,10 @@ packages:
 
   /react-merge-refs/1.1.0:
     resolution: {integrity: sha512-alTKsjEL0dKH/ru1Iyn7vliS2QRcBp9zZPGoWxUOvRGWPUYgjo+V01is7p04It6KhgrzhJGnIj9GgX8W4bZoCQ==}
+    dev: false
+
+  /react-merge-refs/2.0.1:
+    resolution: {integrity: sha512-pywF6oouJWuqL26xV3OruRSIqai31R9SdJX/I3gP2q8jLxUnA1IwXcLW8werUHLZOrp4N7YOeQNZrh/BKrHI4A==}
     dev: false
 
   /react-reconciler/0.27.0_react@18.2.0:

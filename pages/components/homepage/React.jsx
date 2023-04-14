@@ -21,14 +21,14 @@ export default function Model(props) {
             material={materials["Material.002"]}
             position={[0, 7.94, 0]}
             rotation={[-Math.PI / 2, Math.PI / 2, 0]}
-            scale={[20.17, 20.17, 23.73]}
+            scale={[10.17, 10.17, 13.73]}
           />
           <mesh
             geometry={nodes.Backdrop_Material001_0.geometry}
             material={materials["Material.001"]}
             position={[-17.09, 7.94, 0]}
             rotation={[-Math.PI / 2, Math.PI / 2, 0]}
-            scale={[158.85, 158.85, 43.73]}
+            scale={[78.85, 78.85, 13.73]}
           />
         </group>
       </group>
@@ -36,4 +36,4 @@ export default function Model(props) {
   );
 }
 
-useGLTF.preload("/react-transformed.glb");
+useGLTF.preload("/landingPage/react-transformed.glb");

@@ -6,7 +6,7 @@ import Book from "./Book";
 const Illustrations = () => {
   return (
     <>
-      <Canvas camera={{ fov: 85, position: [5, 0, 12] }}>
+      <Canvas camera={{ fov: 85, position: [3, 0, 8] }}>
         <ambientLight intensity={0.5} />
         <directionalLight position={[3, 2, 1]} />
         <Book />
