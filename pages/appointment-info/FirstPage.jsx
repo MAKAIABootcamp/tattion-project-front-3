@@ -1,10 +1,24 @@
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 // Assets
 import { BsCalendar3 } from "react-icons/bs";
 import { HiLocationMarker } from "react-icons/hi";
 import map from "@/public/appointment/map.png";
 import profileImg from "@/public/appointment/profileImg.svg";
+
+const divVariants = {
+  hidden: { opacity: 0, y: -50 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      type: "spring",
+      stiffness: 500,
+      damping: 30,
+    },
+  },
+};
 
 const FirstPage = ({ setPage }) => {
   const handleSubmit = (e) => {
@@ -14,8 +28,13 @@ const FirstPage = ({ setPage }) => {
   };
 
   return (
-    <div>
-      <div className="w-[360px] h-[600px] bg-gray-black absolute top-0 left-0 bottom-0 right-0 m-auto rounded-md heroImg flex flex-col gap-8 items-center py-12">
+    <motion.div>
+      <motion.div
+        variants={divVariants}
+        initial="hidden"
+        animate="visible"
+        className="w-[360px] h-[600px] bg-gray-black absolute top-0 left-0 bottom-0 right-0 m-auto rounded-md heroImg flex flex-col gap-8 items-center py-12"
+      >
         <h1 className=" m-auto text-white font-montserrat font-semibold">
           {" "}
           Make an Appintment
@@ -58,8 +77,8 @@ const FirstPage = ({ setPage }) => {
             </button>
           </div>
         </form>
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 };
 
