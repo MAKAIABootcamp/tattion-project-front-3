@@ -14,6 +14,7 @@ specifiers:
   prop-types: ^15.8.1
   react: 18.2.0
   react-dom: 18.2.0
+  react-icons: ^4.8.0
   react-simple-maps: ^3.0.0
   tailwindcss: 3.3.1
   three: ^0.151.3
@@ -32,6 +33,7 @@ dependencies:
   prop-types: 15.8.1
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
+  react-icons: 4.8.0_react@18.2.0
   react-simple-maps: 3.0.0_v2m5e27vhdewzwhryxwfaorcca
   tailwindcss: 3.3.1_postcss@8.4.21
   three: 0.151.3
@@ -1164,6 +1166,14 @@ packages:
       loose-envify: 1.4.0
       react: 18.2.0
       scheduler: 0.23.0
+    dev: false
+
+  /react-icons/4.8.0_react@18.2.0:
+    resolution: {integrity: sha512-N6+kOLcihDiAnj5Czu637waJqSnwlMNROzVZMhfX68V/9bu9qHaMIJC4UdozWoOk57gahFCNHwVvWzm0MTzRjg==}
+    peerDependencies:
+      react: '*'
+    dependencies:
+      react: 18.2.0
     dev: false
 
   /react-is/16.13.1:
