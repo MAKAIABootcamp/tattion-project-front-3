@@ -4,10 +4,12 @@ import React from "react";
 // Assets
 import tattooExample from "@/public/payment/tattoo-example.png";
 import { SlArrowRight } from "react-icons/sl";
+import Spline from "@splinetool/react-spline";
+import Link from "next/link";
 
 const PayScreen = () => {
   return (
-    <div className="homepage-container">
+    <div className="homepage-container flex items-center justify-center w-screen">
       <div className="h-screen w-screen relative">
         <div className="w-[360px] h-[650px] bg-gray-black absolute top-0 left-0 bottom-0 right-0 m-auto rounded-md heroImg flex flex-col gap-4 items-center py-10 px-8 ">
           <h1 className=" text-white font-montserrat font-semibold">
@@ -63,17 +65,23 @@ const PayScreen = () => {
                 <p className="font-medium text-sm">Transferencia bancaria</p>
                 <SlArrowRight />
               </div>
-              <div className="px-6 py-3 flex cursor-pointer hover:scale-105 duration-75 justify-between items-center text-white w-full drop-shadow-xl h-10 rounded-md bg-[#2b2c2c]">
-                <p className="font-medium text-sm">Transferencia bancaria</p>
+              <Link
+                href="/payment/credit-card"
+                className="px-6 py-3 flex cursor-pointer hover:scale-105 duration-75 justify-between items-center text-white w-full drop-shadow-xl h-10 rounded-md bg-[#2b2c2c]"
+              >
+                <p className="font-medium text-sm">Credit/Debit Card</p>
                 <SlArrowRight />
-              </div>
+              </Link>
               <div className="px-6 py-3 flex cursor-pointer hover:scale-105 duration-75 justify-between items-center text-white w-full drop-shadow-xl h-10 rounded-md bg-[#2b2c2c]">
-                <p className="font-medium text-sm">Transferencia bancaria</p>
+                <p className="font-medium text-sm">Efectivo</p>
                 <SlArrowRight />
               </div>
             </div>
           </div>
         </div>
+      </div>
+      <div className="w-[900px] z-10">
+        <Spline scene="https://prod.spline.design/iDr-Fa8bUAlisSKp/scene.splinecode" />
       </div>
     </div>
   );
