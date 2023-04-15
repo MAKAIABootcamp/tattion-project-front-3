@@ -9,6 +9,7 @@ specifiers:
   '@splinetool/react-spline': ^2.2.6
   '@splinetool/runtime': ^0.9.295
   autoprefixer: 10.4.14
+  framer-motion: ^10.12.2
   next: 13.3.0
   postcss: 8.4.21
   prop-types: ^15.8.1
@@ -28,6 +29,7 @@ dependencies:
   '@splinetool/react-spline': 2.2.6_egfpg46wtfkmi62rz6vag2vs6i
   '@splinetool/runtime': 0.9.295
   autoprefixer: 10.4.14_postcss@8.4.21
+  framer-motion: 10.12.2_biqbaboplfbrettd7655fr4n2y
   next: 13.3.0_biqbaboplfbrettd7655fr4n2y
   postcss: 8.4.21
   prop-types: 15.8.1
@@ -74,6 +76,19 @@ packages:
     resolution: {integrity: sha512-RkY3FKZ3fPdK++OeF46mRTFpmmQWCHUVHZH209P3NE4D5sg2Atg7S2wa3gw5062Gl4clt4Wn5SyC4WhlVZC5pA==}
     engines: {node: '>=14.0.0'}
     dev: false
+
+  /@emotion/is-prop-valid/0.8.8:
+    resolution: {integrity: sha512-u5WtneEAr5IDG2Wv65yhunPSMLIpuKsbuOktRojfrEiEvRyC85LgPMZI63cr7NUqT8ZIGdSVg8ZKGxIug4lXcA==}
+    requiresBuild: true
+    dependencies:
+      '@emotion/memoize': 0.7.4
+    dev: false
+    optional: true
+
+  /@emotion/memoize/0.7.4:
+    resolution: {integrity: sha512-Ja/Vfqe3HpuzRsG1oBtWTHk2PGZ7GR+2Vz5iYGelAw8dx32K0y7PjVuxK6z1nMpZOqAFsRUPCkK1YjJ56qJlgw==}
+    dev: false
+    optional: true
 
   /@jridgewell/gen-mapping/0.3.3:
     resolution: {integrity: sha512-HLhSWOLRi875zjjMG/r+Nv0oCW8umGb0BgEhyX3dDX3egwZtB8PqLnjz3yedt8R5StBrzcg4aBpnh8UA9D1BoQ==}
@@ -722,6 +737,24 @@ packages:
 
   /fraction.js/4.2.0:
     resolution: {integrity: sha512-MhLuK+2gUcnZe8ZHlaaINnQLl0xRIGRfcGk2yl8xoQAfHrSsL3rYu6FCmBdkdbhc9EPlwyGHewaRsvwRMJtAlA==}
+    dev: false
+
+  /framer-motion/10.12.2_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-DD3Ieqy4pjmL0qBtfNMqnU/IONchUqnhHtgFtu0Nq5jw7bhkksD/Cs4cNhLYd1vs7iB8Q+WInxuBeMmzIoA5Xg==}
+    peerDependencies:
+      react: ^18.0.0
+      react-dom: ^18.0.0
+    peerDependenciesMeta:
+      react:
+        optional: true
+      react-dom:
+        optional: true
+    dependencies:
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
+      tslib: 2.5.0
+    optionalDependencies:
+      '@emotion/is-prop-valid': 0.8.8
     dev: false
 
   /fs.realpath/1.0.0:
