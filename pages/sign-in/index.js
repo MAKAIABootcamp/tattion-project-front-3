@@ -12,22 +12,9 @@ import Spline from "@splinetool/react-spline";
 
 const SignIn = () => {
   return (
-    <div className="relative">
-      <div className="h-full w-full absolute">
-        <Canvas>
-          <OrbitControls enableZoom={false} autoRotate />
-          <ambientLight intensity={1} />
-          <directionalLight position={[3, 2, 1]} />
-          <Sphere args={[1, 100, 200]} scale={2.8}>
-            <MeshDistortMaterial
-              color="#3d1c56"
-              attach="material"
-              distort={0.5}
-              speed={2}
-            />
-          </Sphere>
-        </Canvas>
-        <div className="w-[360px] h-[600px] bg-gray-black absolute top-0 left-0 bottom-0 right-0 m-auto rounded-md heroImg flex flex-col gap-10 items-center py-12">
+    <div className="homepage-container flex items-center justify-center w-screen">
+      <div className="z-10">
+        <div className="w-[360px] h-[600px] bg-gray-black rounded-md heroImg flex flex-col gap-10 items-center py-12 right">
           <Image src={logo} alt="Logo" width={250} height={250} />
           <form className="w-full p-5 flex flex-col gap-9">
             <div className="flex flex-col gap-5">
@@ -50,13 +37,13 @@ const SignIn = () => {
                 href="/sign-up"
                 className="text-white font-montserrat font-medium text-sm"
               >
-                Crear una cuenta
+                Sign Up
               </Link>
             </div>
           </form>
         </div>
       </div>
-      <div className="h-screen w-screen absolute">
+      <div className="w-[500px] z-10">
         <Spline scene="https://prod.spline.design/iDr-Fa8bUAlisSKp/scene.splinecode" />
       </div>
     </div>
