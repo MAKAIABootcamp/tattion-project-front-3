@@ -4,14 +4,18 @@ specifiers:
   '@emailjs/browser': ^3.11.0
   '@react-three/drei': ^9.56.28
   '@react-three/fiber': ^8.12.0
-  '@splinetool/loader': ^0.9.294
+  '@splinetool/loader': ^0.9.295
   '@splinetool/r3f-spline': ^1.0.2
+  '@splinetool/react-spline': ^2.2.6
+  '@splinetool/runtime': ^0.9.295
   autoprefixer: 10.4.14
+  framer-motion: ^10.12.2
   next: 13.3.0
   postcss: 8.4.21
   prop-types: ^15.8.1
   react: 18.2.0
   react-dom: 18.2.0
+  react-icons: ^4.8.0
   react-simple-maps: ^3.0.0
   tailwindcss: 3.3.1
   three: ^0.151.3
@@ -20,14 +24,18 @@ dependencies:
   '@emailjs/browser': 3.11.0
   '@react-three/drei': 9.65.3_oil3xizkjwv4pznmde3ur3j7hi
   '@react-three/fiber': 8.12.0_42od2y7wbz57ukb7jorrhqe6ja
-  '@splinetool/loader': 0.9.294_three@0.151.3
-  '@splinetool/r3f-spline': 1.0.2_g4juh4ynhzgivtd4vurz5ryt4i
+  '@splinetool/loader': 0.9.295_three@0.151.3
+  '@splinetool/r3f-spline': 1.0.2_754hidrzns4ksrrsi7q34nkxri
+  '@splinetool/react-spline': 2.2.6_egfpg46wtfkmi62rz6vag2vs6i
+  '@splinetool/runtime': 0.9.295
   autoprefixer: 10.4.14_postcss@8.4.21
+  framer-motion: 10.12.2_biqbaboplfbrettd7655fr4n2y
   next: 13.3.0_biqbaboplfbrettd7655fr4n2y
   postcss: 8.4.21
   prop-types: 15.8.1
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
+  react-icons: 4.8.0_react@18.2.0
   react-simple-maps: 3.0.0_v2m5e27vhdewzwhryxwfaorcca
   tailwindcss: 3.3.1_postcss@8.4.21
   three: 0.151.3
@@ -68,6 +76,19 @@ packages:
     resolution: {integrity: sha512-RkY3FKZ3fPdK++OeF46mRTFpmmQWCHUVHZH209P3NE4D5sg2Atg7S2wa3gw5062Gl4clt4Wn5SyC4WhlVZC5pA==}
     engines: {node: '>=14.0.0'}
     dev: false
+
+  /@emotion/is-prop-valid/0.8.8:
+    resolution: {integrity: sha512-u5WtneEAr5IDG2Wv65yhunPSMLIpuKsbuOktRojfrEiEvRyC85LgPMZI63cr7NUqT8ZIGdSVg8ZKGxIug4lXcA==}
+    requiresBuild: true
+    dependencies:
+      '@emotion/memoize': 0.7.4
+    dev: false
+    optional: true
+
+  /@emotion/memoize/0.7.4:
+    resolution: {integrity: sha512-Ja/Vfqe3HpuzRsG1oBtWTHk2PGZ7GR+2Vz5iYGelAw8dx32K0y7PjVuxK6z1nMpZOqAFsRUPCkK1YjJ56qJlgw==}
+    dev: false
+    optional: true
 
   /@jridgewell/gen-mapping/0.3.3:
     resolution: {integrity: sha512-HLhSWOLRi875zjjMG/r+Nv0oCW8umGb0BgEhyX3dDX3egwZtB8PqLnjz3yedt8R5StBrzcg4aBpnh8UA9D1BoQ==}
@@ -339,8 +360,8 @@ packages:
       zustand: 3.7.2_react@18.2.0
     dev: false
 
-  /@splinetool/loader/0.9.294_three@0.151.3:
-    resolution: {integrity: sha512-rNCGMGcK7w+kllALmue29te70gOh8C36KGTcsxnU0QEuhspjr3SCf+uLVumVHFLj02qjKcRxYmYurJXfAk/nyQ==}
+  /@splinetool/loader/0.9.295_three@0.151.3:
+    resolution: {integrity: sha512-NBGIqoRPCTqq2jPf+8RjG+4RPK13iI3uiXvgzlMglsZI95e9eEr/uM4Ht3J5ChumFI+AJczav330TU1bi9H9Iw==}
     peerDependencies:
       three: '>=0.133.0'
     dependencies:
@@ -348,14 +369,35 @@ packages:
       three: 0.151.3
     dev: false
 
-  /@splinetool/r3f-spline/1.0.2_g4juh4ynhzgivtd4vurz5ryt4i:
+  /@splinetool/r3f-spline/1.0.2_754hidrzns4ksrrsi7q34nkxri:
     resolution: {integrity: sha512-Fl1qboRpTE8yJm4BAe1l6j3Xgh3HwIzvtdX2LjCpBiSo21+j0b2rilJpLHfsXJndrq4Hegz6oEUKlPvVWumaHg==}
     peerDependencies:
       '@react-three/fiber': '>=7.0.0'
       '@splinetool/loader': '>=0.9.19'
     dependencies:
       '@react-three/fiber': 8.12.0_42od2y7wbz57ukb7jorrhqe6ja
-      '@splinetool/loader': 0.9.294_three@0.151.3
+      '@splinetool/loader': 0.9.295_three@0.151.3
+    dev: false
+
+  /@splinetool/react-spline/2.2.6_egfpg46wtfkmi62rz6vag2vs6i:
+    resolution: {integrity: sha512-y9L2VEbnC6FNZZu8XMmWM9YTTTWal6kJVfP05Amf0QqDNzCSumKsJxZyGUODvuCmiAvy0PfIfEsiVKnSxvhsDw==}
+    peerDependencies:
+      '@splinetool/runtime': '*'
+      react: '>=17.0.0'
+      react-dom: '>=17.0.0'
+    dependencies:
+      '@splinetool/runtime': 0.9.295
+      lodash.debounce: 4.0.8
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
+      react-merge-refs: 2.0.1
+    dev: false
+
+  /@splinetool/runtime/0.9.295:
+    resolution: {integrity: sha512-+Ltr6KZz+p+ftpQiKWPSjKyToDPMGJsZFhNYVAv5AOZ0WDCTSmUs73j9u418RxLvmkYWe719c1rjqo+ghPEI6Q==}
+    dependencies:
+      on-change: 4.0.2
+      semver-compare: 1.0.0
     dev: false
 
   /@swc/helpers/0.4.14:
@@ -697,6 +739,24 @@ packages:
     resolution: {integrity: sha512-MhLuK+2gUcnZe8ZHlaaINnQLl0xRIGRfcGk2yl8xoQAfHrSsL3rYu6FCmBdkdbhc9EPlwyGHewaRsvwRMJtAlA==}
     dev: false
 
+  /framer-motion/10.12.2_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-DD3Ieqy4pjmL0qBtfNMqnU/IONchUqnhHtgFtu0Nq5jw7bhkksD/Cs4cNhLYd1vs7iB8Q+WInxuBeMmzIoA5Xg==}
+    peerDependencies:
+      react: ^18.0.0
+      react-dom: ^18.0.0
+    peerDependenciesMeta:
+      react:
+        optional: true
+      react-dom:
+        optional: true
+    dependencies:
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
+      tslib: 2.5.0
+    optionalDependencies:
+      '@emotion/is-prop-valid': 0.8.8
+    dev: false
+
   /fs.realpath/1.0.0:
     resolution: {integrity: sha512-OO0pH2lK6a0hZnAdau5ItzHPI6pUlvI7jMVnxUQRtw4owF2wk8lOSabtGDCTP4Ggrg2MbGnWO9X8K1t4+fGMDw==}
     dev: false
@@ -827,6 +887,10 @@ packages:
 
   /lodash.clamp/4.0.3:
     resolution: {integrity: sha512-HvzRFWjtcguTW7yd8NJBshuNaCa8aqNFtnswdT7f/cMd/1YKy5Zzoq4W/Oxvnx9l7aeY258uSdDfM793+eLsVg==}
+    dev: false
+
+  /lodash.debounce/4.0.8:
+    resolution: {integrity: sha512-FT1yDzDYEoYWhnSGnpE/4Kj1fLZkDFyqRb7fNt6FdYOSxlUWAtp42Eh6Wb0rGIv/m9Bgo7x4GhQbm5Ys4SG5ow==}
     dev: false
 
   /lodash.omit/4.5.0:
@@ -968,6 +1032,11 @@ packages:
   /object-hash/3.0.0:
     resolution: {integrity: sha512-RSn9F68PjH9HqtltsSnqYC1XXoWe9Bju5+213R98cNGttag9q9yAOTzdbsqvIa7aNm5WffBZFpWYr2aWrklWAw==}
     engines: {node: '>= 6'}
+    dev: false
+
+  /on-change/4.0.2:
+    resolution: {integrity: sha512-cMtCyuJmTx/bg2HCpHo3ZLeF7FZnBOapLqZHr2AlLeJ5Ul0Zu2mUJJz051Fdwu/Et2YW04ZD+TtU+gVy0ACNCA==}
+    engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
     dev: false
 
   /once/1.4.0:
@@ -1132,12 +1201,24 @@ packages:
       scheduler: 0.23.0
     dev: false
 
+  /react-icons/4.8.0_react@18.2.0:
+    resolution: {integrity: sha512-N6+kOLcihDiAnj5Czu637waJqSnwlMNROzVZMhfX68V/9bu9qHaMIJC4UdozWoOk57gahFCNHwVvWzm0MTzRjg==}
+    peerDependencies:
+      react: '*'
+    dependencies:
+      react: 18.2.0
+    dev: false
+
   /react-is/16.13.1:
     resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==}
     dev: false
 
   /react-merge-refs/1.1.0:
     resolution: {integrity: sha512-alTKsjEL0dKH/ru1Iyn7vliS2QRcBp9zZPGoWxUOvRGWPUYgjo+V01is7p04It6KhgrzhJGnIj9GgX8W4bZoCQ==}
+    dev: false
+
+  /react-merge-refs/2.0.1:
+    resolution: {integrity: sha512-pywF6oouJWuqL26xV3OruRSIqai31R9SdJX/I3gP2q8jLxUnA1IwXcLW8werUHLZOrp4N7YOeQNZrh/BKrHI4A==}
     dev: false
 
   /react-reconciler/0.27.0_react@18.2.0:

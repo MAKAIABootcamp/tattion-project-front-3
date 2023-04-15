@@ -22,7 +22,7 @@ const Works = () => {
 
   return (
     <div className={`${styles.section} flex justify-center`}>
-      <div className="w-[1000px] flex justify-between max-md:w-full max-md:flex-col">
+      <div className="w-[1200px] flex justify-between max-md:w-full max-md:flex-col">
         <div className="leftWorks flex items-center max-md:p-5 max-md:justify-center">
           <ul className="flex flex-col gap-5">
             {links.map((link) => (
