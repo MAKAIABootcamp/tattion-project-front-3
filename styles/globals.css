@@ -4,144 +4,205 @@
 
 /* Global Styles */
 input {
-  color: #434343;
-  outline: none;
+    color: #434343;
+    outline: none;
 }
 
 /* Landing Page */
 
 .homepage-container {
-  background-image: url("../public/landingPage/bg.jpeg");
-  height: 100vh;
-  scroll-snap-type: y mandatory;
-  scroll-behavior: smooth;
-  overflow-y: auto;
-  scrollbar-width: none;
+    background-image: url("../public/landingPage/bg.jpeg");
+    height: 100vh;
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+    overflow-y: auto;
+    scrollbar-width: none;
 }
 
 .homepage-container::-webkit-scrollbar {
-  display: none;
+    display: none;
 }
 
 .left {
-  flex: 2;
+    flex: 2;
 }
 
 .right {
-  flex: 5;
+    flex: 5;
 }
 
 .leftWho {
-  flex: 1;
+    flex: 1;
 }
 
 .rightWho {
-  flex: 1;
+    flex: 1;
 }
 
 .heroImg {
-  animation: floating 2s infinite ease alternate;
+    animation: floating 2s infinite ease alternate;
 }
 
 @keyframes floating {
-  to {
-    transform: translateY(20px);
-  }
+    to {
+        transform: translateY(20px);
+    }
 }
 
 .leftWorks {
-  flex: 1;
+    flex: 1;
 }
 
 .rightWorks {
-  flex: 5;
+    flex: 5;
 }
 
 .text-stroke1 {
-  color: transparent;
-  -webkit-text-stroke: 1px #f2f2f2;
-  position: relative;
+    color: transparent;
+    -webkit-text-stroke: 1px #f2f2f2;
+    position: relative;
 }
 
 .text-stroke1::after {
-  content: "Illustrations";
-  position: absolute;
-  top: 0;
-  left: 0;
-  color: #f2f2f2;
-  width: 0;
-  overflow: hidden;
-  white-space: nowrap;
+    content: "Illustrations";
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: #f2f2f2;
+    width: 0;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
 .text-stroke2 {
-  color: transparent;
-  -webkit-text-stroke: 1px #f2f2f2;
-  position: relative;
+    color: transparent;
+    -webkit-text-stroke: 1px #f2f2f2;
+    position: relative;
 }
 
 .text-stroke2::after {
-  content: "Development";
-  position: absolute;
-  top: 0;
-  left: 0;
-  color: #f2f2f2;
-  width: 0;
-  overflow: hidden;
-  white-space: nowrap;
+    content: "Development";
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: #f2f2f2;
+    width: 0;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
 .text-stroke3 {
-  color: transparent;
-  -webkit-text-stroke: 1px #f2f2f2;
-  position: relative;
+    color: transparent;
+    -webkit-text-stroke: 1px #f2f2f2;
+    position: relative;
 }
 
 .text-stroke3::after {
-  content: "Our game";
-  position: absolute;
-  top: 0;
-  left: 0;
-  color: #f2f2f2;
-  width: 0;
-  overflow: hidden;
-  white-space: nowrap;
+    content: "Our game";
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: #f2f2f2;
+    width: 0;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
 .text-stroke1:is(:hover)::after,
 .text-stroke2:is(:hover)::after,
 .text-stroke3:is(:hover)::after {
-  animation: moveText 0.4s linear both;
+    animation: moveText 0.4s linear both;
 }
 
 @keyframes moveText {
-  to {
-    width: 100%;
-  }
+    to {
+        width: 100%;
+    }
 }
 
 .leftContact {
-  flex: 1;
+    flex: 1;
 }
 
 .rightContact {
-  flex: 1;
+    flex: 1;
 }
 
 @media only screen and (max-width: 768px) {
-  .homepage-container {
-    overflow-x: hidden;
-  }
+    .homepage-container {
+        overflow-x: hidden;
+    }
 
-  .left {
-    flex: 1;
-    align-items: center;
-  }
+    .left {
+        flex: 1;
+        align-items: center;
+    }
 
-  .right {
-    flex: 1;
+    .right {
+        flex: 1;
+        width: 100%;
+    }
+}
+
+input[type="file"] {
+    display: none;
+}
+label {
+    display: block;
+    position: relative;
+    text-align: center;
+    width: 50px;
+    cursor: pointer;
+}
+
+.toggler-wrapper.style-1
+    input[type="checkbox"]:checked
+    + .toggler-slider
+    .toggler-knob {
+    left: calc(100% - 19px - 3px);
+}
+
+.toggler-wrapper.style-1 .toggler-knob {
+    width: calc(25px - 6px);
+    height: calc(25px - 6px);
+    border-radius: 50%;
+    left: 3px;
+    top: 3px;
+    background-color: #fff;
+}
+
+.toggler-wrapper {
+    display: block;
+    width: 45px;
+    height: 25px;
+    cursor: pointer;
+    position: relative;
+}
+
+.toggler-wrapper input[type="checkbox"] {
+    display: none;
+}
+
+.toggler-wrapper input[type="checkbox"]:checked + .toggler-slider {
+    background-color: #ed6366;
+}
+
+.toggler-wrapper .toggler-slider {
+    background-color: #ccc;
+    position: absolute;
+    border-radius: 100px;
+    top: 0;
+    left: 0;
     width: 100%;
-  }
+    height: 100%;
+    -webkit-transition: all 300ms ease;
+    transition: all 300ms ease;
+}
+
+.toggler-wrapper .toggler-knob {
+    position: absolute;
+    -webkit-transition: all 300ms ease;
+    transition: all 300ms ease;
 }
 
 .rounded-total {
