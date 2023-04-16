@@ -14,7 +14,7 @@ const Development = () => {
       <Canvas className="w-full h-full">
         <ambientLight intensity={0.5} />
         <directionalLight position={[3, 2, 1]} />
-        <OrbitControls />
+        <OrbitControls target={[ 0, 0, -6 ]} />
         <Logos />
       </Canvas>
       <p className="bg-white w-[200px] h-[80px] p-5 rounded-lg text-dark-gray font-light text-sm absolute top-48 -right-16 max-md:m-auto max-md:-top-[10px] max-md:-left-52 ">
