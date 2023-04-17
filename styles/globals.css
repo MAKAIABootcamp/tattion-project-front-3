@@ -147,6 +147,7 @@ input {
 input[type="file"] {
     display: none;
 }
+
 label {
     display: block;
     position: relative;
@@ -155,10 +156,7 @@ label {
     cursor: pointer;
 }
 
-.toggler-wrapper.style-1
-    input[type="checkbox"]:checked
-    + .toggler-slider
-    .toggler-knob {
+.toggler-wrapper.style-1 input[type="checkbox"]:checked+.toggler-slider .toggler-knob {
     left: calc(100% - 19px - 3px);
 }
 
@@ -183,7 +181,7 @@ label {
     display: none;
 }
 
-.toggler-wrapper input[type="checkbox"]:checked + .toggler-slider {
+.toggler-wrapper input[type="checkbox"]:checked+.toggler-slider {
     background-color: #ed6366;
 }
 
@@ -206,5 +204,5 @@ label {
 }
 
 .rounded-total {
-  border-radius: 0 0 20px 20px;
+    border-radius: 0 0 20px 20px;
 }

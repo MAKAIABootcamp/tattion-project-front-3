@@ -179,8 +179,8 @@ const Designs = () => {
                         />
                     </Sphere>
                 </Canvas>
-                <article className="w-[800px] h-[600px] bg-gray-black absolute top-0 left-0 bottom-0 right-0 m-auto rounded-md heroImg flex flex-col gap-6 items-center py-12">
-                    <span className="font-montserrat font-semibold text-white">
+                <article className="w-[360px] h-[650px] bg-gray-black absolute top-0 left-0 bottom-0 right-0 m-auto rounded-md heroImg flex flex-col gap-6 items-center py-12">
+                    <span className="font-montserrat text-xl font-bold text-white">
                         Do you have a design in mind?
                     </span>
                     <div className="bg-red-600 h-[130px] w-[260px] flex flex-col items-center rounded-xl gap-2 p-2">
@@ -207,26 +207,26 @@ const Designs = () => {
                     <span className="font-montserrat font-semibold text-white">
                         LOOK FOR ONE IN OUR GALLERY
                     </span>
-                    <section className="grid grid-cols-4 gap-2  w-[80%] text-center">
+                    <section className="grid grid-cols-3 gap-2  w-[80%] text-center">
                         {arrayStyles.map((item, index) => (
                             <article
-                                className="flex flex-col items-center justify-center  "
+                                className="flex flex-col items-center justify-center rounded-sm  w-24"
                                 key={index}
                             >
+                                <span className="font-montserrat text-center text-white flex justify-center text-xs font-semibold ">
+                                    {item.title}
+                                </span>
                                 <figure
-                                    className="flex flex-col items-center p-1 gap-1 cursor-pointer"
+                                    className="flex flex-col items-center p-1 gap-1 cursor-pointer  bg-black rounded-sm  w-24"
                                     onClick={() => {
                                         setModalOpen(true);
                                         setSelectedItemIndex(index);
                                     }}
                                 >
-                                    <span className="font-montserrat text-white text-center">
-                                        {item.title}
-                                    </span>
                                     <img
                                         src={item.img}
                                         alt={item.title}
-                                        className="h-20 w-20 rounded-large"
+                                        className="h-16 w-20 rounded-xs"
                                     />
                                 </figure>
                             </article>
@@ -235,7 +235,7 @@ const Designs = () => {
                 </article>
             </section>
             {modalOpen && (
-                <div className="fixed top-0 left-0 bottom-0 right-0  bg-gray-800 bg-opacity-50 flex items-center justify-center">
+                <div className="fixed top-0 left-0 bottom-0 right-0  bg-gray-800 bg-opacity-50 flex flex-col items-center justify-center ">
                     <motion.div
                         initial={{ opacity: 0, scale: 0.5 }}
                         animate={{ opacity: 1, scale: 1 }}
