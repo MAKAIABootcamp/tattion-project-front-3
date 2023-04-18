@@ -31,12 +31,12 @@ const Welcome = () => {
 
                     <article className="flex flex-col items-center gap-6 mt-10">
                         <Link href="/designs">
-                            <button className="w-full flex items-center justify-center gap-2 h-10 bg-red-600 drop-shadow-xl rounded-md text-white px-6">
+                            <button className="w-full flex items-center justify-center gap-2 h-10 bg-red-600 hover:bg-red-400 transition-all drop-shadow-xl rounded-md text-white px-6">
                                 <Image src={file} alt="file icon" /> Quote
                                 Tattoo
                             </button>
                         </Link>
-                        <button className="w-full flex items-center justify-center gap-2 h-10 bg-red-600 drop-shadow-xl rounded-md text-white px-6">
+                        <button className="w-full flex items-center justify-center gap-2 h-10 bg-red-600 drop-shadow-xl hover:bg-red-400 transition-all rounded-md text-white px-6">
                             <Image src={list} alt="file icon" /> See Quotes
                         </button>
                     </article>
