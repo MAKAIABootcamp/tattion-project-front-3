@@ -8,6 +8,19 @@ input {
     outline: none;
 }
 
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.23);
+}
+
+::-webkit-scrollbar-thumb {
+  background: white;
+  height: 10%;
+}
+
 /* Landing Page */
 
 .homepage-container {

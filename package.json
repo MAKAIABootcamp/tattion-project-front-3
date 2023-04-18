@@ -17,6 +17,7 @@
     "@splinetool/react-spline": "^2.2.6",
     "@splinetool/runtime": "^0.9.295",
     "autoprefixer": "10.4.14",
+    "lamina": "^1.1.23",
     "firebase": "^9.19.1",
     "framer-motion": "^10.12.2",
     "next": "13.3.0",
