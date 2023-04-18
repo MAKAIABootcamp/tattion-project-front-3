@@ -6,7 +6,7 @@ dependencies:
     version: 3.11.0
   '@react-three/drei':
     specifier: ^9.56.28
-    version: 9.65.3(@react-three/fiber@8.12.0)(@types/three@0.150.1)(react-dom@18.2.0)(react@18.2.0)(three@0.151.3)
+    version: 9.65.3(@react-three/fiber@8.12.0)(react-dom@18.2.0)(react@18.2.0)(three@0.151.3)
   '@react-three/fiber':
     specifier: ^8.12.0
     version: 8.12.0(react-dom@18.2.0)(react@18.2.0)(three@0.151.3)
@@ -46,6 +46,9 @@ dependencies:
   react-dom:
     specifier: 18.2.0
     version: 18.2.0(react@18.2.0)
+  react-hook-form:
+    specifier: ^7.43.9
+    version: 7.43.9(react@18.2.0)
   react-icons:
     specifier: ^4.8.0
     version: 4.8.0(react@18.2.0)
@@ -829,7 +832,7 @@ packages:
     resolution: {integrity: sha512-POu8Mk0hIU3lRXB3bGIGe4VHIwwDsQyoD1F394OK7STTiX9w4dG3cTLljjYswkQN+hDSHRrj4O36kuVa7KPU8Q==}
     dev: false
 
-  /@react-three/drei@9.65.3(@react-three/fiber@8.12.0)(@types/three@0.150.1)(react-dom@18.2.0)(react@18.2.0)(three@0.151.3):
+  /@react-three/drei@9.65.3(@react-three/fiber@8.12.0)(react-dom@18.2.0)(react@18.2.0)(three@0.151.3):
     resolution: {integrity: sha512-kVyrCtyCE3gN8On0ndf9798jCVcYHxNF22rWBsIi82SgskHnYIKBde5S6Udvwb4RWL34Y+vz4103MLmjcgMwxg==}
     peerDependencies:
       '@react-three/fiber': '>=8.0'
@@ -850,7 +853,7 @@ packages:
       lodash.clamp: 4.0.3
       lodash.omit: 4.5.0
       lodash.pick: 4.4.0
-      maath: 0.5.3(@types/three@0.150.1)(three@0.151.3)
+      maath: 0.5.3(three@0.151.3)
       meshline: 3.1.6(three@0.151.3)
       react: 18.2.0
       react-composer: 5.0.3(react@18.2.0)
@@ -987,23 +990,6 @@ packages:
 
   /@types/scheduler@0.16.3:
     resolution: {integrity: sha512-5cJ8CB4yAx7BH1oMvdU0Jh9lrEXyPkar6F9G/ERswkCuvP4KQZfZkSjcMbAICCpQTN4OuZn8tz0HiKv9TGZgrQ==}
-    dev: false
-
-  /@types/stats.js@0.17.0:
-    resolution: {integrity: sha512-9w+a7bR8PeB0dCT/HBULU2fMqf6BAzvKbxFboYhmDtDkKPiyXYbjoe2auwsXlEFI7CFNMF1dCv3dFH5Poy9R1w==}
-    dev: false
-
-  /@types/three@0.150.1:
-    resolution: {integrity: sha512-ZXS1M3brsfAAbTeeUEt0defPi98yWQuEyPBnvjEYY1dCEYfJnFaww0mYgRpJ9JVfmtwRxqISpVcv/g/0lMl1DQ==}
-    dependencies:
-      '@types/stats.js': 0.17.0
-      '@types/webxr': 0.5.1
-      fflate: 0.6.10
-      lil-gui: 0.17.0
-    dev: false
-
-  /@types/webxr@0.5.1:
-    resolution: {integrity: sha512-xlFXPfgJR5vIuDefhaHuUM9uUgvPaXB6GKdXy2gdEh8gBWQZ2ul24AJz3foUd8NNKlSTQuWYJpCb1/pL81m1KQ==}
     dev: false
 
   /@use-gesture/core@10.2.26:
@@ -1533,10 +1519,6 @@ packages:
     resolution: {integrity: sha512-MK3FOody4TXbFf8Yqv7EBbySw7aPvEcPX++Ipt6Sox+/YMFvR5xaTyhfNSk1AEmMy+RYIw81ctN4IMxCB8OAlg==}
     dev: false
 
-  /lil-gui@0.17.0:
-    resolution: {integrity: sha512-MVBHmgY+uEbmJNApAaPbtvNh1RCAeMnKym82SBjtp5rODTYKWtM+MXHCifLe2H2Ti1HuBGBtK/5SyG4ShQ3pUQ==}
-    dev: false
-
   /lilconfig@2.1.0:
     resolution: {integrity: sha512-utWOt/GHzuUxnLKxB6dk81RoOeoNeHgbrXiuGk4yyF5qlRz+iIVWu56E2fqGHFrXz0QNUhLB/8nKqvRH66JKGQ==}
     engines: {node: '>=10'}
@@ -1585,13 +1567,12 @@ packages:
       js-tokens: 4.0.0
     dev: false
 
-  /maath@0.5.3(@types/three@0.150.1)(three@0.151.3):
+  /maath@0.5.3(three@0.151.3):
     resolution: {integrity: sha512-ut63A4zTd9abtpi+sOHW1fPWPtAFrjK0E17eAthx1k93W/T2cWLKV5oaswyotJVDvvW1EXSdokAqhK5KOu0Qdw==}
     peerDependencies:
       '@types/three': '>=0.144.0'
       three: '>=0.144.0'
     dependencies:
-      '@types/three': 0.150.1
       three: 0.151.3
     dev: false
 
@@ -1924,6 +1905,15 @@ packages:
       loose-envify: 1.4.0
       react: 18.2.0
       scheduler: 0.23.0
+    dev: false
+
+  /react-hook-form@7.43.9(react@18.2.0):
+    resolution: {integrity: sha512-AUDN3Pz2NSeoxQ7Hs6OhQhDr6gtF9YRuutGDwPQqhSUAHJSgGl2VeY3qN19MG0SucpjgDiuMJ4iC5T5uB+eaNQ==}
+    engines: {node: '>=12.22.0'}
+    peerDependencies:
+      react: ^16.8.0 || ^17 || ^18
+    dependencies:
+      react: 18.2.0
     dev: false
 
   /react-icons@4.8.0(react@18.2.0):
