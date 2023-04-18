@@ -4,7 +4,8 @@ import { MeshDistortMaterial, OrbitControls, Sphere } from "@react-three/drei";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import { FaArrowLeft } from "react-icons/fa";
 
 //assets
 import upload from "@/public/designs/upload-icon.svg";
@@ -179,10 +180,14 @@ const Designs = () => {
                         />
                     </Sphere>
                 </Canvas>
-                <article className="w-[360px] h-[650px] bg-gray-black absolute top-0 left-0 bottom-0 right-0 m-auto rounded-md heroImg flex flex-col gap-6 items-center py-12">
+                <article className="w-[360px] h-[650px] bg-gray-black absolute top-0 left-0 bottom-0 right-0 m-auto rounded-md heroImg flex flex-col gap-3 items-center py-12">
                     <span className="font-montserrat text-xl font-bold text-white">
                         Do you have a design in mind?
                     </span>
+                    <Link href={"/welcome"}>
+                        <FaArrowLeft className="text-2xl absolute text-white top-4 left-10  " />
+                    </Link>
+
                     <div className="bg-red-600 h-[130px] w-[260px] flex flex-col items-center rounded-xl gap-2 p-2">
                         <span className="font-montserrat font-semibold text-white">
                             upload design
@@ -207,17 +212,14 @@ const Designs = () => {
                     <span className="font-montserrat font-semibold text-white">
                         LOOK FOR ONE IN OUR GALLERY
                     </span>
-                    <section className="grid grid-cols-3 gap-2  w-[80%] text-center">
+                    <section className="flex flex-wrap  gap-2 justify-center items-center ">
                         {arrayStyles.map((item, index) => (
                             <article
-                                className="flex flex-col items-center justify-center rounded-sm  w-24"
+                                className="flex flex-col rounded-sm  w-24"
                                 key={index}
                             >
-                                <span className="font-montserrat text-center text-white flex justify-center text-xs font-semibold ">
-                                    {item.title}
-                                </span>
                                 <figure
-                                    className="flex flex-col items-center p-1 gap-1 cursor-pointer  bg-black rounded-sm  w-24"
+                                    className="flex flex-col  items-center py-2 gap-2  cursor-pointer  bg-black rounded-sm hover:bg-red-600  transition ease-in-out delay-10 hover:scale-110 w-24"
                                     onClick={() => {
                                         setModalOpen(true);
                                         setSelectedItemIndex(index);
@@ -226,56 +228,67 @@ const Designs = () => {
                                     <img
                                         src={item.img}
                                         alt={item.title}
-                                        className="h-16 w-20 rounded-xs"
+                                        className="h-16 w-20 rounded-full"
                                     />
+                                    <span className="font-montserrat text-center text-white  flex justify-center text-xs font-semibold ">
+                                        {item.title}
+                                    </span>
                                 </figure>
                             </article>
                         ))}
                     </section>
+                    <AnimatePresence>
+                        {modalOpen && (
+                            <div className="fixed top-0 left-0 bottom-0 right-0  flex flex-col items-center justify-center ">
+                                <motion.div
+                                    key="modal"
+                                    initial={{ opacity: 0, scale: 0.5 }}
+                                    animate={{ opacity: 1, scale: 1 }}
+                                    transition={{ duration: 0.5 }}
+                                    exit={{
+                                        opacity: 0,
+                                        scale: 0.5,
+                                        transition: 0.4,
+                                    }}
+                                    className="bg-gray-black rounded-md p-4 w-[360px] h-[650px]  items-center text-center"
+                                >
+                                    <h2 className="font-montserrat font-semibold text-white text-xl mb-2">
+                                        {arrayStyles[selectedItemIndex].title}
+                                    </h2>
+                                    <div className="grid grid-cols-3 gap-2">
+                                        {arrayStyles[
+                                            selectedItemIndex
+                                        ].images.map((item, index) => (
+                                            <Link
+                                                href={{
+                                                    pathname: "/quotes-fom",
+                                                    query: { image: item },
+                                                }}
+                                                key={index}
+                                            >
+                                                <img
+                                                    src={item}
+                                                    className="h-[120px] w-[120px] cursor-pointer rounded-lg hover:opacity-60 transition ease-in-out delay-10"
+                                                    alt=""
+                                                    onClick={() =>
+                                                        handleImageSelect(item)
+                                                    }
+                                                />
+                                            </Link>
+                                        ))}
+                                    </div>
+                                    <button
+                                        className="bg-red-500 hover:bg-red-700 text-white font-montserrat font-semibold py-2 px-4 rounded mt-4"
+                                        onClick={() => setModalOpen(false)}
+                                    >
+                                        Close
+                                    </button>
+                                </motion.div>
+                            </div>
+                        )}
+                    </AnimatePresence>
                 </article>
             </section>
-            {modalOpen && (
-                <div className="fixed top-0 left-0 bottom-0 right-0  bg-gray-800 bg-opacity-50 flex flex-col items-center justify-center ">
-                    <motion.div
-                        initial={{ opacity: 0, scale: 0.5 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ duration: 0.5 }}
-                        className="bg-gray-black rounded-lg p-4  items-center text-center"
-                    >
-                        <h2 className="font-montserrat font-semibold text-white text-xl mb-2">
-                            {arrayStyles[selectedItemIndex].title}
-                        </h2>
-                        <div className="grid grid-cols-5 gap-2">
-                            {arrayStyles[selectedItemIndex].images.map(
-                                (item, index) => (
-                                    <Link
-                                        href={{
-                                            pathname: "/quotes-fom",
-                                            query: { image: item },
-                                        }}
-                                        key={index}
-                                    >
-                                        <img
-                                            src={item}
-                                            className="h-[150px] w-[150px] cursor-pointer rounded-lg"
-                                            alt=""
-                                            onClick={() =>
-                                                handleImageSelect(item)
-                                            }
-                                        />
-                                    </Link>
-                                )
-                            )}
-                        </div>
-                        <button
-                            className="bg-red-500 hover:bg-red-700 text-white font-montserrat font-semibold py-2 px-4 rounded mt-4"
-                            onClick={() => setModalOpen(false)}
-                        >
-                            Close
-                        </button>
-                    </motion.div>
-                </div>
-            )}
         </main>
     );
 };
