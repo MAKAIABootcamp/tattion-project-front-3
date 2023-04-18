@@ -1,10 +1,27 @@
 import { OrbitControls } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import { MeshDistortMaterial } from "@react-three/drei";
-import { Sphere } from "@react-three/drei";
 import Link from "next/link";
+import { useForm } from "react-hook-form";
+import { useAuth } from "@/context/AuthContext";
+
+// Assets
+import { Sphere } from "@react-three/drei";
 
 const SignUp = () => {
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm();
+
+  const { signUp } = useAuth();
+
+  const onSubmit = async (data) => {
+    return await signUp(data.email, data.password, data.name);
+  };
+
   return (
     <div className="homepage-container">
       <div className="h-screen w-screen relative">
@@ -27,31 +44,35 @@ const SignUp = () => {
             Create an Account
           </h1>
 
-          <form className="w-full p-5 flex flex-col gap-11">
+          <form
+            className="w-full p-5 flex flex-col gap-11"
+            onSubmit={handleSubmit(onSubmit)}
+          >
             <div className="flex flex-col gap-8">
               <input
                 type="text"
-                placeholder="Name"
+                placeholder="Full Name"
                 className="w-full h-10 rounded-md bg-[#2b2c2c] drop-shadow-xl text-white px-6"
-              />
-              <input
-                type="text"
-                placeholder="Last Name"
-                className="w-full h-10 rounded-md bg-[#2b2c2c] drop-shadow-xl text-white px-6"
+                {...register("name", { required: true })}
               />
               <input
                 type="text"
                 placeholder="Email"
                 className="w-full h-10 rounded-md bg-[#2b2c2c] drop-shadow-xl text-white px-6"
+                {...register("email", { required: true })}
               />
               <input
                 type="text"
                 placeholder="Password"
                 className="w-full h-10 rounded-md bg-[#2b2c2c] drop-shadow-xl text-white px-6"
+                {...register("password", { required: true })}
               />
             </div>
             <div className="flex flex-col items-center gap-4">
-              <button className="w-full h-10 bg-red-600 drop-shadow-xl rounded-md text-white px-6">
+              <button
+                className="w-full h-10 bg-red-600 drop-shadow-xl rounded-md text-white px-6"
+                type="submit"
+              >
                 Sign Up
               </button>
               <Link
