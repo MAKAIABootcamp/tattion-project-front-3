@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Canvas } from "@react-three/fiber";
 import { MeshDistortMaterial, OrbitControls, Sphere } from "@react-three/drei";
 import Link from "next/link";
@@ -9,12 +9,25 @@ import { FaArrowLeft } from "react-icons/fa";
 
 //assets
 import upload from "@/public/designs/upload-icon.svg";
+import { getStylestattoosCollection } from "@/context/getStylesTattoosCollection";
+import { fileUpload } from "@/context/clodinaryConfig";
 
 const Designs = () => {
     const router = useRouter();
     const [image, setImage] = useState(null);
+    const [imageUrl, setImageUrl] = useState("");
     const [modalOpen, setModalOpen] = useState(false);
     const [selectedItemIndex, setSelectedItemIndex] = useState(null);
+
+    // const [stylestattoos, setStylestattoos] = useState([]);
+
+    // useEffect(() => {
+    //     const fetchStylestattoos = async () => {
+    //         const stylestattoosData = await getStylestattoosCollection();
+    //         setStylestattoos(stylestattoosData);
+    //     };
+    //     fetchStylestattoos();
+    // }, []);
 
     const arrayStyles = [
         {
@@ -147,16 +160,14 @@ const Designs = () => {
         },
     ];
 
-    const handleImageUpload = (event) => {
+    const handleFileUpload = async (event) => {
         const file = event.target.files[0];
-        const reader = new FileReader();
-
-        reader.onload = (upload) => {
-            setImage(upload.target.result);
-            router.push("/quotes-fom");
-        };
-
-        reader.readAsDataURL(file);
+        const url = await fileUpload(file);
+        setImageUrl(url);
+        router.push({
+            pathname: "/quotes-fom",
+            query: { imageUrl: url },
+        });
     };
 
     const handleImageSelect = (image) => {
@@ -196,10 +207,10 @@ const Designs = () => {
                         <input
                             type="file"
                             id="upload-button"
-                            onChange={handleImageUpload}
+                            onChange={handleFileUpload}
                             accept="image/*"
                         />
-                        <label for="upload-button">
+                        <label htmlFor="upload-button">
                             <Image src={upload} alt="upload icon" height={50} />
                         </label>
                         <span className="font-montserrat text-white">
@@ -227,7 +238,7 @@ const Designs = () => {
                                 >
                                     <img
                                         src={item.img}
-                                        alt={item.title}
+                                        alt=""
                                         className="h-16 w-20 rounded-full"
                                     />
                                     <span className="font-montserrat text-center text-white  flex justify-center text-xs font-semibold ">

@@ -11,6 +11,8 @@ import { BsFillSendFill } from "react-icons/bs";
 const QuotesForm = () => {
     const router = useRouter();
     const { image } = router.query;
+    const imageUrl = router.query.imageUrl;
+
     const [bodyPart, setBodyPart] = useState("");
     const [skinTone, setSkinTone] = useState("");
     const [allergies, setAllergies] = useState("");
@@ -62,12 +64,17 @@ const QuotesForm = () => {
                     <Link href={"/designs"}>
                         <FaArrowLeft className="text-2xl absolute text-white top-4 left-10  " />
                     </Link>
-
+                    {imageUrl && (
+                        <img
+                            src={imageUrl}
+                            className="h-[200px] w-[200px] object-cover object-center rounded"
+                        />
+                    )}
                     {image && (
                         <img
                             src={image}
                             alt="selected design"
-                            className="h-[200px] rounded"
+                            className="h-[200px] rounded "
                         />
                     )}
                     <span className="font-montserrat font-semibold text-white">
