@@ -2,6 +2,7 @@ import { OrbitControls } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import React from "react";
 import Image from "next/image";
+import Cookies from "js-cookie";
 
 // Assets
 import check from "@/public/appointment/check.svg";
@@ -48,13 +49,14 @@ const PaymentSummary = () => {
         <Link
           className="w-full h-11 bg-red-600 drop-shadow-xl rounded-md text-white flex items-center justify-center mt-6"
           href="/"
+          onClick={() => Cookies.remove("loggedin")}
         >
           Home
         </Link>
       </div>
-      <div className="h-screen heroImg">
-        <Canvas className="leftWho">
-          <OrbitControls reverseOrbit />
+      <div className="h-screen w-1/2 heroImg">
+        <Canvas className="right">
+          <OrbitControls target={[0, 0, -4]} />
           <ambientLight intensity={1} />
           <directionalLight position={[3, 2, 1]} />
           <Guard />
