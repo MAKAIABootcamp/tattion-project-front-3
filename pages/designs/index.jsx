@@ -52,12 +52,12 @@ const Designs = () => {
             />
           </Sphere>
         </Canvas>
-        <article className="w-[360px] h-[650px] bg-gray-black absolute top-0 left-0 bottom-0 right-0 m-auto rounded-md heroImg flex flex-col gap-3 items-center py-12">
+        <article className="w-[380px] h-[700px] bg-gray-black absolute top-0 left-0 bottom-0 right-0 m-auto rounded-md heroImg flex flex-col gap-3 items-center p-5 pt-14">
           <span className="font-montserrat text-xl font-bold text-white">
             Do you have a design in mind?
           </span>
           <Link href={"/welcome"}>
-            <FaArrowLeft className="text-2xl absolute text-white top-4 left-10  " />
+            <FaArrowLeft className="text-2xl absolute text-white top-6 left-10  " />
           </Link>
 
           <div className="bg-red-600 h-[130px] w-[260px] flex flex-col items-center rounded-xl gap-2 p-2">
