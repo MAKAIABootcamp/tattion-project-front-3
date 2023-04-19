@@ -1,7 +1,9 @@
-import { useState } from "react";
+import { useEffect } from "react";
 import Image from "next/image";
 import { useForm } from "react-hook-form";
 import { useAuth } from "@/context/AuthContext";
+import { useRouter } from "next/router";
+import Cookies from "js-cookie";
 
 // Assets
 import logo from "@/public/landingPage/logo.svg";
@@ -16,8 +18,18 @@ const SignIn = () => {
     formState: { errors },
   } = useForm();
 
+  const router = useRouter();
+
   const { signIn, currentUser } = useAuth();
-  console.log(currentUser);
+
+  useEffect(() => {
+    const token = Cookies.get("loggedin");
+    console.log('hi')
+
+    if (token) {
+      router.push("welcome");
+    }
+  }, [currentUser]);
 
   const onSubmit = async (data) => {
     try {

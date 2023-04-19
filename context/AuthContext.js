@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect, useRef } from "react";
-import { auth, db } from "@/firebase";
+import { auth } from "@/firebase";
 import {
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
@@ -7,7 +7,7 @@ import {
   onAuthStateChanged,
   updateProfile,
 } from "firebase/auth";
-import { doc, getDoc } from "firebase/firestore";
+import Cookies from "js-cookie";
 
 const AuthContext = React.createContext();
 
@@ -27,15 +27,17 @@ export const AuthProvider = ({ children }) => {
         displayName: name,
       });
     });
+    Cookies.set("loggedin", true);
     return;
   };
 
   const signIn = (email, password) => {
     signInWithEmailAndPassword(auth, email, password);
+    Cookies.set("loggedin", true);
   };
 
   const logout = () => {
-    return signOut(auth);
+    return signOut(auth), Cookies.remove("loggedin");
   };
 
   useEffect(() => {
