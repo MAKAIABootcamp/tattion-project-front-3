@@ -11,6 +11,7 @@ specifiers:
   autoprefixer: 10.4.14
   firebase: ^9.19.1
   framer-motion: ^10.12.2
+  js-cookie: ^3.0.1
   lamina: ^1.1.23
   next: 13.3.0
   postcss: 8.4.21
@@ -34,6 +35,7 @@ dependencies:
   autoprefixer: 10.4.14_postcss@8.4.21
   firebase: 9.20.0
   framer-motion: 10.12.4_biqbaboplfbrettd7655fr4n2y
+  js-cookie: 3.0.1
   lamina: 1.1.23_oil3xizkjwv4pznmde3ur3j7hi
   next: 13.3.0_biqbaboplfbrettd7655fr4n2y
   postcss: 8.4.21
@@ -1865,6 +1867,11 @@ packages:
   /jiti/1.18.2:
     resolution: {integrity: sha512-QAdOptna2NYiSSpv0O/BwoHBSmz4YhpzJHyi+fnMRTXFjp7B8i/YG5Z8IfusxB1ufjcD2Sre1F3R+nX3fvy7gg==}
     hasBin: true
+    dev: false
+
+  /js-cookie/3.0.1:
+    resolution: {integrity: sha512-+0rgsUXZu4ncpPxRL+lNEptWMOWl9etvPHc/koSRp6MPwpRYAhmk0dUG00J4bxVV3r9uUzfo24wW0knS07SKSw==}
+    engines: {node: '>=12'}
     dev: false
 
   /js-tokens/4.0.0:
