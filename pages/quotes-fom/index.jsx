@@ -7,6 +7,7 @@ import { useRouter } from "next/router";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaArrowLeft } from "react-icons/fa";
 import { BsFillSendFill } from "react-icons/bs";
+import { ImArrowUpRight2 } from "react-icons/im";
 
 const QuotesForm = () => {
     const router = useRouter();
@@ -17,6 +18,18 @@ const QuotesForm = () => {
     const [skinTone, setSkinTone] = useState("");
     const [allergies, setAllergies] = useState("");
     const [modalOpen, setModalOpen] = useState(false);
+
+    const [selectedTone, setSelectedTone] = useState(null);
+
+    const skinTones = [
+        { id: 1, color: "#e8caa8" },
+        { id: 2, color: "#ecc083" },
+        { id: 3, color: "#9d583b" },
+    ];
+
+    const handleToneClick = (id) => {
+        setSelectedTone(id);
+    };
 
     const options = [
         { value: "arm", label: "arm" },
@@ -32,9 +45,6 @@ const QuotesForm = () => {
 
     const handleBodyPartChange = (event) => {
         setBodyPart(event.target.value);
-    };
-    const handleSkinToneChange = (event) => {
-        setSkinTone(event.target.value);
     };
 
     const handleAllergiesChange = (event) => {
@@ -67,7 +77,7 @@ const QuotesForm = () => {
                     {imageUrl && (
                         <img
                             src={imageUrl}
-                            className="h-[200px] w-[200px] object-cover object-center rounded"
+                            className="h-[200px] w-[200px]  rounded"
                         />
                     )}
                     {image && (
@@ -85,9 +95,9 @@ const QuotesForm = () => {
                         onClick={() => {
                             setModalOpen(true);
                         }}
-                        className="bg-red-600 hover:bg-red-700 text-white font-montserrat font-semibold py-2 px-4 rounded mt-4 transition-all"
+                        className="flex gap-2 items-center justify-center bg-red-600 hover:bg-red-700 text-white font-montserrat font-semibold py-2 px-4 rounded mt-4 transition-all"
                     >
-                        Open Form
+                        Continue <ImArrowUpRight2 />
                     </button>
 
                     <AnimatePresence>
@@ -106,53 +116,53 @@ const QuotesForm = () => {
                                     className="flex flex-col bg-gray-black rounded-md p-4 w-[360px] h-[650px]  items-center justify-center text-center"
                                 >
                                     <form className="flex flex-col gap-5  items-center">
-                                        <div className="flex gap-2 bg-gray-950 shadow-lg shadow-black p-2  justify-between rounded-full w-[160px]">
+                                        <div className="flex gap-2 bg-black shadow-lg shadow-black p-2 h-12 items-center   justify-between rounded-full w-[160px]">
                                             <span className="font-montserrat  text-white">
                                                 Color Tattoo
                                             </span>
-                                            <label class="toggler-wrapper style-1">
+                                            <label className="toggler-wrapper style-1">
                                                 <input type="checkbox" />
-                                                <div class="toggler-slider">
-                                                    <div class="toggler-knob"></div>
+                                                <div className="toggler-slider">
+                                                    <div className="toggler-knob"></div>
                                                 </div>
                                             </label>
                                         </div>
 
-                                        <div className="flex gap-2 justify-between  bg-gray-950 shadow-lg shadow-black p-2 rounded-full w-[160px]">
+                                        <div className="flex gap-2 justify-between  bg-black shadow-lg h-12 items-center  shadow-black p-2 rounded-full w-[160px]">
                                             <span className="font-montserrat  text-white">
                                                 Cover Tattoo
                                             </span>
-                                            <label class="toggler-wrapper style-1">
+                                            <label className="toggler-wrapper style-1">
                                                 <input type="checkbox" />
-                                                <div class="toggler-slider">
-                                                    <div class="toggler-knob"></div>
+                                                <div className="toggler-slider">
+                                                    <div className="toggler-knob"></div>
                                                 </div>
                                             </label>
                                         </div>
-                                        <div className="flex gap-5 bg-gray-950 justify-between  shadow-lg shadow-black p-2 rounded-full w-[160px]">
+                                        <div className="flex gap-5 bg-black justify-between  shadow-lg h-12 items-center  shadow-black p-2 rounded-full w-[160px]">
                                             <span className="font-montserrat  text-white">
                                                 first time?
                                             </span>
-                                            <label class="toggler-wrapper style-1">
+                                            <label className="toggler-wrapper style-1">
                                                 <input type="checkbox" />
-                                                <div class="toggler-slider">
-                                                    <div class="toggler-knob"></div>
+                                                <div className="toggler-slider">
+                                                    <div className="toggler-knob"></div>
                                                 </div>
                                             </label>
                                         </div>
-                                        <div className="flex gap-5 bg-gray-950 shadow-lg justify-between px-5   shadow-black p-2 rounded-full w-[300px]">
+                                        <div className="flex gap-5 bg-black shadow-lg justify-between px-5 h-12 items-center  shadow-black p-2 rounded-full w-[300px]">
                                             <span className="font-montserrat  text-white">
                                                 Pathologies or allergies
                                             </span>
-                                            <label class="toggler-wrapper style-1">
+                                            <label className="toggler-wrapper style-1">
                                                 <input type="checkbox" />
-                                                <div class="toggler-slider">
-                                                    <div class="toggler-knob"></div>
+                                                <div className="toggler-slider">
+                                                    <div className="toggler-knob"></div>
                                                 </div>
                                             </label>
                                         </div>
                                         <div className="flex ">
-                                            <label className="flex items-center justify-between px-5 w-[300px]  font-montserrat  text-white bg-gray-950 shadow-lg shadow-black p-2 rounded-full">
+                                            <span className="flex items-center justify-between px-5 w-[300px]  font-montserrat h-12  text-white bg-black shadow-lg shadow-black p-2 rounded-full">
                                                 Area of the body
                                                 <select
                                                     value={bodyPart}
@@ -177,43 +187,53 @@ const QuotesForm = () => {
                                                         </option>
                                                     ))}
                                                 </select>
-                                            </label>
+                                            </span>
                                         </div>
-                                        <div className="flex ">
-                                            <label className="flex items-center justify-between w-[300px] px-5  font-montserrat  text-white bg-gray-950 shadow-lg shadow-black p-2 rounded-full">
-                                                Skin Tone
-                                                <select
-                                                    value={skinTone}
-                                                    onChange={
-                                                        handleSkinToneChange
-                                                    }
-                                                    className="text-black h-7 rounded"
-                                                >
-                                                    <option
-                                                        value=""
-                                                        className="rounded font-montserrat"
-                                                    >
-                                                        Select an option
-                                                    </option>
-                                                    {optionsSkin.map(
-                                                        (option) => (
-                                                            <option
-                                                                key={
-                                                                    option.value
-                                                                }
-                                                                value={
-                                                                    option.value
-                                                                }
-                                                                className="capitalize"
-                                                            >
-                                                                {option.label}
-                                                            </option>
-                                                        )
+                                        <div className="flex  items-center">
+                                            <span className="flex items-center justify-between px-5 w-[300px]  font-montserrat h-12  text-white bg-black shadow-lg shadow-black p-2 rounded-full">
+                                                Skin tone
+                                                <div className="flex items-center justify-center">
+                                                    {skinTones.map((tone) => (
+                                                        <div
+                                                            key={tone.id}
+                                                            className={`w-5 h-5 rounded-full mx-2 cursor-pointer ${
+                                                                tone.id ===
+                                                                selectedTone
+                                                                    ? "border-2 border-black"
+                                                                    : "border-2 border-transparent"
+                                                            }`}
+                                                            style={{
+                                                                backgroundColor:
+                                                                    tone.color,
+                                                            }}
+                                                            onClick={() =>
+                                                                handleToneClick(
+                                                                    tone.id
+                                                                )
+                                                            }
+                                                        />
+                                                    ))}
+                                                </div>
+                                                <div className=" flex items-center justify-center">
+                                                    {selectedTone && (
+                                                        <div
+                                                            className="w-8 h-8 rounded-full border-2 border-black"
+                                                            style={{
+                                                                backgroundColor:
+                                                                    skinTones.find(
+                                                                        (
+                                                                            tone
+                                                                        ) =>
+                                                                            tone.id ===
+                                                                            selectedTone
+                                                                    ).color,
+                                                            }}
+                                                        />
                                                     )}
-                                                </select>
-                                            </label>
+                                                </div>
+                                            </span>
                                         </div>
-                                        <div className="flex items-center justify-between w-[300px] px-5  font-montserrat  text-white bg-gray-950 shadow-lg shadow-black p-2 rounded-full">
+                                        <div className="flex items-center justify-between w-[300px] px-5  font-montserrat h-12  text-white bg-black shadow-lg shadow-black p-2 rounded-full">
                                             <span>Size in CM</span>
                                             <div className="flex gap-2">
                                                 <label className="bg-dark-gray flex justify-around w-20 rounded-full   p-1 items-center">
@@ -236,9 +256,9 @@ const QuotesForm = () => {
                                         <Link href={"/artists"}>
                                             <button
                                                 type="submit"
-                                                className="w-full flex items-center justify-center gap-2 h-10 bg-red-600 hover:bg-red-400 transition-all drop-shadow-xl rounded-md text-white px-6 "
+                                                className="w-full flex items-center justify-center gap-2 h-10 bg-red-600  hover:bg-red-400 transition-all drop-shadow-xl rounded-md text-white px-6 "
                                             >
-                                                Send
+                                                Explore Artists
                                                 <BsFillSendFill />
                                             </button>
                                         </Link>
