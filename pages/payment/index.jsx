@@ -58,11 +58,11 @@ const PayScreen = () => {
           </div>
           <div className="flex flex-col gap-4 w-full">
             <h2 className="uppercase font-montserrat text-base font-medium text-white tracking-wide pl-6">
-              ¿como quieres pagar?{" "}
+              ¿Your Payment Method?{" "}
             </h2>
             <div className="flex flex-col gap-2 w-full">
               <div className="px-6 py-3 flex cursor-pointer hover:scale-105 duration-75 justify-between items-center text-white w-full drop-shadow-xl h-10 rounded-md bg-[#2b2c2c]">
-                <p className="font-medium text-sm">Transferencia bancaria</p>
+                <p className="font-medium text-sm">Wire Transfer</p>
                 <SlArrowRight />
               </div>
               <Link
@@ -73,7 +73,7 @@ const PayScreen = () => {
                 <SlArrowRight />
               </Link>
               <div className="px-6 py-3 flex cursor-pointer hover:scale-105 duration-75 justify-between items-center text-white w-full drop-shadow-xl h-10 rounded-md bg-[#2b2c2c]">
-                <p className="font-medium text-sm">Efectivo</p>
+                <p className="font-medium text-sm">Cash</p>
                 <SlArrowRight />
               </div>
             </div>

@@ -8,7 +8,9 @@ import logo from "@/public/landingPage/logo.svg";
 const Navbar = () => {
   const router = useRouter();
 
-  const handleSignUp = () => {};
+  const handleSignUp = () => {
+    router.push("/sign-up");
+  };
 
   const handleSignIn = () => {
     router.push("/sign-in");
