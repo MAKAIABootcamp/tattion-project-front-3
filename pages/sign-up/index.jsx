@@ -19,10 +19,10 @@ const SignUp = () => {
 
   return (
     <Layout>
-      <div className="w-[360px] h-[600px] bg-gray-black absolute top-0 left-0 bottom-0 right-0 m-auto rounded-md heroImg flex flex-col gap-8 items-center py-12">
-        <h1 className=" m-auto text-white font-montserrat font-semibold">
+      <div className="w-[650px] h-[400px] bg-gray-black absolute top-0 left-0 bottom-0 right-0 m-auto rounded-md heroImg flex gap-4 items-center px-8">
+        <h1 className=" m-auto text-white font-montserrat font-semibold text-5xl text-center">
           {" "}
-          Create an Account
+          Create <span className="text-red-400">an</span> Account
         </h1>
 
         <form
@@ -51,7 +51,7 @@ const SignUp = () => {
           </div>
           <div className="flex flex-col items-center gap-4">
             <button
-              className="w-full h-10 bg-red-600 drop-shadow-xl rounded-md text-white px-6"
+              className="w-full h-10 bg-red-600 drop-shadow-xl rounded-md text-white px-6 hover:bg-red-500 hover:scale-y-105 duration-100"
               type="submit"
             >
               Sign Up
