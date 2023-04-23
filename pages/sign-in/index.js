@@ -1,14 +1,13 @@
-import { useEffect } from "react";
+// import { useEffect } from "react";
 import Image from "next/image";
 import { useForm } from "react-hook-form";
 import { useAuth } from "@/context/AuthContext";
 import { useRouter } from "next/router";
-import Cookies from "js-cookie";
 import Layout from "@/layouts/MainLayout";
+import Link from "next/link";
 
 // Assets
-import logo from "@/public/landingPage/logo.svg";
-import Link from "next/link";
+import logo from "@/public/landingPage/logo.png";
 
 const SignIn = () => {
   const {
@@ -32,8 +31,8 @@ const SignIn = () => {
 
   return (
     <Layout>
-      <div className="w-[360px] h-[650px] bg-gray-black absolute top-0 left-0 bottom-0 right-0 m-auto rounded-md heroImg flex flex-col gap-4 items-center py-10 px-8 ">
-        <Image src={logo} alt="Logo" width={250} height={250} />
+      <div className="w-[650px] h-[400px] bg-gray-black absolute top-0 left-0 bottom-0 right-0 m-auto rounded-md heroImg flex gap-4 items-center px-8">
+        <Image src={logo} alt="Logo" width={240} height={250} />
         <form
           className="w-full p-5 flex flex-col gap-9"
           onSubmit={handleSubmit(onSubmit)}
@@ -60,7 +59,7 @@ const SignIn = () => {
           </div>
           <div className="flex flex-col items-center gap-4">
             <button
-              className="w-full h-10 bg-red-600 drop-shadow-xl rounded-md text-white px-6"
+              className="w-full h-10 bg-red-600 drop-shadow-xl rounded-md text-white px-6 hover:bg-red-500 hover:scale-y-105 duration-100"
               type="submit"
             >
               Sign In

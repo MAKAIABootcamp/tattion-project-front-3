@@ -3,7 +3,7 @@ import React from "react";
 import { useRouter } from "next/router";
 
 // Assets
-import logo from "@/public/landingPage/logo.svg";
+import logo from "@/public/landingPage/logo.png";
 
 const Navbar = () => {
   const router = useRouter();
