@@ -1,15 +1,15 @@
-import { OrbitControls } from "@react-three/drei";
-import { Canvas } from "@react-three/fiber";
-import { MeshDistortMaterial } from "@react-three/drei";
+import React from "react";
+// import { OrbitControls } from "@react-three/drei";
+// import { Canvas } from "@react-three/fiber";
+// import { MeshDistortMaterial } from "@react-three/drei";
 
 // Assets
-import { Sphere } from "@react-three/drei";
-import SignUp from "@/pages/sign-up";
+// import { Sphere } from "@react-three/drei";
 
-const MainLayout = () => {
+const MainLayout = ({ children }) => {
   return (
     <main className="homepage-container h-screen w-screen">
-      <Canvas>
+      {/* <Canvas>
         <OrbitControls enableZoom={false} autoRotate />
         <ambientLight intensity={1} />
         <directionalLight position={[3, 2, 1]} />
@@ -21,10 +21,10 @@ const MainLayout = () => {
             speed={2}
           />
         </Sphere>
-      </Canvas>
-      <SignUp />
+      </Canvas> */}
+      {children}
     </main>
   );
 };
 
-export default MainLayout;
+export default React.memo(MainLayout);

@@ -1,8 +1,7 @@
-import { OrbitControls } from "@react-three/drei";
-import { Canvas } from "@react-three/fiber";
 import React from "react";
 import Image from "next/image";
 import Cookies from "js-cookie";
+import Layout from "@/layouts/MainLayout";
 
 // Assets
 import check from "@/public/appointment/check.svg";
@@ -12,8 +11,8 @@ import Link from "next/link";
 
 const PaymentSummary = () => {
   return (
-    <div className="homepage-container flex justify-center gap-14 items-center">
-      <div className="w-[360px] h-[600px] bg-gray-black rounded-md heroImg flex flex-col  gap-5 items-center py-6 px-7">
+    <Layout>
+      <div className="w-[360px] h-[650px] bg-gray-black absolute top-0 left-0 bottom-0 right-0 m-auto rounded-md heroImg flex flex-col gap-4 items-center py-10 px-8 ">
         <div className="flex flex-col items-center gap-4">
           <h1 className=" text-white font-montserrat font-medium">
             {" "}
@@ -54,15 +53,7 @@ const PaymentSummary = () => {
           Home
         </Link>
       </div>
-      <div className="h-screen w-1/2 heroImg">
-        <Canvas className="right">
-          <OrbitControls target={[0, 0, -4]} />
-          <ambientLight intensity={1} />
-          <directionalLight position={[3, 2, 1]} />
-          <Guard />
-        </Canvas>
-      </div>
-    </div>
+    </Layout>
   );
 };
 

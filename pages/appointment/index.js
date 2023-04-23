@@ -1,8 +1,9 @@
-import MainLayout from "@/layouts/MainLayout";
+import Layout from "@/layouts/MainLayout";
 import React from "react";
 
-const index = () => {
-  return <MainLayout />;
+const Website = ({ Component }) => {
+  console.log(Component);
+  return <Layout></Layout>;
 };
 
-export default index;
+export default Website;

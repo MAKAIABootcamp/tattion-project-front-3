@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import { Canvas } from "@react-three/fiber";
-import { MeshDistortMaterial, OrbitControls, Sphere } from "@react-three/drei";
 import { useRouter } from "next/router";
 import { motion } from "framer-motion";
+import Layout from "@/layouts/MainLayout";
 
 //assets
 import { RxInstagramLogo } from "react-icons/rx";
@@ -286,63 +285,48 @@ const Artists = () => {
   };
 
   return (
-    <main className="homepage-container">
-      <section className="h-screen w-screen relative">
-        {/* <Canvas>
-          <OrbitControls enableZoom={false} autoRotate />
-          <ambientLight intensity={1} />
-          <directionalLight position={[3, 2, 1]} />
-          <Sphere args={[1, 100, 200]} scale={2.8}>
-            <MeshDistortMaterial
-              color="#3d1c56"
-              attach="material"
-              distort={0.5}
-              speed={2}
-            />
-          </Sphere>
-        </Canvas> */}
-        <article className="w-[360px] h-[650px] bg-gray-black absolute top-0 left-0 bottom-0 right-0 m-auto rounded-md heroImg flex flex-col gap-6 items-center py-12">
-          <span className="font-montserrat font-bold text-3xl text-white">
-            Explore Artists
-          </span>
+    <Layout>
+      <article className="w-[360px] h-[650px] bg-gray-black absolute top-0 left-0 bottom-0 right-0 m-auto rounded-md heroImg flex flex-col gap-6 items-center py-12">
+        <span className="font-montserrat font-bold text-3xl text-white">
+          Explore Artists
+        </span>
 
-          <span className="font-montserrat font-semibold text-white">
-            Look at the portfolios of tattoo artists
-          </span>
-          <section className="flex flex-wrap gap-3 items-center justify-center  w-[100%] text-center p-2">
-            {arrayStyles.map((item, index) => (
-              <article
-                className="flex flex-col items-center justify-center bg-black rounded-sm  h-[150px] w-[100px]  hover:bg-red-600 cursor-pointer transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110  duration-75"
-                key={index}
-                onClick={() => {
-                  setModalOpen(true);
-                  setSelectedItemIndex(index);
-                }}
-              >
-                <figure className="flex flex-col items-center p-1 gap-1 cursor-pointer">
-                  <img
-                    src={item.img}
-                    alt={item.title}
-                    className="h-12 w-12 rounded-large"
-                  />
-                </figure>
-                <span className="font-montserrat text-m font-semibold text-white text-center">
-                  {item.title}
-                </span>
-                <span className="font-montserrat text-xs text-white text-center">
-                  {item.style}
-                </span>
-              </article>
-            ))}
-          </section>
-        </article>
-      </section>
+        <span className="font-montserrat font-semibold text-white">
+          Look at the portfolios of tattoo artists
+        </span>
+        <section className="flex flex-wrap gap-3 items-center justify-center  w-[100%] text-center p-2">
+          {arrayStyles.map((item, index) => (
+            <article
+              className="flex flex-col items-center justify-center bg-black rounded-sm  h-[150px] w-[100px]  hover:bg-red-600 cursor-pointer  hover:-translate-y-1 hover:scale-105  duration-75"
+              key={index}
+              onClick={() => {
+                setModalOpen(true);
+                setSelectedItemIndex(index);
+              }}
+            >
+              <figure className="flex flex-col items-center p-1 gap-1 cursor-pointer">
+                <img
+                  src={item.img}
+                  alt={item.title}
+                  className="h-12 w-12 rounded-large"
+                />
+              </figure>
+              <span className="font-montserrat text-m font-semibold text-white text-center">
+                {item.title}
+              </span>
+              <span className="font-montserrat text-xs text-white text-center">
+                {item.style}
+              </span>
+            </article>
+          ))}
+        </section>
+      </article>
       {modalOpen && (
         <div className="fixed top-0 left-0 bottom-0 right-0  bg-gray-800 bg-opacity-50 flex items-center justify-center ">
           <motion.div
             initial={{ opacity: 0, scale: 0.5 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.1 }}
             className="bg-gray-black rounded-md w-[360px] h-[750px] px-8 items-center text-center"
           >
             <div className="w-full flex justify-end">
@@ -429,7 +413,7 @@ const Artists = () => {
           </motion.div>
         </div>
       )}
-    </main>
+    </Layout>
   );
 };
 
