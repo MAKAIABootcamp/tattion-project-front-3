@@ -22,7 +22,7 @@ const CreditCard = () => {
 
     return (
         <Layout>
-            <div className="w-[670px] h-[600px] bg-gray-black absolute top-0 left-0 bottom-0 right-0 m-auto rounded-md heroImg flex flex-col gap-2 items-center py-6">
+            <div className="w-[580px] h-[600px] bg-gray-black absolute top-0 left-0 bottom-0 right-0 m-auto rounded-md heroImg flex flex-col gap-2 items-center py-6">
                 <Link href={"/payment"}>
                     <FaArrowLeft className="text-2xl absolute text-white top-6 left-10  " />
                 </Link>
