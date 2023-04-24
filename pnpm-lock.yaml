@@ -14,6 +14,7 @@ specifiers:
   framer-motion: ^10.12.2
   js-cookie: ^3.0.1
   lamina: ^1.1.23
+  leaflet: ^1.9.3
   next: 13.3.0
   postcss: 8.4.21
   prop-types: ^15.8.1
@@ -21,6 +22,7 @@ specifiers:
   react-dom: 18.2.0
   react-hook-form: ^7.43.9
   react-icons: ^4.8.0
+  react-leaflet: ^4.2.1
   react-redux: ^8.0.5
   react-simple-maps: ^3.0.0
   tailwindcss: 3.3.1
@@ -40,6 +42,7 @@ dependencies:
   framer-motion: 10.12.4_biqbaboplfbrettd7655fr4n2y
   js-cookie: 3.0.1
   lamina: 1.1.23_oil3xizkjwv4pznmde3ur3j7hi
+  leaflet: 1.9.3
   next: 13.3.0_biqbaboplfbrettd7655fr4n2y
   postcss: 8.4.21
   prop-types: 15.8.1
@@ -47,6 +50,7 @@ dependencies:
   react-dom: 18.2.0_react@18.2.0
   react-hook-form: 7.43.9_react@18.2.0
   react-icons: 4.8.0_react@18.2.0
+  react-leaflet: 4.2.1_yydtlhsdonbqao6vgvkwhv2zki
   react-redux: 8.0.5_biqbaboplfbrettd7655fr4n2y
   react-simple-maps: 3.0.0_v2m5e27vhdewzwhryxwfaorcca
   tailwindcss: 3.3.1_postcss@8.4.21
@@ -1008,6 +1012,18 @@ packages:
       '@babel/runtime': 7.21.0
     dev: false
 
+  /@react-leaflet/core/2.1.0_yydtlhsdonbqao6vgvkwhv2zki:
+    resolution: {integrity: sha512-Qk7Pfu8BSarKGqILj4x7bCSZ1pjuAPZ+qmRwH5S7mDS91VSbVVsJSrW4qA+GPrro8t69gFYVMWb1Zc4yFmPiVg==}
+    peerDependencies:
+      leaflet: ^1.9.0
+      react: ^18.0.0
+      react-dom: ^18.0.0
+    dependencies:
+      leaflet: 1.9.3
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
+    dev: false
+
   /@react-spring/animated/9.6.1_react@18.2.0:
     resolution: {integrity: sha512-ls/rJBrAqiAYozjLo5EPPLLOb1LM0lNVQcXODTC1SMtS6DbuBCPaKco5svFUQFMP2dso3O+qcC4k9FsKc0KxMQ==}
     peerDependencies:
@@ -1953,6 +1969,10 @@ packages:
       three-custom-shader-material: 4.0.0_ao53a3fyxbyom2jjccsvuhmlra
     dev: false
 
+  /leaflet/1.9.3:
+    resolution: {integrity: sha512-iB2cR9vAkDOu5l3HAay2obcUHZ7xwUBBjph8+PGtmW/2lYhbLizWtG7nTeYht36WfOslixQF9D/uSIzhZgGMfQ==}
+    dev: false
+
   /leva/0.9.34_biqbaboplfbrettd7655fr4n2y:
     resolution: {integrity: sha512-hQmWAakOCuBXYIenJ7RaNIei5enDwHNNb6Gz5BUU3mZk+ElECdbvNJbmcMfkFAJslJw33MXRabt7OKIzItLLWw==}
     peerDependencies:
@@ -2425,6 +2445,19 @@ packages:
 
   /react-is/18.2.0:
     resolution: {integrity: sha512-xWGDIW6x921xtzPkhiULtthJHoJvBbF3q26fzloPCK0hsvxtPVelvftw3zjbHWSkR2km9Z+4uxbDDK/6Zw9B8w==}
+    dev: false
+
+  /react-leaflet/4.2.1_yydtlhsdonbqao6vgvkwhv2zki:
+    resolution: {integrity: sha512-p9chkvhcKrWn/H/1FFeVSqLdReGwn2qmiobOQGO3BifX+/vV/39qhY8dGqbdcPh1e6jxh/QHriLXr7a4eLFK4Q==}
+    peerDependencies:
+      leaflet: ^1.9.0
+      react: ^18.0.0
+      react-dom: ^18.0.0
+    dependencies:
+      '@react-leaflet/core': 2.1.0_yydtlhsdonbqao6vgvkwhv2zki
+      leaflet: 1.9.3
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
     dev: false
 
   /react-merge-refs/1.1.0:
