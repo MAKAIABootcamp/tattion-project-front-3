@@ -4,6 +4,8 @@ import { useRouter } from "next/router";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import Layout from "@/layouts/MainLayout";
+import { useDispatch } from "react-redux";
+import { setQuote } from "@/slices/quoteSlice";
 
 //assets
 import upload from "@/public/designs/upload-icon.svg";
@@ -18,12 +20,15 @@ const Designs = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedItemIndex, setSelectedItemIndex] = useState(null);
 
+  const dispatch = useDispatch();
+
   const { stylestattoos } = useGetStylestattoosCollection();
 
   const handleFileUpload = async (event) => {
     const file = event.target.files[0];
     const url = await fileUpload(file);
     setImageUrl(url);
+    dispatch({ type: setQuote, payload: { prop: "img", data: url } });
     router.push({
       pathname: "/quotes-fom",
       query: { imageUrl: url },
