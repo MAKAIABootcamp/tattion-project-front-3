@@ -13,7 +13,7 @@ import { FaArrowLeft } from "react-icons/fa";
 const PaymentSummary = () => {
     return (
         <Layout>
-            <div className="w-[670px] h-[600px] bg-gray-black absolute top-0 left-0 bottom-0 right-0 m-auto rounded-md heroImg flex flex-col gap-4 items-center py-10 px-8 ">
+            <div className="w-[620px] h-[630px] bg-gray-black absolute top-0 left-0 bottom-0 right-0 m-auto rounded-md heroImg flex flex-col gap-4 items-center py-10 px-8 ">
                 <div className="flex flex-col items-center gap-4">
                     <h1 className=" text-white font-montserrat font-medium">
                         Payment Info
@@ -23,7 +23,7 @@ const PaymentSummary = () => {
                 <h2 className="uppercase text-base font-montserrat text-white tracking-wide">
                     Payment Summary
                 </h2>
-                <div className="bg-[#363536] w-[400px] rounded-sm flex flex-col items-center mb-3 py-4 relative">
+                <div className="bg-[#363536] w-[350px] rounded-sm flex flex-col items-center mb-3 py-4 relative">
                     <p className="text-base text-white font-montserrat font-medium mb-4">
                         Product
                     </p>
@@ -49,7 +49,7 @@ const PaymentSummary = () => {
                     </div>
                 </div>
                 <Link
-                    className="w-40 py-1 h-11 bg-red-600 drop-shadow-xl hover:bg-red-400 transition-all rounded-md text-white flex items-center justify-center mt-4"
+                    className="w-40 py-2 h-16 bg-red-600 drop-shadow-xl hover:bg-red-400 transition-all rounded-md text-white flex items-center justify-center mt-4"
                     href="/"
                     onClick={() => Cookies.remove("loggedin")}
                 >

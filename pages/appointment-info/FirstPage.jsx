@@ -55,7 +55,7 @@ const FirstPage = ({ setPage }) => {
         variants={divVariants}
         initial="hidden"
         animate="visible"
-        className="w-[360px] h-[600px] bg-gray-black absolute top-0 left-0 bottom-0 right-0 m-auto rounded-md heroImg flex flex-col gap-8 items-center py-12"
+        className="w-[400px] h-[600px] bg-gray-black absolute top-0 left-0 bottom-0 right-0 m-auto rounded-md heroImg flex flex-col gap-8 items-center py-12"
       >
         <h1 className=" m-auto text-white font-montserrat font-semibold">
           {" "}

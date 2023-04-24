@@ -291,8 +291,8 @@ const Artists = () => {
 
     return (
         <Layout>
-            <article className="w-[670px] h-[550px] bg-gray-black absolute top-0 left-0 bottom-0 right-0 m-auto rounded-md heroImg flex flex-col gap-6 items-center py-12 px-1">
-                <Link href={"/designs"} className="absolute top-6 left-10 ">
+            <article className="w-[670px] h-[630px] bg-gray-black absolute top-0 left-0 bottom-0 right-0 m-auto rounded-md heroImg flex flex-col justify-center gap-6 items-center py-12 px-1">
+                <Link href={"/designs"} className="absolute top-11 left-10 ">
                     <FaArrowLeft className=" text-2xl absolute text-white  " />
                 </Link>
                 <span className="font-montserrat font-bold text-3xl text-white">
