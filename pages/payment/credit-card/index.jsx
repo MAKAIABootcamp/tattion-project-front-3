@@ -44,6 +44,7 @@ const CreditCard = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+
     router.push("/payment-summary");
   };
 
@@ -76,6 +77,7 @@ const CreditCard = () => {
                   key={c + "-" + i}
                   initial={{ y: "25%", opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
+
                 >
                   {c}
                 </motion.span>
