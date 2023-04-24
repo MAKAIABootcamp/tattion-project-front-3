@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  data: {
+  quotation: {
     img: "",
     characteristics: {
       color: false,
@@ -11,14 +11,16 @@ const initialState = {
       area: "",
       skinTone: "",
       size: {
-        width: "",
-        height: "",
+        width: 0,
+        height: 0,
       },
     },
     artist: {
       name: "",
       img: "",
     },
+    date: "",
+    location: "",
   },
 };
 
@@ -27,7 +29,14 @@ export const quoteSlice = createSlice({
   initialState,
   reducers: {
     setQuote: (state, action) => {
-      //   state.data = {...state, action.action.payload};
+      state.quotation = {
+        ...state.quotation,
+        [action.payload.prop]: action.payload.data,
+      };
     },
   },
 });
+
+export const { setQuote } = quoteSlice.actions;
+
+export default quoteSlice.reducer;

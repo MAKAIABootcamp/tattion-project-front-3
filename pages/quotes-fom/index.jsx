@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { motion, AnimatePresence } from "framer-motion";
 import Layout from "@/layouts/MainLayout";
+import { useDispatch } from "react-redux";
+import { setQuote } from "@/slices/quoteSlice";
 
 //assets
 import { BsFillSendFill } from "react-icons/bs";
@@ -16,12 +18,21 @@ const QuotesForm = () => {
   const { image } = router.query;
   const imageUrl = router.query.imageUrl;
 
+  const dispatch = useDispatch();
+
+  const [toneTattoo, setToneTattoo] = useState(false);
+  const [coverTattoo, setCoverTattoo] = useState(false);
+  const [firstTime, setFirstTime] = useState(false);
+  const [allergies, setAllergies] = useState(false);
   const [bodyPart, setBodyPart] = useState("");
-  const [skinTone, setSkinTone] = useState("");
-  const [allergies, setAllergies] = useState("");
+  const [selectedTone, setSelectedTone] = useState(null);
+  const [tattooSize, setTattooSize] = useState({
+    width: 0,
+    height: 0,
+  });
   const [modalOpen, setModalOpen] = useState(false);
 
-  const [selectedTone, setSelectedTone] = useState(null);
+  const [selectedToneId, setSelectedToneId] = useState(null);
 
   const skinTones = [
     { id: 1, color: "#e8caa8" },
@@ -29,8 +40,26 @@ const QuotesForm = () => {
     { id: 3, color: "#9d583b" },
   ];
 
+  const handleToneTattoo = (e) => {
+    setToneTattoo(e.target.checked);
+  };
+
+  const handleCoverTattoo = (e) => {
+    setCoverTattoo(e.target.checked);
+  };
+
+  const handleFirstTime = (e) => {
+    setFirstTime(e.target.checked);
+  };
+
+  const handleAllergies = (e) => {
+    setAllergies(e.target.checked);
+  };
+
   const handleToneClick = (id) => {
-    setSelectedTone(id);
+    const color = skinTones.find((tone) => tone.id === id).color;
+    setSelectedToneId(id);
+    setSelectedTone(color);
   };
 
   const options = [
@@ -40,17 +69,45 @@ const QuotesForm = () => {
     { value: "chest", label: "chest" },
   ];
 
-  const optionsSkin = [
-    { value: "light", label: "light" },
-    { value: "dark", label: "dark" },
-  ];
-
   const handleBodyPartChange = (event) => {
     setBodyPart(event.target.value);
   };
 
-  const handleAllergiesChange = (event) => {
-    setAllergies(event.target.value);
+  const handleTattooWidth = (e) => {
+    setTattooSize({
+      ...tattooSize,
+      width: Number(e.target.value),
+    });
+  };
+
+  const handleTattooHeight = (e) => {
+    setTattooSize({
+      ...tattooSize,
+      height: Number(e.target.value),
+    });
+  };
+
+  const handleSubmit = (e) => {
+    const currentCharacteristics = {
+      color: toneTattoo,
+      cover: coverTattoo,
+      firstTatto: firstTime,
+      allergies,
+      area: bodyPart,
+      skinTone: selectedTone,
+      size: {
+        width: tattooSize.width,
+        height: tattooSize.height,
+      },
+    };
+
+    dispatch({
+      type: setQuote,
+      payload: { prop: "characteristics", data: currentCharacteristics },
+    });
+
+    e.preventDefault();
+    router.push("/artists");
   };
 
   return (
@@ -100,13 +157,20 @@ const QuotesForm = () => {
                 }}
                 className="flex flex-col bg-gray-black rounded-md p-4 w-[670px] h-[600px]  items-center justify-center text-center"
               >
-                <form className="flex flex-col gap-5  items-center">
+                <form
+                  className="flex flex-col gap-5  items-center"
+                  onSubmit={handleSubmit}
+                >
                   <div className="flex gap-2 bg-black shadow-lg shadow-black p-2 px-5 h-12 items-center  justify-between rounded-full w-full">
                     <span className="font-montserrat  text-white">
                       Color Tattoo
                     </span>
                     <label className="toggler-wrapper style-1">
-                      <input type="checkbox" />
+                      <input
+                        type="checkbox"
+                        onChange={handleToneTattoo}
+                        value={toneTattoo}
+                      />
                       <div className="toggler-slider">
                         <div className="toggler-knob"></div>
                       </div>
@@ -118,7 +182,11 @@ const QuotesForm = () => {
                       Cover Tattoo
                     </span>
                     <label className="toggler-wrapper style-1">
-                      <input type="checkbox" />
+                      <input
+                        type="checkbox"
+                        onChange={handleCoverTattoo}
+                        value={coverTattoo}
+                      />
                       <div className="toggler-slider">
                         <div className="toggler-knob"></div>
                       </div>
@@ -129,7 +197,11 @@ const QuotesForm = () => {
                       first time?
                     </span>
                     <label className="toggler-wrapper style-1">
-                      <input type="checkbox" />
+                      <input
+                        type="checkbox"
+                        onChange={handleFirstTime}
+                        value={firstTime}
+                      />
                       <div className="toggler-slider">
                         <div className="toggler-knob"></div>
                       </div>
@@ -140,7 +212,11 @@ const QuotesForm = () => {
                       Pathologies or allergies
                     </span>
                     <label className="toggler-wrapper style-1">
-                      <input type="checkbox" />
+                      <input
+                        type="checkbox"
+                        onChange={handleAllergies}
+                        value={allergies}
+                      />
                       <div className="toggler-slider">
                         <div className="toggler-knob"></div>
                       </div>
@@ -178,7 +254,7 @@ const QuotesForm = () => {
                           <div
                             key={tone.id}
                             className={`w-5 h-5 rounded-full mx-2 cursor-pointer ${
-                              tone.id === selectedTone
+                              tone.id === selectedToneId
                                 ? "border-2 border-black"
                                 : "border-2 border-transparent"
                             }`}
@@ -190,12 +266,12 @@ const QuotesForm = () => {
                         ))}
                       </div>
                       <div className=" flex items-center justify-center">
-                        {selectedTone && (
+                        {selectedToneId && (
                           <div
                             className="w-8 h-8 rounded-full border-2 border-black"
                             style={{
                               backgroundColor: skinTones.find(
-                                (tone) => tone.id === selectedTone
+                                (tone) => tone.id === selectedToneId
                               ).color,
                             }}
                           />
@@ -211,31 +287,31 @@ const QuotesForm = () => {
                         <input
                           type="number"
                           className=" bg-transparent text-white w-10"
+                          onChange={handleTattooWidth}
                         />
                       </label>
                       <label className="bg-dark-gray flex justify-evenly w-20 rounded-full p-1 ">
                         H:
                         <input
                           type="number"
-                          className="bg-transparent text-white w-8  "
+                          className="bg-transparent text-white w-8"
+                          onChange={handleTattooHeight}
                         />
                       </label>
                     </div>
                   </div>
 
-                  <Link href={"/artists"}>
-                    <button
-                      type="submit"
-                      className="w-full flex items-center justify-center gap-2 h-10 bg-red-600  hover:bg-red-400 transition-all drop-shadow-xl rounded-md text-white px-6 "
-                    >
-                      Explore Artists
-                      <BsFillSendFill />
-                    </button>
-                  </Link>
+                  <button
+                    type="submit"
+                    className="w-full flex items-center justify-center gap-2 h-10 bg-red-600  hover:bg-red-400 transition-all drop-shadow-xl rounded-md text-white px-6 "
+                  >
+                    Explore Artists
+                    <BsFillSendFill />
+                  </button>
                 </form>
                 <button
-                  className="bg-red-500 hover:bg-red-700 absolute top-6 right-10  text-white font-montserrat font-semibold transition-all 
-                                    p-1 rounded-full mt-4"
+                  type="button"
+                  className="bg-red-500 hover:bg-red-700 absolute top-6 right-10  text-white font-montserrat font-semibold transition-all p-1 rounded-full mt-4"
                   onClick={() => setModalOpen(false)}
                 >
                   <IoClose className="text-3xl" />
