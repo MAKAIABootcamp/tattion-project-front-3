@@ -44,7 +44,6 @@ const CreditCard = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-
     router.push("/payment-summary");
   };
 
@@ -77,7 +76,6 @@ const CreditCard = () => {
                   key={c + "-" + i}
                   initial={{ y: "25%", opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
-
                 >
                   {c}
                 </motion.span>
@@ -120,7 +118,10 @@ const CreditCard = () => {
             cb={setExpiryDate}
             id="goodThru"
           /> */}
-          <button className=" h-10 bg-red-600 drop-shadow-xl w-full mt-5 rounded-md text-white px-6">
+          <button
+            className=" h-10 bg-red-600 drop-shadow-xl w-full mt-5 rounded-md text-white px-6"
+            onClick={handleSubmit}
+          >
             Pay
           </button>
         </div>
