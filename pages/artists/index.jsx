@@ -349,7 +349,7 @@ const Artists = () => {
                                 <img
                                     src={arrayStyles[selectedItemIndex].img}
                                     alt={arrayStyles[selectedItemIndex].title}
-                                    className="h-40 w-40 rounded "
+                                    className="h-40 w-36 rounded "
                                 />
                                 <h2 className="font-montserrat font-semibold text-white text-xl ">
                                     {arrayStyles[selectedItemIndex].title}
