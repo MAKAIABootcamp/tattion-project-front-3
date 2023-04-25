@@ -1,11 +1,12 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
+import MapView from "../components/payment/MapView";
 
 // Assets
 import { BsCalendar3 } from "react-icons/bs";
 import { HiLocationMarker } from "react-icons/hi";
-import map from "@/public/appointment/map.png";
 import profileImg from "@/public/appointment/profileImg.svg";
+import { useEffect, useState } from "react";
 
 const divVariants = {
   hidden: { opacity: 0, y: -50 },
@@ -21,11 +22,32 @@ const divVariants = {
 };
 
 const FirstPage = ({ setPage }) => {
+  const [state, setState] = useState({
+    lat: null,
+    lng: null,
+  });
   const handleSubmit = (e) => {
     e.preventDefault();
 
     setPage(2);
   };
+
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        setState({
+          lat: position.coords.longitude,
+          lng: position.coords.latitude,
+        });
+      },
+      (error) => {
+        console.log(error);
+      },
+      {
+        enableHighAccuracy: true,
+      }
+    );
+  }, []);
 
   return (
     <motion.div>
@@ -33,7 +55,7 @@ const FirstPage = ({ setPage }) => {
         variants={divVariants}
         initial="hidden"
         animate="visible"
-        className="w-[360px] h-[600px] bg-gray-black absolute top-0 left-0 bottom-0 right-0 m-auto rounded-md heroImg flex flex-col gap-8 items-center py-12"
+        className="w-[400px] h-[600px] bg-gray-black absolute top-0 left-0 bottom-0 right-0 m-auto rounded-md heroImg flex flex-col gap-8 items-center py-12"
       >
         <h1 className=" m-auto text-white font-montserrat font-semibold">
           {" "}
@@ -50,7 +72,7 @@ const FirstPage = ({ setPage }) => {
                 className="bg-[#2b2c2c] w-full text-white"
               />
             </label>
-            <Image className="w-full" src={map} />
+            <MapView data={state} />
             <label className="w-full h-10 rounded-md bg-[#2b2c2c] drop-shadow-xl text-white px-6 flex items-center gap-3">
               <HiLocationMarker size={14} />
               <input

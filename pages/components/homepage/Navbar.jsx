@@ -1,9 +1,10 @@
 import Image from "next/image";
 import React from "react";
 import { useRouter } from "next/router";
+import Link from "next/link";
 
 // Assets
-import logo from "@/public/landingPage/logo.svg";
+import logo from "@/public/landingPage/logo.png";
 
 const Navbar = () => {
   const router = useRouter();
@@ -18,14 +19,19 @@ const Navbar = () => {
 
   return (
     <div className="flex justify-center items-center w-screen h-20 max-md:w-full">
-      <nav className="flex justify-between items-center w-[1000px] max-md:w-full max-md:p-3">
-        <div className="flex items-center gap-12">
-          <Image src={logo} height={50} alt="Logo" />
+      <nav className="flex justify-between items-center w-[1100px] max-md:w-full max-md:p-3 mt-11">
+        <div className="flex items-center gap-2">
+          <Image src={logo} height={180} alt="Logo" />
           <ul className="flex gap-5 max-sm:hidden">
-            <li>Home</li>
-            <li>Artists</li>
-            <li>Galery</li>
-            <li>About</li>
+            <Link href="https://github.com/Danielaigm" target="_blank">
+              Daniela
+            </Link>
+            <Link href="https://github.com/ralexale" target="_blank">
+              Alejo
+            </Link>
+            <Link href="https://github.com/andresdvelez" target="_blank">
+              Andres
+            </Link>
           </ul>
         </div>
         <div className="flex gap-5">

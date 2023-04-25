@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect, useRef } from "react";
-import { auth } from "@/firebase";
+import { auth, db } from "@/firebase";
 import {
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
@@ -8,6 +8,8 @@ import {
   updateProfile,
 } from "firebase/auth";
 import Cookies from "js-cookie";
+import { useRouter } from "next/router";
+import { collection, doc, setDoc } from "firebase/firestore";
 
 const AuthContext = React.createContext();
 
@@ -18,7 +20,10 @@ export const useAuth = () => {
 export const AuthProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const userInfo = useRef(null);
+
+  const router = useRouter();
 
   const signUp = (email, password, name) => {
     createUserWithEmailAndPassword(auth, email, password).then((res) => {
@@ -26,14 +31,26 @@ export const AuthProvider = ({ children }) => {
       updateProfile(user, {
         displayName: name,
       });
+      const userDocRef = doc(collection(db, "users"), user.uid);
+      const userData = {
+        uid: user.uid,
+        appointments: [],
+      };
+      setDoc(userDocRef, userData);
     });
     Cookies.set("loggedin", true);
     return;
   };
 
   const signIn = (email, password) => {
-    signInWithEmailAndPassword(auth, email, password);
-    Cookies.set("loggedin", true);
+    try {
+      signInWithEmailAndPassword(auth, email, password).then(() => {
+        Cookies.set("loggedin", true);
+        router.push("/welcome");
+      });
+    } catch (err) {
+      setError("User not found");
+    }
   };
 
   const logout = () => {
@@ -50,6 +67,7 @@ export const AuthProvider = ({ children }) => {
 
   const value = {
     currentUser,
+    error,
     signIn,
     signUp,
     logout,

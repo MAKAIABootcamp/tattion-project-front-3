@@ -1,22 +1,26 @@
-import { OrbitControls } from "@react-three/drei";
-import { Canvas } from "@react-three/fiber";
 import React from "react";
 import Image from "next/image";
 import Cookies from "js-cookie";
+import Layout from "@/layouts/MainLayout";
 
 // Assets
 import check from "@/public/appointment/check.svg";
 import Guard from "@/components/payment/Guard";
 import tattooExample from "@/public/payment/tattoo-example.png";
 import Link from "next/link";
+import { FaArrowLeft } from "react-icons/fa";
+import { useAuth } from "@/context/AuthContext";
 
 const PaymentSummary = () => {
+  const { currentUser } = useAuth();
+
+  console.log(currentUser);
+
   return (
-    <div className="homepage-container flex justify-center gap-14 items-center">
-      <div className="w-[360px] h-[600px] bg-gray-black rounded-md heroImg flex flex-col  gap-5 items-center py-6 px-7">
+    <Layout>
+      <div className="w-[620px] h-[630px] bg-gray-black absolute top-0 left-0 bottom-0 right-0 m-auto rounded-md heroImg flex flex-col gap-4 items-center py-10 px-8 ">
         <div className="flex flex-col items-center gap-4">
           <h1 className=" text-white font-montserrat font-medium">
-            {" "}
             Payment Info
           </h1>
           <Image src={check} />
@@ -24,12 +28,15 @@ const PaymentSummary = () => {
         <h2 className="uppercase text-base font-montserrat text-white tracking-wide">
           Payment Summary
         </h2>
-        <div className="bg-[#363536] w-full rounded-sm flex flex-col items-center mb-3 py-4 relative">
+        <div className="bg-[#363536] w-[350px] rounded-sm flex flex-col items-center mb-3 py-4 relative">
           <p className="text-base text-white font-montserrat font-medium mb-4">
             Product
           </p>
           <div className="h-8 w-full bg-main-red absolute top-[80px]"></div>
-          <Image className="w-[100px] mb-8 z-10" src={tattooExample} />
+          <img
+            className="w-[150px] h-[150px] mb-5 z-10"
+            src="https://i.ibb.co/t38fHsJ/imagen-7-serpiente.jpg"
+          />
           <div className="flex flex-col px-6 pb-4 gap-2 items-center w-full relative">
             <div className="flex items-center w-full text-white font-montserrat border-b-[1px] border-white pb-1">
               <p className="leftWho">Name</p>
@@ -47,22 +54,17 @@ const PaymentSummary = () => {
           </div>
         </div>
         <Link
-          className="w-full h-11 bg-red-600 drop-shadow-xl rounded-md text-white flex items-center justify-center mt-6"
+          className="w-40 py-2 h-16 bg-red-600 drop-shadow-xl hover:bg-red-400 transition-all rounded-md text-white flex items-center justify-center mt-4"
           href="/"
           onClick={() => Cookies.remove("loggedin")}
         >
           Home
         </Link>
+        <Link href={"/payment"}>
+          <FaArrowLeft className="text-2xl absolute text-white top-6 left-10  " />
+        </Link>
       </div>
-      <div className="h-screen w-1/2 heroImg">
-        <Canvas className="right">
-          <OrbitControls target={[0, 0, -4]} />
-          <ambientLight intensity={1} />
-          <directionalLight position={[3, 2, 1]} />
-          <Guard />
-        </Canvas>
-      </div>
-    </div>
+    </Layout>
   );
 };
 
