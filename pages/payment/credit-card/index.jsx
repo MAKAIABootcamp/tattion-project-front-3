@@ -10,7 +10,14 @@ import { FaArrowLeft } from "react-icons/fa";
 import { useAuth } from "@/context/AuthContext";
 import { updateProfile } from "firebase/auth";
 import { useSelector } from "react-redux";
-import { collection, doc, setDoc } from "firebase/firestore";
+import {
+  arrayUnion,
+  collection,
+  doc,
+  getDoc,
+  setDoc,
+  updateDoc,
+} from "firebase/firestore";
 import { db } from "@/firebase";
 
 const CreditCard = () => {
@@ -52,12 +59,13 @@ const CreditCard = () => {
   const updateUserInfo = async () => {
     const userDocRef = doc(collection(db, "users"), currentUser.uid);
 
-    await setDoc(userDocRef, quotation);
+    await updateDoc(userDocRef, {
+      appointments: arrayUnion(quotation),
+    });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
     updateUserInfo();
 
     router.push("/payment-summary");

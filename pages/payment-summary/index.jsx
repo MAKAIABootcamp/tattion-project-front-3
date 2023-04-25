@@ -55,8 +55,7 @@ const PaymentSummary = () => {
         </div>
         <Link
           className="w-40 py-2 h-16 bg-red-600 drop-shadow-xl hover:bg-red-400 transition-all rounded-md text-white flex items-center justify-center mt-4"
-          href="/"
-          onClick={() => Cookies.remove("loggedin")}
+          href="/welcome"
         >
           Home
         </Link>
