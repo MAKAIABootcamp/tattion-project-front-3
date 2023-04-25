@@ -7,6 +7,11 @@ import Input from "./Input";
 
 // Assets
 import { FaArrowLeft } from "react-icons/fa";
+import { useAuth } from "@/context/AuthContext";
+import { updateProfile } from "firebase/auth";
+import { useSelector } from "react-redux";
+import { collection, doc, setDoc } from "firebase/firestore";
+import { db } from "@/firebase";
 
 const CreditCard = () => {
   const VISA_MASK = "#### #### #### ####";
@@ -41,8 +46,19 @@ const CreditCard = () => {
 
   const router = useRouter();
 
+  const { quotation } = useSelector((state) => state.quote);
+  const { currentUser } = useAuth();
+
+  const updateUserInfo = async () => {
+    const userDocRef = doc(collection(db, "users"), currentUser.uid);
+
+    await setDoc(userDocRef, quotation);
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    updateUserInfo();
 
     router.push("/payment-summary");
   };
