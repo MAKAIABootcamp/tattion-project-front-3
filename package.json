@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@emailjs/browser": "^3.11.0",
+    "@hookform/resolvers": "^3.1.0",
     "@react-three/drei": "^9.56.28",
     "@react-three/fiber": "^8.12.0",
     "@reduxjs/toolkit": "^1.9.5",
@@ -34,6 +35,7 @@
     "react-redux": "^8.0.5",
     "react-simple-maps": "^3.0.0",
     "tailwindcss": "3.3.1",
-    "three": "^0.151.3"
+    "three": "^0.151.3",
+    "yup": "^1.1.1"
   }
 }
