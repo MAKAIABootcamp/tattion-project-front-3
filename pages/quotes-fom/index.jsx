@@ -117,7 +117,7 @@ const QuotesForm = () => {
                     Chosen design
                 </h2>
                 <Link href={"/designs"}>
-                    <FaArrowLeft className="text-2xl absolute text-white top-4 left-10  " />
+                    <FaArrowLeft className="text-2xl absolute text-white top-4 left-10 hover:text-red-600   " />
                 </Link>
                 {imageUrl && (
                     <img

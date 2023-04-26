@@ -47,7 +47,7 @@ const Designs = () => {
                     Do you have a design in mind?
                 </span>
                 <Link href={"/welcome"}>
-                    <FaArrowLeft className="text-2xl absolute text-white top-6 left-10  " />
+                    <FaArrowLeft className="text-2xl absolute text-white top-6 left-10 hover:text-red-600 " />
                 </Link>
 
                 <div className="bg-red-600 h-[110px] w-[250px] flex flex-col items-center rounded-xl gap-3 p-2 hover:scale-105 duration-150">
