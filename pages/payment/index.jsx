@@ -13,7 +13,7 @@ const PayScreen = () => {
         <Layout>
             <div className="w-[670px] h-[650px] bg-gray-black absolute top-0 left-0 bottom-0 right-0 m-auto rounded-md heroImg flex flex-col gap-4 items-center py-10 px-8 ">
                 <Link href={"/appointment-info"}>
-                    <FaArrowLeft className="text-2xl absolute text-white top-6 left-10  " />
+                    <FaArrowLeft className="text-2xl absolute text-white top-6 left-10 hover:text-red-600 " />
                 </Link>
                 <h1 className=" text-white font-montserrat font-semibold">
                     Payment

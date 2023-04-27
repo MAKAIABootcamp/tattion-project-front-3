@@ -1,24 +1,34 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { MapContainer, TileLayer } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
-import Marker from "./Marker";
+import { Marker } from "react-leaflet";
+import { Icon } from "leaflet";
+import { Popup } from "react-leaflet";
 
-const MapView = ({ data }) => {
-  const [state, setState] = useState({
-    currentLocation: [51.505, -0.09],
+const MapView = () => {
+  const markers = [
+    {
+      geocode: [6.118787978627771, -75.43828255630484],
+      popUp: "Antony",
+    },
+    {
+      geocode: [6.118649709183368, -75.4399358447627],
+      popUp: "Chuck Norris",
+    },
+    {
+      geocode: [6.1176587771184385, -75.4423307953325],
+      popUp: "Lisa",
+    },
+  ];
+
+  const costumIcon = new Icon({
+    iconUrl: require("/public/payment/ubicacion.png"),
+    iconSize: [25, 41],
   });
-  console.log(state.currentLocation);
-
-  useEffect(() => {
-    if (data.lat && data.lng) {
-      const currentLocation = [data.lat, data.lng];
-      setState(currentLocation);
-    }
-  }, []);
 
   return (
     <MapContainer
-      center={state.currentLocation}
+      center={[6.116743065946255, -75.44036838009255]}
       zoom={13}
       scrollWheelZoom={false}
     >
@@ -26,7 +36,11 @@ const MapView = ({ data }) => {
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
-      <Marker />
+      {markers.map((marker) => (
+        <Marker position={marker.geocode} icon={costumIcon}>
+          <Popup>{marker.popUp}</Popup>
+        </Marker>
+      ))}
     </MapContainer>
   );
 };
