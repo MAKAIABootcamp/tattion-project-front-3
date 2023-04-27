@@ -7,6 +7,7 @@ import { BsCalendar3 } from "react-icons/bs";
 import { HiLocationMarker } from "react-icons/hi";
 import profileImg from "@/public/appointment/profileImg.svg";
 import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 
 const divVariants = {
   hidden: { opacity: 0, y: -50 },
@@ -31,6 +32,9 @@ const FirstPage = ({ setPage }) => {
 
     setPage(2);
   };
+
+  const { quotation } = useSelector((state) => state.quote);
+  console.log(quotation);
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(
@@ -77,17 +81,24 @@ const FirstPage = ({ setPage }) => {
               <HiLocationMarker size={14} />
               <input
                 type="text"
-                placeholder="Location"
-                className="bg-[#2b2c2c] w-full text-white"
+                disabled
+                placeholder="Llano Grande, Rionegro, Antioquia"
+                className="bg-[#2b2c2c] w-full text-white cursor-default"
               />
             </label>
             <label className="w-full h-10 rounded-md bg-[#2b2c2c] drop-shadow-xl text-white px-6 flex justify-between items-center gap-3">
               <input
                 type="text"
-                placeholder="Artist"
-                className="bg-[#2b2c2c] w-full text-white"
+                placeholder={quotation.artist.name}
+                disabled
+                className="bg-[#2b2c2c] w-full text-white cursor-default"
               />
-              <Image src={profileImg} />
+              <Image
+                src={quotation.artist.img}
+                width={32}
+                height={32}
+                className="rounded-sm object-cover pointer-events-none"
+              />
             </label>
           </div>
           <div className="flex flex-col items-center">

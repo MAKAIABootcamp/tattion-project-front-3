@@ -14,14 +14,15 @@ import { FaArrowLeft } from "react-icons/fa";
 import { IoClose } from "react-icons/io5";
 
 const Artists = () => {
-    const router = useRouter();
-    const [image, setImage] = useState(null);
-    const [modalOpen, setModalOpen] = useState(false);
-    const [design, setDesign] = useState(true);
-    const [selectedItemIndex, setSelectedItemIndex] = useState(null);
-    const [isActive, setIsActive] = useState(true);
+  const router = useRouter();
+  const [image, setImage] = useState(null);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [design, setDesign] = useState(true);
+  const [selectedItemIndex, setSelectedItemIndex] = useState(null);
+  const [isActive, setIsActive] = useState(true);
 
-    const dispatch = useDispatch();
+  const dispatch = useDispatch();
+
 
     const arrayStyles = [
         {
@@ -286,172 +287,165 @@ const Artists = () => {
             ],
         },
     ];
+    
 
-    const handleSelectArtist = () => {
-        console.log(arrayStyles[selectedItemIndex]);
-        dispatch({
-            type: setQuote,
-            payload: {
-                prop: "artist",
-                data: {
-                    name: arrayStyles[selectedItemIndex].title,
-                    img: arrayStyles[selectedItemIndex].img,
-                },
-            },
-        });
-        router.push("/appointment-info");
-    };
+  const handleSelectArtist = () => {
+    console.log(arrayStyles[selectedItemIndex]);
+    dispatch({
+      type: setQuote,
+      payload: {
+        prop: "artist",
+        data: {
+          name: arrayStyles[selectedItemIndex].title,
+          img: arrayStyles[selectedItemIndex].img,
+        },
+      },
+    });
+    router.push("/appointment-info");
+  };
 
-    const handleImageSelect = (image) => {
-        setImage(image);
-        setModalOpen(true);
-    };
+  const handleImageSelect = (image) => {
+    setImage(image);
+    setModalOpen(true);
+  };
 
-    return (
-        <Layout>
-            <article className="w-[670px] h-[630px] bg-gray-black absolute top-0 left-0 bottom-0 right-0 m-auto rounded-md heroImg flex flex-col justify-center gap-6 items-center py-12 px-1">
-                <Link href={"/designs"} className="absolute top-11 left-10 ">
-                    <FaArrowLeft className=" text-2xl absolute text-white hover:text-red-600   " />
-                </Link>
-                <span className="font-montserrat font-bold text-3xl text-white">
-                    Explore Artists
+  return (
+    <Layout>
+      <article className="w-[670px] h-[630px] bg-gray-black absolute top-0 left-0 bottom-0 right-0 m-auto rounded-md heroImg flex flex-col justify-center gap-6 items-center py-12 px-1">
+        <Link href={"/designs"} className="absolute top-11 left-10 ">
+          <FaArrowLeft className=" text-2xl absolute text-white hover:text-red-600   " />
+        </Link>
+        <span className="font-montserrat font-bold text-3xl text-white">
+          Explore Artists
+        </span>
+
+        <span className="font-montserrat font-semibold text-white">
+          Look at the portfolios of tattoo artists
+        </span>
+        <section className="flex flex-wrap gap-3 items-center justify-center  w-[100%] text-center p-2">
+          {arrayStyles.map((item, index) => (
+            <article
+              className="flex items-center justify-center bg-black rounded-sm  h-[100px] w-[200px]  hover:bg-red-600 cursor-pointer  hover:-translate-y-1 hover:scale-105  duration-75"
+              key={index}
+              onClick={() => {
+                setModalOpen(true);
+                setSelectedItemIndex(index);
+              }}
+            >
+              <figure className="flex flex-col items-center p-1 gap-1 cursor-pointer">
+                <img
+                  src={item.img}
+                  alt={item.title}
+                  className="h-20 w-20 rounded-sm object-cover"
+                />
+              </figure>
+              <span className=" flex flex-col font-montserrat text-m font-semibold text-white text-center">
+                {item.title}
+                <span className="font-montserrat  text-xs font-normal text-white text-center">
+                  {item.style}
                 </span>
-
-                <span className="font-montserrat font-semibold text-white">
-                    Look at the portfolios of tattoo artists
-                </span>
-                <section className="flex flex-wrap gap-3 items-center justify-center  w-[100%] text-center p-2">
-                    {arrayStyles.map((item, index) => (
-                        <article
-                            className="flex items-center justify-center bg-black rounded-sm  h-[100px] w-[200px]  hover:bg-red-600 cursor-pointer  hover:-translate-y-1 hover:scale-105  duration-75"
-                            key={index}
-                            onClick={() => {
-                                setModalOpen(true);
-                                setSelectedItemIndex(index);
-                            }}
-                        >
-                            <figure className="flex flex-col items-center p-1 gap-1 cursor-pointer">
-                                <img
-                                    src={item.img}
-                                    alt={item.title}
-                                    className="h-20 w-20 rounded-sm object-cover"
-                                />
-                            </figure>
-                            <span className=" flex flex-col font-montserrat text-m font-semibold text-white text-center">
-                                {item.title}
-                                <span className="font-montserrat  text-xs font-normal text-white text-center">
-                                    {item.style}
-                                </span>
-                            </span>
-                        </article>
-                    ))}
-                </section>
-                {modalOpen && (
-                    <div className="fixed top-0 left-0 bottom-0 right-0  flex flex-col items-center justify-center ">
-                        <motion.div
-                            initial={{ opacity: 0, scale: 0.5 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            transition={{ duration: 0.1 }}
-                            className="bg-gray-black flex flex-col rounded-md w-[670px] h-[550px] px-8 items-center justify-center  text-center"
-                        >
-                            <button
-                                className="bg-red-500 hover:bg-red-700 absolute top-6 right-10  text-white font-montserrat font-semibold transition-all 
-                                p-1 rounded-full mt-4"
-                                onClick={() => {
-                                    setModalOpen(false), setDesign(true);
-                                }}
-                            >
-                                <IoClose className="text-2xl" />
-                            </button>
-                            <div className="flex flex-col items-center gap-2 justify-center ">
-                                <img
-                                    src={arrayStyles[selectedItemIndex].img}
-                                    alt={arrayStyles[selectedItemIndex].title}
-                                    className="h-40 w-36 rounded "
-                                />
-                                <h2 className="font-montserrat font-semibold text-white text-xl ">
-                                    {arrayStyles[selectedItemIndex].title}
-                                </h2>
-                                <span className="text-white text-s ">
-                                    {arrayStyles[selectedItemIndex].style}
-                                </span>
-                                <div className="flex  gap-4 text-white text-2xl  ">
-                                    <RxInstagramLogo className="cursor-pointer hover:text-red-600 " />
-                                    <CiFacebook className="cursor-pointer hover:text-red-600 " />
-                                </div>
-                            </div>
-                            <div className="flex justify-around mb-2 w-full">
-                                <div className="w-full flex flex-col items-center">
-                                    <p
-                                        className={`cursor-pointer text-white mb-1 border-b-2 w-3/4 ${
-                                            isActive ? "border-red-600" : ""
-                                        }`}
-                                        onClick={() => {
-                                            setIsActive(true);
-                                            setDesign(true);
-                                        }}
-                                    >
-                                        Works
-                                    </p>
-                                </div>
-                                <div className="w-full flex flex-col items-center">
-                                    <p
-                                        className={`cursor-pointer text-white mb-1 border-b-2 w-3/4 ${
-                                            !isActive ? "border-red-600" : ""
-                                        }`}
-                                        onClick={() => {
-                                            setIsActive(false);
-                                            setDesign(false);
-                                        }}
-                                    >
-                                        Designs
-                                    </p>
-                                </div>
-                            </div>
-                            {design ? (
-                                <div className="flex flex-wrap justify-center gap-4">
-                                    {arrayStyles[selectedItemIndex].images.map(
-                                        (item, index) => (
-                                            <img
-                                                src={item}
-                                                className="h-[75px] w-[75px]  rounded-lg"
-                                                alt=""
-                                                onClick={() =>
-                                                    handleImageSelect(item)
-                                                }
-                                            />
-                                        )
-                                    )}
-                                </div>
-                            ) : (
-                                <div className="flex flex-wrap justify-center gap-4">
-                                    {arrayStyles[selectedItemIndex].designs.map(
-                                        (item, index) => (
-                                            <img
-                                                src={item}
-                                                className="h-[75px] w-[75px]  rounded-lg"
-                                                alt=""
-                                                onClick={() =>
-                                                    handleImageSelect(item)
-                                                }
-                                            />
-                                        )
-                                    )}
-                                </div>
-                            )}
-                            <button
-                                className="w-40 h-10 bg-red-600  hover:bg-red-400 transition-all  drop-shadow-xl rounded-md text-white px-6 mt-4"
-                                type="submit"
-                                onClick={handleSelectArtist}
-                            >
-                                Continue
-                            </button>
-                        </motion.div>
-                    </div>
-                )}
+              </span>
             </article>
-        </Layout>
-    );
+          ))}
+        </section>
+        {modalOpen && (
+          <div className="fixed top-0 left-0 bottom-0 right-0  flex flex-col items-center justify-center ">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.5 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.1 }}
+              className="bg-gray-black flex flex-col rounded-md w-[670px] h-[550px] px-8 items-center justify-center  text-center"
+            >
+              <button
+                className="bg-red-500 hover:bg-red-700 absolute top-6 right-10  text-white font-montserrat font-semibold transition-all 
+                                p-1 rounded-full mt-4"
+                onClick={() => {
+                  setModalOpen(false), setDesign(true);
+                }}
+              >
+                <IoClose className="text-2xl" />
+              </button>
+              <div className="flex flex-col items-center gap-2 justify-center ">
+                <img
+                  src={arrayStyles[selectedItemIndex].img}
+                  alt={arrayStyles[selectedItemIndex].title}
+                  className="h-40 w-36 rounded object-cover"
+                />
+                <h2 className="font-montserrat font-semibold text-white text-xl ">
+                  {arrayStyles[selectedItemIndex].title}
+                </h2>
+                <span className="text-white text-s ">
+                  {arrayStyles[selectedItemIndex].style}
+                </span>
+                <div className="flex  gap-4 text-white text-2xl  ">
+                  <RxInstagramLogo className="cursor-pointer hover:text-red-600 " />
+                  <CiFacebook className="cursor-pointer hover:text-red-600 " />
+                </div>
+              </div>
+              <div className="flex justify-around mb-2 w-full">
+                <div className="w-full flex flex-col items-center">
+                  <p
+                    className={`cursor-pointer text-white mb-1 border-b-2 w-3/4 ${
+                      isActive ? "border-red-600" : ""
+                    }`}
+                    onClick={() => {
+                      setIsActive(true);
+                      setDesign(true);
+                    }}
+                  >
+                    Works
+                  </p>
+                </div>
+                <div className="w-full flex flex-col items-center">
+                  <p
+                    className={`cursor-pointer text-white mb-1 border-b-2 w-3/4 ${
+                      !isActive ? "border-red-600" : ""
+                    }`}
+                    onClick={() => {
+                      setIsActive(false);
+                      setDesign(false);
+                    }}
+                  >
+                    Designs
+                  </p>
+                </div>
+              </div>
+              {design ? (
+                <div className="flex flex-wrap justify-center gap-4">
+                  {arrayStyles[selectedItemIndex].images.map((item, index) => (
+                    <img
+                      src={item}
+                      className="h-[75px] w-[75px]  rounded-lg"
+                      alt=""
+                      onClick={() => handleImageSelect(item)}
+                    />
+                  ))}
+                </div>
+              ) : (
+                <div className="flex flex-wrap justify-center gap-4">
+                  {arrayStyles[selectedItemIndex].designs.map((item, index) => (
+                    <img
+                      src={item}
+                      className="h-[75px] w-[75px]  rounded-lg"
+                      alt=""
+                      onClick={() => handleImageSelect(item)}
+                    />
+                  ))}
+                </div>
+              )}
+              <button
+                className="w-40 h-10 bg-red-600  hover:bg-red-400 transition-all  drop-shadow-xl rounded-md text-white px-6 mt-4"
+                type="submit"
+                onClick={handleSelectArtist}
+              >
+                Continue
+              </button>
+            </motion.div>
+          </div>
+        )}
+      </article>
+    </Layout>
+  );
 };
 
 export default Artists;
