@@ -141,7 +141,7 @@ const Artists = () => {
             ],
         },
         {
-            title: "No Marker",
+            title: "Ashley Maker",
             img: "https://i.ibb.co/ZT6SVPz/tatuador5.jpg",
             style: "Anime",
             images: [
@@ -170,8 +170,8 @@ const Artists = () => {
             ],
         },
         {
-            title: "Chuck Norris",
-            img: "https://i.ibb.co/ZT6SVPz/tatuador5.jpg",
+            title: "Daniel Montez",
+            img: "https://images.unsplash.com/photo-1642393335092-c304babcbe08?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
             style: "LineWork",
             images: [
                 "https://i.ibb.co/wy3Lv4P/imagen-8-manos.jpg",
@@ -199,8 +199,8 @@ const Artists = () => {
             ],
         },
         {
-            title: "Chuck Norris",
-            img: "https://i.ibb.co/ZT6SVPz/tatuador5.jpg",
+            title: "David Wong",
+            img: "https://images.unsplash.com/photo-1628802634987-56dcd0de35e6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80",
             style: "neo-traditional",
             images: [
                 "https://i.ibb.co/Zdy79kH/imagen-2-buda.jpg",
@@ -228,8 +228,8 @@ const Artists = () => {
             ],
         },
         {
-            title: "Chuck Norris",
-            img: "https://i.ibb.co/ZT6SVPz/tatuador5.jpg",
+            title: "Valery Ink",
+            img: "https://www.lavozdelsur.es/uploads/s1/82/28/44/tatuadoras003_5_659x378.jpeg",
             style: "Traditional",
             images: [
                 "https://i.ibb.co/2FnykBZ/imagen-4-cuervo.jpg",
@@ -257,9 +257,9 @@ const Artists = () => {
             ],
         },
         {
-            title: "Chuck Norris",
-            img: "https://i.ibb.co/ZT6SVPz/tatuador5.jpg",
-            style: "Traditional",
+            title: "Jesus Tattoos",
+            img: "https://ep01.epimg.net/verne/imagenes/2019/01/04/articulo/1546616433_383738_1546708066_noticia_normal.jpg",
+            style: "Blackout",
             images: [
                 "https://i.ibb.co/2FnykBZ/imagen-4-cuervo.jpg",
                 "https://i.ibb.co/6HB6ky9/imagen-3-princess.jpg",
