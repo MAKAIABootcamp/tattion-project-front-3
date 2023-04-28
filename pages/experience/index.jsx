@@ -9,7 +9,7 @@ const App = () => {
     <div className="w-screen h-screen">
       <Canvas>
         <color attach="background" />
-        <ScrollControls pages={100} damping={0.8}>
+        <ScrollControls pages={20} damping={0.5}>
           <Experience />
         </ScrollControls>
       </Canvas>
