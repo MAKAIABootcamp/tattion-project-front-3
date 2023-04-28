@@ -1,4 +1,4 @@
-import { useMemo, useRef } from "react";
+import { useLayoutEffect, useMemo, useRef } from "react";
 import { Float } from "@react-three/drei";
 import { Sparkles } from "@react-three/drei";
 import { OrbitControls } from "@react-three/drei";
@@ -9,8 +9,10 @@ import { Line } from "@react-three/drei";
 import { PerspectiveCamera } from "@react-three/drei";
 import { useScroll } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
-import { Group, Vector3 } from "three";
+import { Euler, Group, Vector3 } from "three";
 import { TextSection } from "./TextSection";
+import gsap from "gsap";
+import { Cloud } from "./Cloud";
 
 const LINE_NB_POINTS = 1000;
 const CURVE_DISTANCE = 250;
@@ -84,6 +86,113 @@ const Experience = () => {
     ];
   });
 
+  const clouds = useMemo(
+    () => [
+      // STARTING
+      {
+        position: new Vector3(-3.5, -3.2, -7),
+      },
+      {
+        position: new Vector3(3.5, -4, -10),
+      },
+      {
+        scale: new Vector3(2.5, 2.5, 2.5),
+        position: new Vector3(10, -1.2, -52),
+      },
+      // FIRST POINT
+      {
+        scale: new Vector3(4, 4, 4),
+        position: new Vector3(
+          curvePoints[1].x + 10,
+          curvePoints[1].y - 4,
+          curvePoints[1].z + 64
+        ),
+      },
+      {
+        scale: new Vector3(5, 5, 5),
+        position: new Vector3(
+          curvePoints[1].x + 8,
+          curvePoints[1].y - 14,
+          curvePoints[1].z - 22
+        ),
+      },
+      // SECOND POINT
+      {
+        scale: new Vector3(3, 3, 3),
+        position: new Vector3(
+          curvePoints[2].x + 6,
+          curvePoints[2].y - 7,
+          curvePoints[2].z + 50
+        ),
+      },
+      {
+        scale: new Vector3(4, 4, 4),
+        position: new Vector3(
+          curvePoints[2].x + 12,
+          curvePoints[2].y + 1,
+          curvePoints[2].z - 86
+        ),
+        rotation: new Euler(Math.PI / 4, 0, Math.PI / 3),
+      },
+      // THIRD POINT
+      {
+        scale: new Vector3(3, 3, 3),
+        position: new Vector3(
+          curvePoints[3].x + 3,
+          curvePoints[3].y - 10,
+          curvePoints[3].z + 50
+        ),
+      },
+      {
+        scale: new Vector3(5, 5, 5),
+        position: new Vector3(
+          curvePoints[3].x + 0,
+          curvePoints[3].y - 5,
+          curvePoints[3].z - 98
+        ),
+        rotation: new Euler(0, Math.PI / 3, 0),
+      },
+      // FOURTH POINT
+      {
+        scale: new Vector3(2, 2, 2),
+        position: new Vector3(
+          curvePoints[4].x + 3,
+          curvePoints[4].y - 10,
+          curvePoints[4].z + 2
+        ),
+      },
+      {
+        scale: new Vector3(3, 3, 3),
+        position: new Vector3(
+          curvePoints[4].x - 4,
+          curvePoints[4].y + 9,
+          curvePoints[4].z - 62
+        ),
+        rotation: new Euler(Math.PI / 3, 0, Math.PI / 3),
+      },
+      // FINAL
+      {
+        scale: new Vector3(3, 3, 3),
+        position: new Vector3(
+          curvePoints[7].x + 12,
+          curvePoints[7].y - 5,
+          curvePoints[7].z + 60
+        ),
+        rotation: new Euler(-Math.PI / 4, -Math.PI / 6, 0),
+      },
+      {
+        scale: new Vector3(4, 4, 4),
+        position: new Vector3(
+          curvePoints[7].x,
+          curvePoints[7].y,
+          curvePoints[7].z
+        ),
+        rotation: new Euler(0, 0, 0),
+      },
+    ],
+    []
+  );
+
   const linePoints = useMemo(() => {
     return curve.getPoints(LINE_NB_POINTS);
   }, [curve]);
@@ -142,6 +251,7 @@ const Experience = () => {
     lerpedScrollOffset = Math.max(lerpedScrollOffset, 0);
 
     lastScroll.current = lerpedScrollOffset;
+    tl.current.seek(lerpedScrollOffset * tl.current.duration());
 
     const curPoint = curve.getPoint(lerpedScrollOffset);
 
@@ -205,13 +315,31 @@ const Experience = () => {
 
   const airplane = useRef(null);
 
+  const tl = useRef();
+  const backgroundColors = useRef({
+    colorA: "#1f004c",
+    colorB: "#2a0157",
+  });
+
+  useLayoutEffect(() => {
+    tl.current = gsap.timeline();
+
+    tl.current.to(backgroundColors.current, {
+      duration: 1,
+      colorA: "#290263",
+      colorB: "#240c47",
+    });
+
+    tl.current.pause();
+  }, []);
+
   return (
     <>
       <directionalLight position={[10, 10, 10]} intensity={0.1} />
       {/* <OrbitControls /> */}
       <Sparkles size={70} scale={[85, 65, 3400]} />
       <group ref={cameraGroup}>
-        <Background />
+        <Background backgroundColors={backgroundColors} />
         <group ref={cameraRail}>
           <PerspectiveCamera position={[-2, 3, 12]} fov={50} makeDefault />
         </group>
@@ -244,6 +372,9 @@ const Experience = () => {
         />
         <meshStandardMaterial color={"white"} opacity={0.7} transparent />
       </mesh>
+      {clouds.map((cloud, index) => (
+        <Cloud {...cloud} key={index} />
+      ))}
     </>
   );
 };

@@ -5,6 +5,7 @@ specifiers:
   '@hookform/resolvers': ^3.1.0
   '@react-three/drei': ^9.56.28
   '@react-three/fiber': ^8.12.0
+  '@react-three/postprocessing': 2.7.1
   '@reduxjs/toolkit': ^1.9.5
   '@splinetool/loader': ^0.9.295
   '@splinetool/r3f-spline': ^1.0.2
@@ -13,6 +14,7 @@ specifiers:
   autoprefixer: 10.4.14
   firebase: ^9.19.1
   framer-motion: ^10.12.2
+  gsap: ^3.11.5
   js-cookie: ^3.0.1
   lamina: ^1.1.23
   leaflet: ^1.9.3
@@ -35,6 +37,7 @@ dependencies:
   '@hookform/resolvers': 3.1.0_react-hook-form@7.43.9
   '@react-three/drei': 9.66.0_dgefc4prorjnmxxd2g53zxzq54
   '@react-three/fiber': 8.12.2_42od2y7wbz57ukb7jorrhqe6ja
+  '@react-three/postprocessing': 2.7.1_e3gyfvccvopviy7thvetyarpbu
   '@reduxjs/toolkit': 1.9.5_k4ae6lp43ej6mezo3ztvx6pykq
   '@splinetool/loader': 0.9.310_three@0.151.3
   '@splinetool/r3f-spline': 1.0.2_5qrtda2bgsl4mlfzg3lehqxwdq
@@ -43,6 +46,7 @@ dependencies:
   autoprefixer: 10.4.14_postcss@8.4.21
   firebase: 9.20.0
   framer-motion: 10.12.4_biqbaboplfbrettd7655fr4n2y
+  gsap: 3.11.5
   js-cookie: 3.0.5
   lamina: 1.1.23_dgefc4prorjnmxxd2g53zxzq54
   leaflet: 1.9.3
@@ -1166,6 +1170,22 @@ packages:
       zustand: 3.7.2_react@18.2.0
     dev: false
 
+  /@react-three/postprocessing/2.7.1_e3gyfvccvopviy7thvetyarpbu:
+    resolution: {integrity: sha512-FhmQB7INWKaecxq8u155cpbPWM2AM9SDazGmHMsW1r0IZy5aqsI1IWCxA+jJD1V7p6y0zXabssEqZ7JaANkiig==}
+    peerDependencies:
+      '@react-three/fiber': '>=7.0'
+      react: '>=17.0'
+      three: '>=0.136.0'
+    dependencies:
+      '@react-three/fiber': 8.12.2_42od2y7wbz57ukb7jorrhqe6ja
+      postprocessing: 6.30.2_three@0.151.3
+      react: 18.2.0
+      react-merge-refs: 1.1.0
+      screen-space-reflections: 2.5.0_sofrvuaqkglosgh7c62oaqijnq
+      three: 0.151.3
+      three-stdlib: 2.21.9_three@0.151.3
+    dev: false
+
   /@reduxjs/toolkit/1.9.5_k4ae6lp43ej6mezo3ztvx6pykq:
     resolution: {integrity: sha512-Rt97jHmfTeaxL4swLRNPD/zV4OxTes4la07Xc4hetpUW/vc75t5m1ANyxG6ymnEQ2FsLQsoMlYB2vV1sO3m8tQ==}
     peerDependencies:
@@ -1824,6 +1844,10 @@ packages:
       through2: 0.6.5
     dev: false
 
+  /gsap/3.11.5:
+    resolution: {integrity: sha512-Q89nKCLgoX5xUjznh9LcaIUkz54k1voNucT1Rpf9SJNFIQznBwFqt5qUUQbeVInFyN/n18OUJkpeI6CNEDt74w==}
+    dev: false
+
   /has/1.0.3:
     resolution: {integrity: sha512-f2dvO0VU6Oej7RkWJGrehjbzMAjFp5/VKPp5tTpWIV4JHHZK1/BxbFRtf/siA2SWTe09caDmVtYYzWEIbBS4zw==}
     engines: {node: '>= 0.4.0'}
@@ -2333,6 +2357,15 @@ packages:
       source-map-js: 1.0.2
     dev: false
 
+  /postprocessing/6.30.2_three@0.151.3:
+    resolution: {integrity: sha512-Vt77s5DkHyUOV4bmk10J46DHJLglBfIo9ARPI0o62UIAx9omANfuPJTKiLVoYlC1ApkV9y3ldBDipF3IldB7YA==}
+    engines: {node: '>= 0.13.2'}
+    peerDependencies:
+      three: '>= 0.138.0 < 0.152.0'
+    dependencies:
+      three: 0.151.3
+    dev: false
+
   /potpack/1.0.2:
     resolution: {integrity: sha512-choctRBIV9EMT9WGAZHn3V7t0Z2pMQyl0EZE6pFc/6ml3ssw7Dlf/oAOvFwjm1HVsqfQN8GfeFyJ+d8tRzqueQ==}
     dev: false
@@ -2652,6 +2685,16 @@ packages:
     resolution: {integrity: sha512-CtuThmgHNg7zIZWAXi3AsyIzA3n4xx7aNyjwC2VJldO2LMVDhFK+63xGqq6CsJH4rTAt6/M+N4GhZiDYPx9eUw==}
     dependencies:
       loose-envify: 1.4.0
+    dev: false
+
+  /screen-space-reflections/2.5.0_sofrvuaqkglosgh7c62oaqijnq:
+    resolution: {integrity: sha512-fWSDMhJS0xwD3LTxRRch7Lb9NzxsR66sCmtDmAA7i+OGnghUrBBsrha85ng7StnCBaLq/BKmZ97dLxWd1XgWdQ==}
+    peerDependencies:
+      postprocessing: '>=6.28.0'
+      three: '>=0.141.0'
+    dependencies:
+      postprocessing: 6.30.2_three@0.151.3
+      three: 0.151.3
     dev: false
 
   /semver-compare/1.0.0:
