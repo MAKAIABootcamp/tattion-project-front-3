@@ -1,28 +1,39 @@
 import { Sphere } from "@react-three/drei";
 import { Environment } from "@react-three/drei";
+import { useFrame } from "@react-three/fiber";
 import { Gradient } from "lamina";
 import { LayerMaterial } from "lamina";
-import React from "react";
+import React, { useRef } from "react";
 
 import * as THREE from "three";
 
-const Background = () => {
-  const colorA = "#1f004c";
-  const colorB = "#2a0157";
+const Background = ({ backgroundColors }) => {
   const start = 0.2;
   const end = -0.5;
+
+  const gradientRef = useRef();
+  const gradientEnvRef = useRef();
+
+  useFrame(() => {
+    gradientRef.current.colorA = new THREE.Color(
+      backgroundColors.current.colorA
+    );
+    gradientRef.current.colorB = new THREE.Color(
+      backgroundColors.current.colorB
+    );
+    gradientEnvRef.current.colorA = new THREE.Color(
+      backgroundColors.current.colorA
+    );
+    gradientEnvRef.current.colorB = new THREE.Color(
+      backgroundColors.current.colorB
+    );
+  });
 
   return (
     <>
       <Sphere scale={[100, 100, 100]} rotation-y={Math.PI / 2}>
         <LayerMaterial side={THREE.BackSide}>
-          <Gradient
-            colorA={colorA}
-            colorB={colorB}
-            axes={"y"}
-            start={start}
-            end={end}
-          />
+          <Gradient ref={gradientRef} axes={"y"} start={start} end={end} />
         </LayerMaterial>
       </Sphere>
       <Environment resolution={256}>
@@ -32,13 +43,7 @@ const Background = () => {
           rotation-x={Math.PI}
         >
           <LayerMaterial side={THREE.BackSide}>
-            <Gradient
-              colorA={colorA}
-              colorB={colorB}
-              axes={"y"}
-              start={start}
-              end={end}
-            />
+            <Gradient ref={gradientEnvRef} axes={"y"} start={start} end={end} />
           </LayerMaterial>
         </Sphere>
       </Environment>
