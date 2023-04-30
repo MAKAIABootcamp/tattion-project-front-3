@@ -16,6 +16,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setHasScroll, setEnd, setPlay } from "@/slices/experienceSlice";
 import { useRouter } from "next/router";
 import Meteor from "./Meteor";
+import { OrbitControls } from "@react-three/drei";
 
 const LINE_NB_POINTS = 1000;
 const CURVE_DISTANCE = 250;
@@ -48,8 +49,6 @@ const Experience = () => {
 
   const router = useRouter();
 
-  const currentUrl = router.asPath;
-
   const curve = useMemo(() => {
     return new THREE.CatmullRomCurve3(curvePoints, false, "catmullrom", 0.5);
   }, []);
@@ -79,7 +78,7 @@ const Experience = () => {
       {
         cameraRailDist: -1.5,
         position: new Vector3(
-          curvePoints[3].x - 13,
+          curvePoints[3].x - 10,
           curvePoints[3].y + 3,
           curvePoints[3].z
         ),
@@ -102,17 +101,17 @@ const Experience = () => {
     () => [
       // STARTING
       {
-        position: new Vector3(-3.5, -2.2, -5),
-        scale: new Vector3(12, 12, 12),
+        position: new Vector3(-4.5, -2.5, -30),
+        scale: new Vector3(3, 3, 3),
       },
       {
-        scale: new Vector3(5, 5, 5),
+        scale: new Vector3(3, 3, 3),
         position: new Vector3(10, -1.2, -52),
         rotation: new Euler(Math.PI / 1, 0, 0),
       },
       // FIRST POINT
       {
-        scale: new Vector3(14, 14, 14),
+        scale: new Vector3(3, 3, 3),
         position: new Vector3(
           curvePoints[1].x + 10,
           curvePoints[1].y - 4,

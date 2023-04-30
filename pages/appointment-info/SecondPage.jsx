@@ -56,7 +56,7 @@ const SecondPage = ({ setPage }) => {
           <div className="flex flex-col gap-6">
             <div className="w-full h-10 rounded-md bg-[#2b2c2c] drop-shadow-xl text-white px-6 flex items-center gap-3">
               <BsCalendar3 size={14} />
-              <p>21/12</p>
+              <p>{quotation.date}</p>
             </div>
             <div className="w-full h-10 rounded-md bg-[#2b2c2c] drop-shadow-xl text-white px-6 flex items-center gap-3">
               <HiLocationMarker size={14} />
