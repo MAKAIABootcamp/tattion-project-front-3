@@ -2,28 +2,29 @@ import React from "react";
 import { MapContainer, TileLayer } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import { Marker } from "react-leaflet";
-import { Icon } from "leaflet";
+import L from "leaflet";
 import { Popup } from "react-leaflet";
+import { useSelector } from "react-redux";
 
 const MapView = () => {
+  const { quotation } = useSelector((state) => state.quote);
+
   const markers = [
     {
       geocode: [6.118787978627771, -75.43828255630484],
-      popUp: "Antony",
-    },
-    {
-      geocode: [6.118649709183368, -75.4399358447627],
-      popUp: "Chuck Norris",
-    },
-    {
-      geocode: [6.1176587771184385, -75.4423307953325],
-      popUp: "Lisa",
+      popUp: quotation.artist.name,
     },
   ];
 
-  const costumIcon = new Icon({
-    iconUrl: require("/public/payment/ubicacion.png"),
+  const costumIcon = L.icon({
+    iconUrl: require("/node_modules/leaflet/dist/images/marker-icon.png"),
+    iconRetinaUrl: require("/node_modules/leaflet/dist/images/marker-icon-2x.png"),
+    shadowUrl: require("/node_modules/leaflet/dist/images/marker-shadow.png"),
     iconSize: [25, 41],
+    iconAnchor: [12, 41],
+    popupAnchor: [1, -34],
+    tooltipAnchor: [16, -28],
+    shadowSize: [41, 41],
   });
 
   return (

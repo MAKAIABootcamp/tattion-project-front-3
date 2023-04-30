@@ -50,7 +50,7 @@ const SignIn = () => {
               <p className="text-red-600 text-sm">{errors.email.message}</p>
             )}
             <input
-              type="text"
+              type="password"
               placeholder="Password"
               className="w-full h-10 rounded-md bg-[#2b2c2c] drop-shadow-xl text-white px-6"
               {...register("password", {
