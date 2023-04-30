@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React, { useState } from "react";
 import Development from "./Development";
 import Illustrations from "./Illustrations";
@@ -34,9 +35,12 @@ const Works = () => {
                 {link.name}
               </li>
             ))}
-            <li className="text-7xl font-lato uppercase cursor-pointer text-stroke3 max-md:text-5xl">
-              Our Game
-            </li>
+            <Link
+              href="/experience"
+              className="text-7xl font-lato uppercase cursor-pointer text-stroke3 max-md:text-5xl"
+            >
+              Experiences
+            </Link>
           </ul>
         </div>
         <div className="rightWorks relative max-md:w-full">

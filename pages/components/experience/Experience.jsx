@@ -1,11 +1,9 @@
-import { useLayoutEffect, useMemo, useRef } from "react";
+import { useEffect, useLayoutEffect, useMemo, useRef } from "react";
 import { Float } from "@react-three/drei";
 import { Sparkles } from "@react-three/drei";
-import { OrbitControls } from "@react-three/drei";
 import Background from "./Background";
 import Cosmonaut from "./Cosmonaut";
 import * as THREE from "three";
-import { Line } from "@react-three/drei";
 import { PerspectiveCamera } from "@react-three/drei";
 import { useScroll } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
@@ -13,6 +11,11 @@ import { Euler, Group, Vector3 } from "three";
 import { TextSection } from "./TextSection";
 import gsap from "gsap";
 import { Cloud } from "./Cloud";
+import { fadeOnBeforeCompile } from "@/utils/fadeMaterial";
+import { useDispatch, useSelector } from "react-redux";
+import { setHasScroll, setEnd, setPlay } from "@/slices/experienceSlice";
+import { useRouter } from "next/router";
+import Meteor from "./Meteor";
 
 const LINE_NB_POINTS = 1000;
 const CURVE_DISTANCE = 250;
@@ -36,6 +39,17 @@ const Experience = () => {
     []
   );
 
+  const sceneOpacity = useRef(0);
+  const lineMaterialRef = useRef();
+
+  const { play, end } = useSelector((state) => state.experience);
+
+  const dispatch = useDispatch();
+
+  const router = useRouter();
+
+  const currentUrl = router.asPath;
+
   const curve = useMemo(() => {
     return new THREE.CatmullRomCurve3(curvePoints, false, "catmullrom", 0.5);
   }, []);
@@ -43,45 +57,43 @@ const Experience = () => {
   const textSections = useMemo(() => {
     return [
       {
-        cameraRailDist: -1,
+        cameraRailDist: -1.5,
         position: new Vector3(
-          curvePoints[1].x - 3,
-          curvePoints[1].y,
+          curvePoints[1].x - 13,
+          curvePoints[1].y + 3,
           curvePoints[1].z
         ),
-        subtitle: `Welcome to Wawatmos,
-        Have a seat and enjoy the ride!`,
+        title: `Daniela García`,
+        subtitle: `Soy desarrolladora de software y apasionada de la tecnología, me gusta viajar y las fresitas.`,
       },
       {
-        cameraRailDist: 1.5,
+        cameraRailDist: 3,
         position: new Vector3(
           curvePoints[2].x + 2,
-          curvePoints[2].y,
+          curvePoints[2].y + 3,
           curvePoints[2].z
         ),
-        title: "Services",
-        subtitle: `Do you want a drink?
-        We have a wide range of beverages!`,
+        title: `Alejandro Montaña`,
+        subtitle: `Front-end Developer apasionado en el diseño 3D y mi hobbie es el Running.`,
       },
       {
-        cameraRailDist: -1,
+        cameraRailDist: -1.5,
         position: new Vector3(
-          curvePoints[3].x - 3,
-          curvePoints[3].y,
+          curvePoints[3].x - 13,
+          curvePoints[3].y + 3,
           curvePoints[3].z
         ),
-        title: "Fear of flying?",
-        subtitle: `Our flight attendants will help you have a great journey`,
+        title: "Andrés Vélez",
+        subtitle: `Soy un desarrollador full-stack, apasionado por el desarrollo creativo e inclusivo.`,
       },
       {
         cameraRailDist: 1.5,
         position: new Vector3(
-          curvePoints[4].x + 3.5,
-          curvePoints[4].y,
+          curvePoints[4].x - 2.5,
+          curvePoints[4].y + 3,
           curvePoints[4].z - 12
         ),
-        title: "Movies",
-        subtitle: `We provide a large selection of medias, we highly recommend you Porco Rosso during the flight`,
+        title: "We hope you enjoy this experience in our website!",
       },
     ];
   });
@@ -90,18 +102,17 @@ const Experience = () => {
     () => [
       // STARTING
       {
-        position: new Vector3(-3.5, -3.2, -7),
+        position: new Vector3(-3.5, -2.2, -5),
+        scale: new Vector3(12, 12, 12),
       },
       {
-        position: new Vector3(3.5, -4, -10),
-      },
-      {
-        scale: new Vector3(2.5, 2.5, 2.5),
+        scale: new Vector3(5, 5, 5),
         position: new Vector3(10, -1.2, -52),
+        rotation: new Euler(Math.PI / 1, 0, 0),
       },
       // FIRST POINT
       {
-        scale: new Vector3(4, 4, 4),
+        scale: new Vector3(14, 14, 14),
         position: new Vector3(
           curvePoints[1].x + 10,
           curvePoints[1].y - 4,
@@ -109,7 +120,8 @@ const Experience = () => {
         ),
       },
       {
-        scale: new Vector3(5, 5, 5),
+        scale: new Vector3(10, 10, 10),
+        rotation: new Vector3(-10, 0, 0),
         position: new Vector3(
           curvePoints[1].x + 8,
           curvePoints[1].y - 14,
@@ -118,7 +130,7 @@ const Experience = () => {
       },
       // SECOND POINT
       {
-        scale: new Vector3(3, 3, 3),
+        scale: new Vector3(10, 10, 10),
         position: new Vector3(
           curvePoints[2].x + 6,
           curvePoints[2].y - 7,
@@ -211,6 +223,32 @@ const Experience = () => {
   const lastScroll = useRef(0);
 
   useFrame((_state, delta) => {
+    if (lastScroll.current <= 0 && scroll.offset > 0) {
+      dispatch(setHasScroll());
+    }
+
+    if (play && !end && sceneOpacity.current < 1) {
+      sceneOpacity.current = THREE.MathUtils.lerp(
+        sceneOpacity.current,
+        1,
+        delta * 0.1
+      );
+    }
+
+    if (end && sceneOpacity.current > 0) {
+      sceneOpacity.current = THREE.MathUtils.lerp(
+        sceneOpacity.current,
+        0,
+        delta
+      );
+    }
+
+    lineMaterialRef.current.opacity = sceneOpacity.current;
+
+    if (end) {
+      return;
+    }
+
     const scrollOffset = Math.max(0, scroll.offset);
 
     let friction = 1;
@@ -311,6 +349,15 @@ const Experience = () => {
     );
 
     airplane.current.quaternion.slerp(targetAirplaneQuaternion, delta * 2);
+
+    if (
+      cameraGroup.current.position.z <
+      curvePoints[curvePoints.length - 1].z + 100
+    ) {
+      dispatch(setPlay());
+      dispatch({ type: setEnd, payload: { value: true } });
+      planeOutTl.current.play();
+    }
   });
 
   const airplane = useRef(null);
@@ -320,6 +367,9 @@ const Experience = () => {
     colorA: "#1f004c",
     colorB: "#2a0157",
   });
+
+  const planeInTl = useRef();
+  const planeOutTl = useRef();
 
   useLayoutEffect(() => {
     tl.current = gsap.timeline();
@@ -331,51 +381,100 @@ const Experience = () => {
     });
 
     tl.current.pause();
+
+    planeInTl.current = gsap.timeline();
+    planeInTl.current.pause();
+    planeInTl.current.from(airplane.current.position, {
+      duration: 3,
+      z: 8,
+      y: -2,
+    });
+
+    planeOutTl.current = gsap.timeline();
+    planeOutTl.current.pause();
+
+    planeOutTl.current.to(
+      airplane.current.position,
+      {
+        duration: 10,
+        z: -250,
+        y: 10,
+      },
+      0
+    );
+    planeOutTl.current.to(
+      cameraRail.current.position,
+      {
+        duration: 8,
+        y: 12,
+      },
+      0
+    );
+    planeOutTl.current.to(airplane.current.position, {
+      duration: 1,
+      z: -1000,
+    });
   }, []);
 
-  return (
-    <>
-      <directionalLight position={[10, 10, 10]} intensity={0.1} />
-      {/* <OrbitControls /> */}
-      <Sparkles size={70} scale={[85, 65, 3400]} />
-      <group ref={cameraGroup}>
-        <Background backgroundColors={backgroundColors} />
-        <group ref={cameraRail}>
-          <PerspectiveCamera position={[-2, 3, 12]} fov={50} makeDefault />
-        </group>
-        <group ref={airplane}>
-          <Float floatIntensity={2} speed={2} rotationIntensity={0.03}>
-            <Cosmonaut
-              rotation-y={Math.PI / 2}
-              scale={[0.01, 0.01, 0.01]}
-              position-y={0.1}
-            />
-          </Float>
-        </group>
-      </group>
-      {/* TEXT */}
+  useEffect(() => {
+    if (play) {
+      planeInTl.current.play();
+    }
+  }, [play]);
 
-      {textSections.map((textSection, index) => (
-        <TextSection {...textSection} key={index} />
-      ))}
+  return useMemo(
+    () => (
+      <>
+        <directionalLight position={[10, 10, 10]} intensity={0.1} />
+        {/* <OrbitControls /> */}
+        <Sparkles size={70} scale={[85, 65, 3400]} />
+        <group ref={cameraGroup}>
+          <Background backgroundColors={backgroundColors} />
+          <group ref={cameraRail}>
+            <PerspectiveCamera position={[-2, 3, 12]} fov={50} makeDefault />
+          </group>
+          <group ref={airplane}>
+            <Float floatIntensity={2} speed={2} rotationIntensity={0.03}>
+              <Cosmonaut
+                rotation-y={Math.PI / 2}
+                scale={[0.01, 0.01, 0.01]}
+                position-y={0.1}
+              />
+            </Float>
+          </group>
+        </group>
+        {/* TEXT */}
 
-      <mesh>
-        <extrudeGeometry
-          args={[
-            shape,
-            {
-              steps: LINE_NB_POINTS,
-              bevelEnabled: false,
-              extrudePath: curve,
-            },
-          ]}
-        />
-        <meshStandardMaterial color={"white"} opacity={0.7} transparent />
-      </mesh>
-      {clouds.map((cloud, index) => (
-        <Cloud {...cloud} key={index} />
-      ))}
-    </>
+        {textSections.map((textSection, index) => (
+          <TextSection {...textSection} key={index} />
+        ))}
+
+        <mesh>
+          <extrudeGeometry
+            args={[
+              shape,
+              {
+                steps: LINE_NB_POINTS,
+                bevelEnabled: false,
+                extrudePath: curve,
+              },
+            ]}
+          />
+          <meshStandardMaterial
+            color={"white"}
+            opacity={0.7}
+            onBeforeCompile={fadeOnBeforeCompile}
+            envMapIntensity={2}
+            ref={lineMaterialRef}
+            transparent
+          />
+        </mesh>
+        {clouds.map((cloud, index) => (
+          <Meteor sceneOpacity={sceneOpacity} {...cloud} key={index} />
+        ))}
+      </>
+    ),
+    []
   );
 };
 
