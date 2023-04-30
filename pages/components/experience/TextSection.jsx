@@ -9,8 +9,8 @@ export const TextSection = ({ title, subtitle, ...props }) => {
           color="white"
           anchorX={"left"}
           anchorY="bottom"
-          fontSize={0.52}
-          maxWidth={2.5}
+          fontSize={1.5}
+          maxWidth={14}
           lineHeight={1}
           font={"./fonts/DMSerifDisplay-Regular.ttf"}
         >
@@ -25,8 +25,8 @@ export const TextSection = ({ title, subtitle, ...props }) => {
         color="white"
         anchorX={"left"}
         anchorY="top"
-        fontSize={0.2}
-        maxWidth={2.5}
+        fontSize={0.7}
+        maxWidth={11}
         font={"./fonts/Inter-Regular.ttf"}
       >
         {subtitle}
