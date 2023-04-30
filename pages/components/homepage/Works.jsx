@@ -39,7 +39,7 @@ const Works = () => {
               href="/experience"
               className="text-7xl font-lato uppercase cursor-pointer text-stroke3 max-md:text-5xl"
             >
-              Experiences
+              Team
             </Link>
           </ul>
         </div>

@@ -111,7 +111,7 @@ input {
 }
 
 .text-stroke3::after {
-  content: "Experiences";
+  content: "Team";
   position: absolute;
   top: 0;
   left: 0;
@@ -259,7 +259,7 @@ label {
 }
 
 .intro--disappear h1 {
-  top: 42px;
+  top: 2px;
   transform: scale(0.25);
   transform-origin: center top;
 }
