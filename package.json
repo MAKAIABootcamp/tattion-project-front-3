@@ -21,6 +21,7 @@
     "@splinetool/runtime": "^0.9.295",
     "autoprefixer": "10.4.14",
     "firebase": "^9.19.1",
+    "firebase-tools": "^11.29.1",
     "framer-motion": "^10.12.2",
     "gsap": "^3.11.5",
     "js-cookie": "^3.0.1",
