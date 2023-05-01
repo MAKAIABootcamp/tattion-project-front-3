@@ -27,13 +27,14 @@ const initialState = {
 export const quoteSlice = createSlice({
   name: "quote",
   initialState,
-  reducers: {
-    setQuote: (state, action) => {
+  reducers: {},
+  extraReducers: (builder) => {
+    builder.addCase("setQuote", (state, action) => {
       state.quotation = {
         ...state.quotation,
         [action.payload.prop]: action.payload.data,
       };
-    },
+    });
   },
 });
 

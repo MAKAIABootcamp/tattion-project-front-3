@@ -49,7 +49,7 @@ const SecondPage = ({ setPage }) => {
             {" "}
             Your Appintment
           </h1>
-          <Image src={check} />
+          <Image alt="check" src={check} />
         </div>
 
         <form className="w-full p-5 flex flex-col gap-9">
@@ -66,9 +66,10 @@ const SecondPage = ({ setPage }) => {
               <p>{quotation.artist.name}</p>
               <Image
                 src={quotation.artist.img}
+                alt={quotation.artist.name}
                 width={32}
                 height={32}
-                className="rounded-md pointer-events-none"
+                className="rounded-md h-8 object-cover pointer-events-none"
               />
             </div>
           </div>

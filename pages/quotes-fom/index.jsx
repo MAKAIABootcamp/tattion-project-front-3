@@ -5,7 +5,6 @@ import { useRouter } from "next/router";
 import { motion, AnimatePresence } from "framer-motion";
 import Layout from "@/layouts/MainLayout";
 import { useDispatch } from "react-redux";
-import { setQuote } from "@/slices/quoteSlice";
 
 //assets
 import { BsFillSendFill } from "react-icons/bs";
@@ -39,6 +38,20 @@ const QuotesForm = () => {
     { id: 2, color: "#ecc083" },
     { id: 3, color: "#9d583b" },
   ];
+
+  useEffect(() => {
+    if (image) {
+      dispatch({
+        type: "setQuote",
+        payload: { prop: "img", data: image },
+      });
+    } else if (imageUrl) {
+      dispatch({
+        type: "setQuote",
+        payload: { prop: "img", data: imageUrl },
+      });
+    }
+  }, []);
 
   const handleToneTattoo = (e) => {
     setToneTattoo(e.target.checked);
@@ -102,7 +115,7 @@ const QuotesForm = () => {
     };
 
     dispatch({
-      type: setQuote,
+      type: "setQuote",
       payload: { prop: "characteristics", data: currentCharacteristics },
     });
 
@@ -117,17 +130,24 @@ const QuotesForm = () => {
           Chosen design
         </h2>
         <Link href={"/designs"}>
-          <FaArrowLeft className="text-2xl absolute text-white top-4 left-10 hover:text-red-600   " />
+          <FaArrowLeft className="text-2xl absolute text-white top-6 left-10 hover:text-red-600 " />
         </Link>
         {imageUrl && (
-          <img
+          <Image
+            width={300}
+            height={300}
             src={imageUrl}
+            priority
+            alt="selected design"
             className="h-[300px] w-[300px] object-cover rounded"
           />
         )}
         {image && (
-          <img
+          <Image
             src={image}
+            width={300}
+            height={300}
+            priority
             alt="selected design"
             className="h-[300px] w-[300px] rounded shadow-lg shadow-black"
           />

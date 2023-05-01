@@ -2,7 +2,7 @@ import React from "react";
 import { MapContainer, TileLayer } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import { Marker } from "react-leaflet";
-import L from "leaflet";
+import { Icon } from "leaflet";
 import { Popup } from "react-leaflet";
 import { useSelector } from "react-redux";
 
@@ -16,15 +16,9 @@ const MapView = () => {
     },
   ];
 
-  const costumIcon = L.icon({
-    iconUrl: require("/node_modules/leaflet/dist/images/marker-icon.png"),
-    iconRetinaUrl: require("/node_modules/leaflet/dist/images/marker-icon-2x.png"),
-    shadowUrl: require("/node_modules/leaflet/dist/images/marker-shadow.png"),
-    iconSize: [25, 41],
-    iconAnchor: [12, 41],
-    popupAnchor: [1, -34],
-    tooltipAnchor: [16, -28],
-    shadowSize: [41, 41],
+  const icon = new Icon({
+    iconUrl: "/skateboarding.svg",
+    iconSize: [20, 20],
   });
 
   return (
@@ -37,8 +31,8 @@ const MapView = () => {
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
-      {markers.map((marker) => (
-        <Marker position={marker.geocode} icon={costumIcon}>
+      {markers.map((marker, i) => (
+        <Marker key={i} position={marker.geocode} icon={icon}>
           <Popup>{marker.popUp}</Popup>
         </Marker>
       ))}

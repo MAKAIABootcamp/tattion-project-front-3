@@ -167,4 +167,4 @@ export default function Model(props) {
   );
 }
 
-useGLTF.preload("/logos2-transformed.glb");
+useGLTF.preload("/landingPage/logos2-transformed.glb");

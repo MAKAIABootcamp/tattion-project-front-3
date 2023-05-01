@@ -26,6 +26,7 @@ const PayScreen = () => {
               alt={quotation.artist.name}
               width={60}
               height={60}
+              className="w-auto"
             />
             <p className="font-montserrat font-medium text-sm text-white text-start w-2/4">
               ref. minimalist size{" "}

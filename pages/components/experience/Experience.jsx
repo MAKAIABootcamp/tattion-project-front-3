@@ -354,7 +354,7 @@ const Experience = () => {
       curvePoints[curvePoints.length - 1].z + 100
     ) {
       dispatch(setPlay());
-      dispatch({ type: setEnd, payload: { value: true } });
+      dispatch({ type: "setEnd", payload: { value: true } });
       planeOutTl.current.play();
     }
   });

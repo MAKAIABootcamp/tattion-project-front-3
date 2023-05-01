@@ -23,7 +23,7 @@ export default function Home() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch({ type: setEnd, payload: { value: false } });
+    dispatch({ type: "setEnd", payload: { value: false } });
   }, []);
 
   return (

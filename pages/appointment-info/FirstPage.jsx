@@ -1,15 +1,13 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import MapView from "../components/payment/MapView";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import { useEffect, useState } from "react";
 
 // Assets
 import { BsCalendar3 } from "react-icons/bs";
 import { HiLocationMarker } from "react-icons/hi";
-import profileImg from "@/public/appointment/profileImg.svg";
-import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
-import { setQuote } from "@/slices/quoteSlice";
 
 const divVariants = {
   hidden: { opacity: 0, y: -50 },
@@ -41,7 +39,7 @@ const FirstPage = ({ setPage }) => {
 
   const handleSelectDate = (e) => {
     dispatch({
-      type: setQuote,
+      type: "setQuote",
       payload: {
         prop: "date",
         data: e.target.value,
@@ -116,9 +114,10 @@ const FirstPage = ({ setPage }) => {
               />
               <Image
                 src={quotation.artist.img}
+                alt={quotation.artist.name}
                 width={32}
                 height={32}
-                className="rounded-sm object-cover pointer-events-none"
+                className="rounded-sm object-cover h-8 pointer-events-none"
               />
             </label>
           </div>
