@@ -1,13 +1,13 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import MapView from "../components/payment/MapView";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import { useEffect, useState } from "react";
 
 // Assets
 import { BsCalendar3 } from "react-icons/bs";
 import { HiLocationMarker } from "react-icons/hi";
-import profileImg from "@/public/appointment/profileImg.svg";
-import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
 
 const divVariants = {
   hidden: { opacity: 0, y: -50 },
@@ -33,8 +33,19 @@ const FirstPage = ({ setPage }) => {
     setPage(2);
   };
 
+  const dispatch = useDispatch();
+
   const { quotation } = useSelector((state) => state.quote);
-  console.log(quotation);
+
+  const handleSelectDate = (e) => {
+    dispatch({
+      type: "setQuote",
+      payload: {
+        prop: "date",
+        data: e.target.value,
+      },
+    });
+  };
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(
@@ -70,11 +81,19 @@ const FirstPage = ({ setPage }) => {
           <div className="flex flex-col gap-6">
             <label className="w-full h-10 rounded-md bg-[#2b2c2c] drop-shadow-xl text-white px-6 flex items-center gap-3">
               <BsCalendar3 size={14} />
-              <input
-                type="text"
-                placeholder="Date"
-                className="bg-[#2b2c2c] w-full text-white"
-              />
+              <select
+                onChange={handleSelectDate}
+                className="bg-transparent w-full flex justify-between cursor-pointer outline-none"
+              >
+                <option value="">Select a Date</option>
+                <option value="Thu 4 - 9:00am">Thu 4 - 9:00am</option>
+                <option value="Fri 5 10:00am">Fri 5 10:00am</option>
+                <option value="Sat 6 - 2:00pm">Sat 6 - 2:00pm</option>
+                <option value="Sun 7 - 12m">Sun 7 - 12m</option>
+                <option value="Mon 8 - 3:15pm">Mon 8 - 3:15pm</option>
+                <option value="Tue 9 - 6:40pm">Tue 9 - 6:40pm</option>
+                <option value="Wed 10 - 7:30pm">Wed 10 - 7:30pm</option>
+              </select>
             </label>
             <MapView data={state} />
             <label className="w-full h-10 rounded-md bg-[#2b2c2c] drop-shadow-xl text-white px-6 flex items-center gap-3">
@@ -95,9 +114,10 @@ const FirstPage = ({ setPage }) => {
               />
               <Image
                 src={quotation.artist.img}
+                alt={quotation.artist.name}
                 width={32}
                 height={32}
-                className="rounded-sm object-cover pointer-events-none"
+                className="rounded-sm object-cover h-8 pointer-events-none"
               />
             </label>
           </div>

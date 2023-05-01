@@ -8,14 +8,11 @@ import Input from "./Input";
 // Assets
 import { FaArrowLeft } from "react-icons/fa";
 import { useAuth } from "@/context/AuthContext";
-import { updateProfile } from "firebase/auth";
 import { useSelector } from "react-redux";
 import {
     arrayUnion,
     collection,
     doc,
-    getDoc,
-    setDoc,
     updateDoc,
 } from "firebase/firestore";
 import { db } from "@/firebase";

@@ -32,7 +32,14 @@ const SignIn = () => {
   return (
     <Layout>
       <div className="w-[650px] h-[400px] bg-gray-black absolute top-0 left-0 bottom-0 right-0 m-auto rounded-md heroImg flex gap-4 items-center px-8">
-        <Image src={logo} alt="Logo" width={300} height={250} />
+        <Image
+          src={logo}
+          alt="Logo"
+          priority
+          className="w-auto h-auto"
+          width={300}
+          height={250}
+        />
         <form
           className="w-full p-5 flex flex-col gap-9"
           onSubmit={handleSubmit(onSubmit)}
@@ -40,6 +47,7 @@ const SignIn = () => {
           <div className="flex flex-col gap-5">
             <input
               type="text"
+              autoComplete="current-email"
               placeholder="Email"
               className="w-full h-10 rounded-md bg-[#2b2c2c] drop-shadow-xl text-white px-6"
               {...register("email", {
@@ -51,6 +59,7 @@ const SignIn = () => {
             )}
             <input
               type="password"
+              autoComplete="current-password"
               placeholder="Password"
               className="w-full h-10 rounded-md bg-[#2b2c2c] drop-shadow-xl text-white px-6"
               {...register("password", {

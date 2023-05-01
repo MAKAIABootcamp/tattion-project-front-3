@@ -16,9 +16,14 @@ export const experienceSlice = createSlice({
     setHasScroll: (state) => {
       state.hasScroll = !state.hasScroll;
     },
-    setEnd: (state, action) => {
+    // setEnd: (state, action) => {
+    //   state.end = action.payload.value;
+    // },
+  },
+  extraReducers: (builder) => {
+    builder.addCase("setEnd", (state, action) => {
       state.end = action.payload.value;
-    },
+    });
   },
 });
 

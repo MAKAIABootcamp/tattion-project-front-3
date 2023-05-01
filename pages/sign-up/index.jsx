@@ -49,12 +49,14 @@ const SignUp = () => {
               <input
                 type="text"
                 placeholder="Email"
+                autoComplete="current-email"
                 className="w-full h-10 rounded-md bg-[#2b2c2c] drop-shadow-xl shadow-lg text-white px-6 input"
                 {...register("email", { required: true })}
               />
               <input
                 type="password"
                 placeholder="Password"
+                autoComplete="current-password"
                 className="w-full h-10 rounded-md bg-[#2b2c2c] drop-shadow-xl shadow-lg text-white px-6 input"
                 {...register("password", { required: true })}
               />

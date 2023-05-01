@@ -7,7 +7,9 @@ import React, { useRef } from "react";
 import { useGLTF, OrthographicCamera } from "@react-three/drei";
 
 export default function Model(props) {
-  const { nodes, materials } = useGLTF("/landingPage/spaceship-2-transformed.glb");
+  const { nodes, materials } = useGLTF(
+    "/landingPage/spaceship-2-transformed.glb"
+  );
   return (
     <group {...props} dispose={null}>
       <group scale={0.01}>
@@ -113,4 +115,4 @@ export default function Model(props) {
   );
 }
 
-useGLTF.preload("/spaceship-2-transformed.glb");
+useGLTF.preload("/landingPage/spaceship-2-transformed.glb");

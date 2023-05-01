@@ -54,6 +54,7 @@ const Hero = () => {
             alt="moon"
             className="w-[700px] h-[500px] object-contain absolute bottom-0 right-0 left-0 top-16 heroImg max-md:w-80 max-md:h-80 max-md:left-14 max-md:top-20"
             src={moon}
+            priority
           />
         </div>
       </div>
