@@ -7,11 +7,7 @@ import { useEffect, useState } from "react";
 // Assets
 import { BsCalendar3 } from "react-icons/bs";
 import { HiLocationMarker } from "react-icons/hi";
-import dynamic from "next/dynamic";
-
-const MapView = dynamic(() => import("../components/payment/MapView"), {
-    ssr: false,
-});
+import Map from "@/componentsDedicaded/Map";
 
 const divVariants = {
     hidden: { opacity: 0, y: -50 },
@@ -111,7 +107,7 @@ const FirstPage = ({ setPage }) => {
                                 </option>
                             </select>
                         </label>
-                        <MapView data={state} />
+                        <Map data={state} />
                         <label className="w-full h-10 rounded-md bg-[#2b2c2c] drop-shadow-xl text-white px-6 flex items-center gap-3">
                             <HiLocationMarker size={14} />
                             <input
