@@ -1,8 +1,35 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Tattion
 
-## Getting Started
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+<p align="center">
+<img align="center" width="400px" src="https://user-images.githubusercontent.com/59479109/235986357-7a68e80c-ec37-4480-95cf-edbc89b0d695.png">
+</p>
 
-First, run the development server:
+Tattion is a dynamic web page designed to streamline the process of finding a good tattoo artist for users and provide tattoo artists with the opportunity to reach new clients. With Tattion, users can upload their own tattoo designs or choose from a wide gallery of available designs.
+
+## Features
+
+- Tattoo design uploads: Users can upload their own tattoo designs to share them with the community.
+- Extensive design gallery: Tattion offers a wide variety of tattoo designs for users to explore and choose from.
+- Tattoo artist profiles: Tattoo artists can create profiles and showcase their works and designs.
+
+## Installation
+
+Follow these steps to install and run the Tattion project in your local development environment:
+
+1. Clone the repository:
+```bash
+git clone https://github.com/tu_usuario/tattion.git
+```
+2. Navigate to the project directory:
+```bash
+cd tattion
+```
+3. Install the dependencies using pnpm:
+```bash
+pnpm install
+```
+4. Run the project in development mode:
 
 ```bash
 npm run dev
@@ -22,17 +49,38 @@ The `pages/api` directory is mapped to `/api/*`. Files in this directory are tre
 
 This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-## Learn More
+## This project was developed with:
 
-To learn more about Next.js, take a look at the following resources:
+- ![Next.js](https://img.shields.io/badge/-Next.js-000?logo=next.js&logoColor=white)
+- ![Tailwind CSS](https://img.shields.io/badge/-Tailwind%20CSS-38B2AC?logo=tailwind-css&logoColor=white)
+- ![Styled Components](https://img.shields.io/badge/-Styled%20Components-DB7093?logo=styled-components&logoColor=white)
+- ![Firebase](https://img.shields.io/badge/-Firebase-FFCA28?logo=firebase&logoColor=black)
+- ![Firestore](https://img.shields.io/badge/-Firestore-FF8F00?logo=firebase&logoColor=black)
+- ![Formik](https://img.shields.io/badge/-Formik-EE5188?logo=formik&logoColor=white)
+- ![Yup](https://img.shields.io/badge/-Yup-FF4081?logo=yup&logoColor=white)
+- ![React-Redux](https://img.shields.io/badge/-React%20Redux-764ABC?logo=redux&logoColor=white)
+- ![React Leaflet](https://img.shields.io/badge/-React%20Leaflet-199900?logo=leaflet&logoColor=white)
+- ![three.js](https://img.shields.io/badge/-three.js-000000?logo=three.js&logoColor=white)
+- ![GSAP](https://img.shields.io/badge/-GSAP-8AC926?logo=greensock&logoColor=white)
+- ![Framer Motion](https://img.shields.io/badge/-Framer%20Motion-000?logo=framer&logoColor=white)
+- ![Vercel](https://img.shields.io/badge/-Vercel-000?logo=vercel&logoColor=white)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+# Contribution
+We appreciate contributions to Tattion! If you would like to contribute to the project, follow these steps:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+1. Fork the repository.
+2. Create a new branch for your feature or bug fix: git checkout -b feature/my-new-feature or git checkout -b bugfix/my-fix.
+3. Make your changes and commit the files: git commit -m 'Add my new feature'.
+4. Push the created branch: git push origin feature/my-new-feature.
+5. Open a Pull Request on GitHub.
+6. Make sure to follow our contribution guidelines and respect the project's code of conduct.
 
-## Deploy on Vercel
+# Contact
+If you have any questions, suggestions, or issues related to Tattion, feel free to contact us.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Authors
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+*Daniela Garcia* <img align='center' src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMDRlOTE5OTYxNTQ4NzNkN2MzY2ZmODNhZGIzZGMxNmQ0MDYyNWRiZCZjdD1z/ePc1IPFswJbjNYkgkF/giphy.gif" width="50"></img>   *Andres Velez* <img src="https://media.giphy.com/media/12oufCB0MyZ1Go/giphy.gif" width="50" align='center'>  *Hector Montaña* <img src="https://media.giphy.com/media/BHCFcibksBxAV0FDoL/giphy.gif" width="50" align='center' /> 
+
+
+
