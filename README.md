@@ -68,9 +68,9 @@ The `pages/api` directory is mapped to `/api/*`. Files in this directory are tre
 We appreciate contributions to Tattion! If you would like to contribute to the project, follow these steps:
 
 1. Fork the repository.
-2. Create a new branch for your feature or bug fix: git checkout -b feature/my-new-feature or git checkout -b bugfix/my-fix.
-3. Make your changes and commit the files: git commit -m 'Add my new feature'.
-4. Push the created branch: git push origin feature/my-new-feature.
+2. Create a new branch for your feature or bug fix: ```git checkout -b feature/my-new-feature or git checkout -b bugfix/my-fix.```
+3. Make your changes and commit the files: ```git commit -m 'Add my new feature'.```
+4. Push the created branch: ```git push origin feature/my-new-feature.```
 5. Open a Pull Request on GitHub.
 6. Make sure to follow our contribution guidelines and respect the project's code of conduct.
 
