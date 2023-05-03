@@ -23,7 +23,7 @@ git clone https://github.com/tu_usuario/tattion.git
 ```
 2. Navigate to the project directory:
 ```bash
-cd tattion
+cd tattion-project-front-3
 ```
 3. Install the dependencies using pnpm:
 ```bash
