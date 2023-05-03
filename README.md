@@ -55,7 +55,7 @@ The `pages/api` directory is mapped to `/api/*`. Files in this directory are tre
 - ![Styled Components](https://img.shields.io/badge/-Styled%20Components-DB7093?logo=styled-components&logoColor=white)
 - ![Firebase](https://img.shields.io/badge/-Firebase-FFCA28?logo=firebase&logoColor=black)
 - ![Firestore](https://img.shields.io/badge/-Firestore-FF8F00?logo=firebase&logoColor=black)
-- ![Formik](https://img.shields.io/badge/-Formik-EE5188?logo=formik&logoColor=white)
+- ![React Hook Form](https://img.shields.io/badge/React%20Hook%20Form-%23EC5990?logo=reacthookform&logoColor=white)
 - ![Yup](https://img.shields.io/badge/-Yup-FF4081?logo=yup&logoColor=white)
 - ![React-Redux](https://img.shields.io/badge/-React%20Redux-764ABC?logo=redux&logoColor=white)
 - ![React Leaflet](https://img.shields.io/badge/-React%20Leaflet-199900?logo=leaflet&logoColor=white)
