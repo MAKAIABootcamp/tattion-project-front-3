@@ -14,7 +14,14 @@ const Welcome = () => {
   return (
     <Layout>
       <article className="w-[670px] h-[400px] bg-gray-black absolute top-0 left-0 bottom-0 right-0 m-auto rounded-md heroImg flex justify-around gap-8 items-center">
-        <Image src={logo} alt="Logo" width={300} height={280} />
+        <Image
+          src={logo}
+          alt="Logo"
+          className="w-auto h-auto"
+          priority
+          width={300}
+          height={280}
+        />
 
         <article className="flex flex-col items-center gap-6 mr-4">
           <Link href="/designs" className="w-full">

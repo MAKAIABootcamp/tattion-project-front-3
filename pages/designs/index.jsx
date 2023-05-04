@@ -1,18 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import Layout from "@/layouts/MainLayout";
 import { useDispatch } from "react-redux";
-import { setQuote } from "@/slices/quoteSlice";
 
 //assets
 import upload from "@/public/designs/upload-icon.svg";
 import { useGetStylestattoosCollection } from "@/hooks/useGetStylesTattoosCollection";
 import { fileUpload } from "@/context/clodinaryConfig";
 import { FaArrowLeft } from "react-icons/fa";
-
 const Designs = () => {
     const router = useRouter();
     const [image, setImage] = useState(null);
@@ -28,7 +26,6 @@ const Designs = () => {
         const file = event.target.files[0];
         const url = await fileUpload(file);
         setImageUrl(url);
-        dispatch({ type: setQuote, payload: { prop: "img", data: url } });
         router.push({
             pathname: "/quotes-fom",
             query: { imageUrl: url },
@@ -38,6 +35,10 @@ const Designs = () => {
     const handleImageSelect = (image) => {
         setImage(image);
         setModalOpen(true);
+    };
+
+    const myLoader = ({ src, width, quality }) => {
+        return `${src}?w=${width}&q=${quality || 50}`;
     };
 
     return (
@@ -64,9 +65,6 @@ const Designs = () => {
                     <label htmlFor="upload-button">
                         <Image src={upload} alt="upload icon" height={50} />
                     </label>
-                    {/* <span className="font-montserrat text-white">
-            acceptable formats .jpg .png
-          </span> */}
                 </div>
                 <span className="font-montserrat text-xl font-semibold text-white">
                     Still haven't chosen a design?
@@ -76,9 +74,12 @@ const Designs = () => {
                 </span>
                 <section className="grid grid-cols-4  gap-x-12 gap-y-4 justify-center items-center ">
                     {stylestattoos?.map((item, index) => (
-                        <article
+                        <motion.article
                             className="flex flex-col rounded-sm  w-24"
                             key={index}
+                            initial={{ opacity: 0, scale: 0.5 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            transition={{ duration: 0.3 }}
                         >
                             <figure
                                 className="flex flex-col  items-center py-3  gap-1 justify-center  cursor-pointer  bg-black rounded-sm hover:bg-red-600  transition ease-in-out delay-1 hover:scale-110 w-[8rem]"
@@ -87,16 +88,20 @@ const Designs = () => {
                                     setSelectedItemIndex(index);
                                 }}
                             >
-                                <img
+                                <Image
+                                    loader={myLoader}
+                                    priority
+                                    width={54}
+                                    height={54}
                                     src={item.images[0]}
                                     alt=""
-                                    className="h-24 w-24  rounded"
+                                    className="h-24 w-24 object-contain rounded"
                                 />
                                 <span className="font-montserrat text-center text-white  flex justify-center text-sm font-semibold ">
                                     {item.title}
                                 </span>
                             </figure>
-                        </article>
+                        </motion.article>
                     ))}
                 </section>
                 <AnimatePresence>
@@ -128,8 +133,11 @@ const Designs = () => {
                                             }}
                                             key={index}
                                         >
-                                            <img
+                                            <Image
+                                                loader={myLoader}
                                                 src={item}
+                                                width="150"
+                                                height="150"
                                                 className="h-[150px] w-[150px] cursor-pointer rounded-lg hover:opacity-60 transition ease-in-out delay-10"
                                                 alt=""
                                                 onClick={() =>

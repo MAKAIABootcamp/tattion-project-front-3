@@ -7,6 +7,7 @@ const nextConfig = {
       "res.cloudinary.com",
       "www.lavozdelsur.es",
       "images.unsplash.com",
+      "ep01.epimg.net",
     ],
   },
 };

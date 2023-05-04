@@ -18,7 +18,6 @@ const Particles = () => {
     for (let i = 0; i < count * 3; i++) {
       positions[i] = (Math.random() - 0.5) * 10;
       sizes[i] = Math.random() < 0.03 ? 15 : 6;
-      console.log("ji");
     }
 
     return [positions, sizes];

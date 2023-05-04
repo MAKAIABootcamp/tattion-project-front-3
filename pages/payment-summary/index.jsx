@@ -1,20 +1,15 @@
 import React from "react";
 import Image from "next/image";
-import Cookies from "js-cookie";
 import Layout from "@/layouts/MainLayout";
 
 // Assets
 import check from "@/public/appointment/check.svg";
-import Guard from "@/components/payment/Guard";
-import tattooExample from "@/public/payment/tattoo-example.png";
 import Link from "next/link";
 import { FaArrowLeft } from "react-icons/fa";
 import { useAuth } from "@/context/AuthContext";
 import { useSelector } from "react-redux";
 
 const PaymentSummary = () => {
-  const { currentUser } = useAuth();
-
   const { quotation } = useSelector((state) => state.quote);
 
   return (
@@ -24,7 +19,7 @@ const PaymentSummary = () => {
           <h1 className=" text-white font-montserrat font-medium">
             Payment Info
           </h1>
-          <Image src={check} />
+          <Image alt="check" src={check} />
         </div>
         <h2 className="uppercase text-base font-montserrat text-white tracking-wide">
           Payment Summary
