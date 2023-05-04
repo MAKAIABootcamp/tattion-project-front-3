@@ -34,7 +34,9 @@ const Hero = () => {
           <p className="text-lg text-light-gray font-montserrat max-md:p-5 max-md:text-center">
             We enjoy creating delightful, human-centered digital experiences.
           </p>
-          <button className="bg-red-500 w-28 p-2 rounded-xs">Learn More</button>
+          <button className="bg-red-500 w-28 p-2 rounded-xs hover:scale-105 duration-75">
+            Learn More
+          </button>
         </div>
         <div className="right relative w-full h-full">
           <Canvas>

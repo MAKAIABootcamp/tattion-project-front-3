@@ -25,13 +25,13 @@ const Navbar = () => {
         </div>
         <div className="flex gap-5">
           <button
-            className="bg-red-500 w-24 p-2 rounded-xs"
+            className="bg-red-500 w-24 p-2 rounded-xs hover:scale-105 duration-75"
             onClick={handleSignUp}
           >
             Sign Up
           </button>
           <button
-            className="bg-red-500 w-24 p-2 rounded-xs"
+            className="bg-red-500 w-24 p-2 rounded-xs hover:scale-105 duration-75"
             onClick={handleSignIn}
           >
             Sign In

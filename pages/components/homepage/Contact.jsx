@@ -62,7 +62,10 @@ const Contact = () => {
               className="p-5 bg-white rounded-xs outline-none text-[#434343]"
               rows={7}
             ></textarea>
-            <button className="bg-red-500 p-5 rounded-xs" type="submit">
+            <button
+              className="bg-red-500 p-5 rounded-xs hover:scale-105 duration-100"
+              type="submit"
+            >
               Send
             </button>
             {success ? (

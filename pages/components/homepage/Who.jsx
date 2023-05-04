@@ -38,8 +38,8 @@ const Hero = () => {
           <p className="text-xl text-light-gray font-montserrat max-md:w-[400px]">
             a creative group of designers with a passion for the arts.
           </p>
-          <button className="bg-red-500 w-36 p-2 rounded-xs">
-            See our Galery
+          <button className="bg-red-500 w-36 p-2 rounded-xs hover:scale-105 duration-75">
+            See our Galaxy
           </button>
         </div>
       </div>
