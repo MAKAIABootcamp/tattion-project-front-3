@@ -64,6 +64,10 @@ The `pages/api` directory is mapped to `/api/*`. Files in this directory are tre
 - ![Framer Motion](https://img.shields.io/badge/-Framer%20Motion-000?logo=framer&logoColor=white)
 - ![Vercel](https://img.shields.io/badge/-Vercel-000?logo=vercel&logoColor=white)
 
+# Deploy 
+
+https://tattion.vercel.app
+
 # Contribution
 We appreciate contributions to Tattion! If you would like to contribute to the project, follow these steps:
 
